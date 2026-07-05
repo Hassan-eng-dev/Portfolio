@@ -1,6 +1,8 @@
 // Design tokens exposed as CSS custom properties for use outside Tailwind
 // utility classes (raw CSS, inline styles, third-party components).
 :root {
+  // Original studio palette — untouched so the admin dashboard (which
+  // reads these same custom properties) keeps its current appearance.
   --color-primary: #6d9fd5;
   --color-primary-50: #f0f7ff;
   --color-primary-100: #e2effd;
@@ -18,7 +20,13 @@
   --color-surface-muted: #f6f6f7;
   --color-border: #e8e9eb;
 
+  // Vivid blue system for the public-site creative redesign only.
+  --brand-300: #93c5fd;
+  --brand-400: #60a5fa;
+  --brand-600: #2563eb;
+
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 150ms;
   --duration-base: 250ms;
   --duration-slow: 400ms;
@@ -105,5 +113,109 @@ body {
   &::-webkit-scrollbar-thumb {
     background-color: var(--color-border);
     border-radius: 999px;
+  }
+}
+
+// ---------------------------------------------------------------------
+// Public-site creative system: fluid hero type, aurora backdrop, grain
+// texture, marquee ticker and magnetic buttons. Scoped to plain classes
+// so they can be reused across the home/about/contact/portfolio pages.
+// ---------------------------------------------------------------------
+
+.text-hero {
+  font-size: clamp(2.75rem, 5vw + 1.5rem, 6.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.text-display-fluid {
+  font-size: clamp(2rem, 2.5vw + 1.25rem, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.text-gradient {
+  background-image: linear-gradient(100deg, var(--brand-600), var(--brand-400) 60%, var(--brand-300));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+// Soft, drifting blue aurora blobs used behind hero/CTA sections.
+.aurora-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+
+  .aurora-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: 0.55;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora-blob {
+      animation: none !important;
+    }
+  }
+}
+
+:root[data-theme='dark'] .aurora-field .aurora-blob {
+  opacity: 0.35;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .aurora-field .aurora-blob {
+    opacity: 0.35;
+  }
+}
+
+// Subtle film-grain overlay for a crafted, premium feel.
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+// Infinite ticker track — pair with two duplicated children for a seamless loop.
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+// Buttons that nudge toward the cursor (see useMagnetic composable).
+.magnetic {
+  transition: transform 0.35s var(--ease-spring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic {
+    transition: none;
   }
 }

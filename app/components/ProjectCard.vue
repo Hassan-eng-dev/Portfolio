@@ -1,21 +1,32 @@
 <script setup lang="ts">
 import type { Project } from '~~/shared/types/database.types'
 
-defineProps<{
-  project: Project
-  priority?: boolean
-}>()
+withDefaults(
+  defineProps<{
+    project: Project
+    priority?: boolean
+    aspectClass?: string
+  }>(),
+  { aspectClass: 'aspect-[4/5]' },
+)
 </script>
 
 <template>
-  <NuxtLink :to="`/portfolio/${project.slug}`" class="group block" :aria-label="`View project: ${project.title}`">
-    <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-ink-50">
+  <NuxtLink
+    :to="`/portfolio/${project.slug}`"
+    class="group flex h-full flex-col"
+    :aria-label="`View project: ${project.title}`"
+  >
+    <div
+      class="relative min-h-0 overflow-hidden rounded-2xl bg-ink-50 shadow-card ring-1 ring-inset ring-ink-900/5 transition-all duration-500 ease-out group-hover:shadow-glow-lg"
+      :class="aspectClass"
+    >
       <img
         v-if="project.cover_image_url"
         :src="project.cover_image_url"
         :alt="project.title"
         :loading="priority ? 'eager' : 'lazy'"
-        class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+        class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
       >
       <div v-else class="flex h-full w-full items-center justify-center text-ink-300">
         <svg viewBox="0 0 24 24" class="h-10 w-10" fill="none" aria-hidden="true">
@@ -26,13 +37,38 @@ defineProps<{
           />
         </svg>
       </div>
+
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      />
+
+      <span
+        class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium capitalize text-ink-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 group-hover:opacity-100"
+      >
+        {{ project.category }}
+      </span>
+
+      <span
+        class="absolute bottom-4 right-4 inline-flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-brand-600 text-white opacity-0 shadow-glow transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+        aria-hidden="true"
+      >
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
+          <path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
     </div>
 
-    <div class="mt-3 flex items-start justify-between gap-3">
+    <div class="mt-4 flex shrink-0 items-start justify-between gap-3">
       <div>
-        <h3 class="font-display text-lg leading-tight text-ink-900">{{ project.title }}</h3>
+        <h3 class="font-display text-lg leading-tight text-ink-900 transition-colors group-hover:text-brand-700">
+          {{ project.title }}
+        </h3>
         <p class="mt-0.5 text-sm capitalize text-ink-500">{{ project.category }}</p>
       </div>
+      <span
+        class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        aria-hidden="true"
+      />
     </div>
   </NuxtLink>
 </template>
