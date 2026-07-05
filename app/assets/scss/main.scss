@@ -1,0 +1,109 @@
+// Design tokens exposed as CSS custom properties for use outside Tailwind
+// utility classes (raw CSS, inline styles, third-party components).
+:root {
+  --color-primary: #6d9fd5;
+  --color-primary-50: #f0f7ff;
+  --color-primary-100: #e2effd;
+  --color-primary-200: #c3ddf8;
+  --color-primary-300: #a7c8ec;
+  --color-primary-400: #8ab4e0;
+  --color-primary-500: #6d9fd5;
+  --color-primary-600: #4687ce;
+  --color-primary-700: #2b6eb6;
+  --color-primary-800: #1e558f;
+  --color-primary-900: #143c67;
+
+  --color-ink: #16181d;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f6f6f7;
+  --color-border: #e8e9eb;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+}
+
+:root[data-theme='dark'] {
+  --color-ink: #f2f3f5;
+  --color-surface: #16181d;
+  --color-surface-muted: #1c1f26;
+  --color-border: #2a2d35;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-ink: #f2f3f5;
+    --color-surface: #16181d;
+    --color-surface-muted: #1c1f26;
+    --color-border: #2a2d35;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+
+// Shared page-transition + reveal-on-scroll utilities used across
+// public pages. Kept in SCSS (rather than Tailwind) since they define
+// keyframes/behaviour, not one-off utility values.
+.page-enter-active,
+.page-leave-active {
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Custom, minimal scrollbar for the admin dashboard shell.
+.admin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 999px;
+  }
+}
