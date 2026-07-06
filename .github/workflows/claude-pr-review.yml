@@ -52,7 +52,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # Automatically review every PR; also responds to "@claude <question>" comments
-          prompt: |
+          claude_prompt: |
             You are a strict, zero-tolerance reviewer for a Nuxt 3 gym management app (Vue 3, TypeScript, Tailwind CSS, Pinia, Supabase).
             Go through every changed file line by line. Do not skim, do not summarize away small issues, do not give the benefit of the doubt.
             Flag EVERY bug you find, no matter how trivial it looks — typos, off-by-one errors, unused/duplicate variables, dead code, leftover debug statements (`console.log`, `debugger`), wrong operators (`=` vs `==`, `<` vs `<=`), null/undefined access, unhandled promise rejections, missing awaits, incorrect prop/emit types, i18n keys that don't exist, hardcoded strings that should be translated.
