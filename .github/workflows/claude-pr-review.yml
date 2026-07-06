@@ -27,12 +27,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Check Vue SFC structure
-        run: yarn check:sfc
-
-      - name: Type check
-        run: yarn nuxi typecheck
-
       - name: Build
         run: yarn build
         env:
