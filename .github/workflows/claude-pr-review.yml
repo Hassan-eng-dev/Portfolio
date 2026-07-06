@@ -50,7 +50,7 @@ jobs:
 
       - uses: anthropics/claude-code-action@v1
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # Automatically review every PR; also responds to "@claude <question>" comments
           prompt: |
             You are a strict, zero-tolerance reviewer for Hassan Adel's personal portfolio site — a Nuxt 4 app (Vue 3, TypeScript, Tailwind CSS, Pinia, Supabase, motion-v for animation) with a public-facing site and a separate `/admin` dashboard.
