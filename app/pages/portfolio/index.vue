@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion, stagger } from 'motion-v'
 import { PROJECT_CATEGORIES } from '~~/shared/types/database.types'
 
 const client = useSupabaseClient()
@@ -21,6 +22,15 @@ const { data: projects, status, error, refresh } = await useAsyncData(
   { watch: [activeCategory] },
 )
 
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { delayChildren: stagger(0.06) } },
+}
+const staggerItem = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+}
+
 useSeoMeta({
   title: 'Portfolio',
   description: 'Browse Hassan Adel\'s full collection of published design projects.',
@@ -33,14 +43,19 @@ useSeoMeta({
       <div class="aurora-field opacity-50">
         <div class="aurora-blob right-[-10%] top-[-20%] h-[22rem] w-[22rem] animate-aurora bg-brand-300" />
       </div>
-      <div class="relative mx-auto max-w-content px-6 pb-12 pt-16 sm:px-10 sm:pb-16 sm:pt-24">
-        <p v-reveal class="text-sm font-medium uppercase tracking-widest text-brand-600">Portfolio</p>
-        <h1 v-reveal="80" class="mt-3 font-display text-4xl text-ink-900 sm:text-5xl">Selected work</h1>
-        <p v-reveal="140" class="mt-3 max-w-xl text-lg text-ink-600">
+      <motion.div
+        class="relative mx-auto max-w-content px-6 pb-12 pt-16 sm:px-10 sm:pb-16 sm:pt-24"
+        :initial="{ opacity: 0, y: 24 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
+      >
+        <p class="text-sm font-medium uppercase tracking-widest text-brand-600">Portfolio</p>
+        <h1 class="mt-3 font-display text-4xl text-ink-900 sm:text-5xl">Selected work</h1>
+        <p class="mt-3 max-w-xl text-lg text-ink-600">
           Every published project, filterable by category — branding, illustration, print,
           digital and packaging.
         </p>
-      </div>
+      </motion.div>
     </section>
 
     <div class="mx-auto max-w-content px-6 py-10 sm:px-10">
@@ -64,14 +79,18 @@ useSeoMeta({
           No projects found{{ activeCategory ? ` in "${activeCategory}"` : '' }}.
         </p>
 
-        <div v-else class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <ProjectCard
-            v-for="(project, index) in projects"
-            :key="project.id"
-            v-reveal="(index % 3) * 80"
-            :project="project"
-          />
-        </div>
+        <motion.div
+          v-else
+          :key="activeCategory ?? 'all'"
+          class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          :variants="staggerContainer"
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div v-for="project in projects" :key="project.id" :variants="staggerItem">
+            <ProjectCard :project="project" />
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   </div>

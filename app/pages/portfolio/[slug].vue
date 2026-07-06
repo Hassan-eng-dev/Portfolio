@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { motion } from 'motion-v'
+
 const route = useRoute()
 const client = useSupabaseClient()
 const slug = route.params.slug as string
@@ -34,7 +36,12 @@ useSeoMeta({
           <div class="aurora-blob left-1/2 top-[-25%] h-[22rem] w-[22rem] -translate-x-1/2 animate-aurora bg-brand-300" />
         </div>
 
-        <div class="relative mx-auto max-w-content px-6 pb-14 pt-16 sm:px-10 sm:pb-20 sm:pt-24">
+        <motion.div
+          class="relative mx-auto max-w-content px-6 pb-14 pt-16 sm:px-10 sm:pb-20 sm:pt-24"
+          :initial="{ opacity: 0, y: 24 }"
+          :animate="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
+        >
           <NuxtLink to="/portfolio" class="inline-flex items-center gap-1 text-sm font-medium text-ink-500 transition-colors hover:text-brand-700">
             <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
               <path d="M11 18l-6-6 6-6M5 12h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
@@ -58,38 +65,55 @@ useSeoMeta({
               </li>
             </ul>
           </header>
-        </div>
+        </motion.div>
       </section>
 
       <div class="mx-auto max-w-content px-6 py-12 sm:px-10 sm:py-16">
-        <div v-reveal class="overflow-hidden rounded-3xl shadow-glow-lg">
+        <motion.div
+          class="overflow-hidden rounded-3xl shadow-glow-lg"
+          :initial="{ opacity: 0, scale: 0.97 }"
+          :animate="{ opacity: 1, scale: 1 }"
+          :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
+        >
           <img
             v-if="project.cover_image_url"
             :src="project.cover_image_url"
             :alt="project.title"
             class="w-full object-cover"
           >
-        </div>
+        </motion.div>
 
         <div v-if="project.project_images?.length" class="mt-10">
           <ProjectGallery :images="project.project_images" />
         </div>
 
-        <div v-reveal class="mt-16 flex flex-col items-center gap-4 rounded-3xl border border-ink-100 bg-surface-muted p-10 text-center sm:flex-row sm:justify-between sm:text-left">
+        <motion.div
+          class="mt-16 flex flex-col items-center gap-4 rounded-3xl border border-ink-100 bg-surface-muted p-10 text-center sm:flex-row sm:justify-between sm:text-left"
+          :initial="{ opacity: 0, y: 24 }"
+          :whileInView="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-80px' }"
+          :transition="{ duration: 0.5 }"
+        >
           <div>
             <p class="text-sm font-medium uppercase tracking-widest text-brand-600">Like what you see?</p>
             <h2 class="mt-2 font-display text-2xl text-ink-900">Let's create your next project.</h2>
           </div>
-          <NuxtLink
-            to="/contact"
-            class="magnetic inline-flex shrink-0 items-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white shadow-glow transition-colors hover:bg-brand-700"
-          >
-            Start a project
-            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+          <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+            <motion.a
+              :href="href"
+              class="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white shadow-glow"
+              :whileHover="{ scale: 1.05, y: -2 }"
+              :whilePress="{ scale: 0.96 }"
+              :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
+              @click="navigate"
+            >
+              Start a project
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </motion.a>
           </NuxtLink>
-        </div>
+        </motion.div>
       </div>
     </template>
   </div>

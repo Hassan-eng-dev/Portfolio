@@ -26,7 +26,6 @@
   --brand-600: #2563eb;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 150ms;
   --duration-base: 250ms;
   --duration-slow: 400ms;
@@ -75,9 +74,8 @@ body {
   color: var(--color-ink);
 }
 
-// Shared page-transition + reveal-on-scroll utilities used across
-// public pages. Kept in SCSS (rather than Tailwind) since they define
-// keyframes/behaviour, not one-off utility values.
+// Shared page-transition utility. Kept in SCSS (rather than Tailwind)
+// since it defines behaviour, not one-off utility values.
 .page-enter-active,
 .page-leave-active {
   transition: opacity var(--duration-base) var(--ease-out);
@@ -86,19 +84,6 @@ body {
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity var(--duration-slow) var(--ease-out),
-    transform var(--duration-slow) var(--ease-out);
-
-  &.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 // Custom, minimal scrollbar for the admin dashboard shell.
@@ -118,8 +103,8 @@ body {
 
 // ---------------------------------------------------------------------
 // Public-site creative system: fluid hero type, aurora backdrop, grain
-// texture, marquee ticker and magnetic buttons. Scoped to plain classes
-// so they can be reused across the home/about/contact/portfolio pages.
+// texture and marquee ticker. Interactive/entrance motion is handled by
+// motion-v (see components/pages); these are presentational only.
 // ---------------------------------------------------------------------
 
 .text-hero {
@@ -206,16 +191,5 @@ body {
   }
   to {
     transform: translateX(-50%);
-  }
-}
-
-// Buttons that nudge toward the cursor (see useMagnetic composable).
-.magnetic {
-  transition: transform 0.35s var(--ease-spring);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .magnetic {
-    transition: none;
   }
 }

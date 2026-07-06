@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { motion } from 'motion-v'
+
 const isMenuOpen = ref(false)
 const route = useRoute()
 
@@ -46,20 +48,27 @@ watch(
           class="relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200"
           :class="route.path.startsWith(link.to) ? 'text-white' : 'text-ink-700 hover:text-ink-900'"
         >
-          <span
+          <motion.div
             v-if="route.path.startsWith(link.to)"
+            layoutId="nav-pill"
             class="absolute inset-0 -z-10 rounded-full bg-brand-600 shadow-glow"
-            aria-hidden="true"
+            :transition="{ type: 'spring', stiffness: 380, damping: 30 }"
           />
           {{ link.label }}
         </NuxtLink>
       </nav>
 
-      <NuxtLink
-        to="/contact"
-        class="magnetic hidden items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-brand-700 sm:inline-flex"
-      >
-        Start a project
+      <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+        <motion.a
+          :href="href"
+          class="hidden items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-white sm:inline-flex"
+          :whileHover="{ scale: 1.05, backgroundColor: '#1d4ed8' }"
+          :whilePress="{ scale: 0.96 }"
+          :transition="{ type: 'spring', stiffness: 400, damping: 25 }"
+          @click="navigate"
+        >
+          Start a project
+        </motion.a>
       </NuxtLink>
 
       <button
@@ -89,14 +98,19 @@ watch(
       </button>
     </div>
 
-    <Transition name="fade-slide">
-      <nav
+    <AnimatePresence>
+      <motion.nav
         v-if="isMenuOpen"
+        key="mobile-nav"
         id="mobile-nav"
         aria-label="Primary mobile"
-        class="border-t border-ink-100 bg-surface px-6 py-4 sm:hidden"
+        class="overflow-hidden border-t border-ink-100 bg-surface px-6 sm:hidden"
+        :initial="{ opacity: 0, height: 0 }"
+        :animate="{ opacity: 1, height: 'auto' }"
+        :exit="{ opacity: 0, height: 0 }"
+        :transition="{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }"
       >
-        <ul class="flex flex-col gap-1">
+        <ul class="flex flex-col gap-1 py-4">
           <li v-for="link in links" :key="link.to">
             <NuxtLink
               :to="link.to"
@@ -115,22 +129,7 @@ watch(
             </NuxtLink>
           </li>
         </ul>
-      </nav>
-    </Transition>
+      </motion.nav>
+    </AnimatePresence>
   </header>
 </template>
-
-<style scoped lang="scss">
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition:
-    opacity var(--duration-base) var(--ease-out),
-    transform var(--duration-base) var(--ease-out);
-}
-
-.fade-slide-enter-from,
-.fade-slide-leave-to {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-</style>

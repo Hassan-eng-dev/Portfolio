@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion } from 'motion-v'
 import type { Project } from '~~/shared/types/database.types'
 
 withDefaults(
@@ -12,13 +13,18 @@ withDefaults(
 </script>
 
 <template>
-  <NuxtLink
-    :to="`/portfolio/${project.slug}`"
+  <NuxtLink v-slot="{ navigate, href }" :to="`/portfolio/${project.slug}`" custom>
+  <motion.a
+    :href="href"
     class="group flex h-full flex-col"
     :aria-label="`View project: ${project.title}`"
+    :whileHover="{ y: -6 }"
+    :whilePress="{ scale: 0.98 }"
+    :transition="{ type: 'spring', stiffness: 300, damping: 22 }"
+    @click="navigate"
   >
     <div
-      class="relative min-h-0 overflow-hidden rounded-2xl bg-ink-50 shadow-card ring-1 ring-inset ring-ink-900/5 transition-all duration-500 ease-out group-hover:shadow-glow-lg"
+      class="relative min-h-0 overflow-hidden rounded-2xl bg-ink-50 shadow-card ring-1 ring-inset ring-ink-900/5 transition-shadow duration-500 ease-out group-hover:shadow-glow-lg"
       :class="aspectClass"
     >
       <img
@@ -70,5 +76,6 @@ withDefaults(
         aria-hidden="true"
       />
     </div>
+  </motion.a>
   </NuxtLink>
 </template>

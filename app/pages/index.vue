@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion, stagger } from 'motion-v'
 import { PROJECT_CATEGORIES } from '~~/shared/types/database.types'
 
 const client = useSupabaseClient()
@@ -32,6 +33,24 @@ const process = [
 const bentoAspect = (index: number) => (index === 0 ? 'flex-1' : 'aspect-[4/5]')
 const bentoSpan = (index: number) => (index === 0 ? 'sm:col-span-2 sm:row-span-2' : '')
 
+const heroContainer = {
+  hidden: {},
+  show: { transition: { delayChildren: stagger(0.12) } },
+}
+const heroItem = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+}
+
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { delayChildren: stagger(0.08) } },
+}
+const staggerItem = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+}
+
 useSeoMeta({
   title: 'Home',
   description: 'Hassan Adel — graphic designer crafting bold visual identities, illustration, print, digital and packaging work.',
@@ -51,41 +70,61 @@ useSeoMeta({
       </div>
       <div class="grain-overlay" />
 
-      <div class="relative mx-auto max-w-content px-6 pb-20 pt-24 sm:px-10 sm:pb-28 sm:pt-32">
-        <p v-reveal class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
+      <motion.div
+        class="relative mx-auto max-w-content px-6 pb-20 pt-24 sm:px-10 sm:pb-28 sm:pt-32"
+        :variants="heroContainer"
+        initial="hidden"
+        animate="show"
+      >
+        <motion.p
+          :variants="heroItem"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700"
+        >
           <span class="h-1.5 w-1.5 rounded-full bg-brand-600" />
           Available for new projects
-        </p>
+        </motion.p>
 
-        <h1 v-reveal="80" class="text-hero mt-6 max-w-4xl font-display text-ink-900">
+        <motion.h1 :variants="heroItem" class="text-hero mt-6 max-w-4xl font-display text-ink-900">
           I'm Hassan Adel — I design
           <span class="text-gradient">visual identities</span>
           that make ideas unforgettable.
-        </h1>
+        </motion.h1>
 
-        <p v-reveal="160" class="mt-6 max-w-xl text-lg text-ink-600">
+        <motion.p :variants="heroItem" class="mt-6 max-w-xl text-lg text-ink-600">
           A graphic designer crafting branding, illustration, print, digital and packaging
           work with a sharp eye for detail and a love for bold blue.
-        </p>
+        </motion.p>
 
-        <div v-reveal="240" class="mt-10 flex flex-wrap items-center gap-4">
-          <NuxtLink
-            to="/portfolio"
-            class="magnetic inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white shadow-glow-lg transition-colors hover:bg-brand-700"
-          >
-            View my work
-            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+        <motion.div :variants="heroItem" class="mt-10 flex flex-wrap items-center gap-4">
+          <NuxtLink v-slot="{ navigate, href }" to="/portfolio" custom>
+            <motion.a
+              :href="href"
+              class="inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white shadow-glow-lg"
+              :whileHover="{ scale: 1.05, y: -2 }"
+              :whilePress="{ scale: 0.96 }"
+              :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
+              @click="navigate"
+            >
+              View my work
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </motion.a>
           </NuxtLink>
-          <NuxtLink
-            to="/contact"
-            class="magnetic inline-flex items-center gap-2 rounded-full border border-ink-200 px-6 py-3.5 text-sm font-medium text-ink-800 transition-colors hover:border-brand-300 hover:text-brand-700"
-          >
-            Let's talk
+          <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+            <motion.a
+              :href="href"
+              class="inline-flex items-center gap-2 rounded-full border border-ink-200 px-6 py-3.5 text-sm font-medium text-ink-800"
+              :whileHover="{ scale: 1.05, y: -2, borderColor: '#93c5fd' }"
+              :whilePress="{ scale: 0.96 }"
+              :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
+              @click="navigate"
+            >
+              Let's talk
+            </motion.a>
           </NuxtLink>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
 
     <!-- Marquee -->
@@ -94,23 +133,35 @@ useSeoMeta({
     </section>
 
     <!-- Stats -->
-    <section class="mx-auto max-w-content px-6 py-16 sm:px-10 sm:py-20">
+    <motion.section
+      class="mx-auto max-w-content px-6 py-16 sm:px-10 sm:py-20"
+      :variants="staggerContainer"
+      initial="hidden"
+      :whileInView="'show'"
+      :viewport="{ once: true, margin: '-80px' }"
+    >
       <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
-        <div
-          v-for="(stat, index) in stats"
+        <motion.div
+          v-for="stat in stats"
           :key="stat.label"
-          v-reveal="index * 80"
+          :variants="staggerItem"
           class="rounded-2xl border border-ink-100 bg-surface-muted p-6 text-center transition-colors hover:border-brand-200"
         >
           <p class="font-display text-3xl text-brand-600 sm:text-4xl">{{ stat.value }}</p>
           <p class="mt-1 text-sm text-ink-500">{{ stat.label }}</p>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
 
     <!-- Featured work -->
     <section class="mx-auto max-w-content px-6 pb-24 sm:px-10">
-      <div v-reveal class="mb-10 flex items-baseline justify-between">
+      <motion.div
+        class="mb-10 flex items-baseline justify-between"
+        :initial="{ opacity: 0, y: 16 }"
+        :whileInView="{ opacity: 1, y: 0 }"
+        :viewport="{ once: true, margin: '-80px' }"
+        :transition="{ duration: 0.5 }"
+      >
         <div>
           <p class="text-sm font-medium uppercase tracking-widest text-brand-600">Portfolio</p>
           <h2 class="mt-2 font-display text-3xl text-ink-900 sm:text-4xl">Selected work</h2>
@@ -121,7 +172,7 @@ useSeoMeta({
             <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </NuxtLink>
-      </div>
+      </motion.div>
 
       <div v-if="status === 'pending'" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div v-for="n in 6" :key="n" class="animate-pulse">
@@ -139,38 +190,70 @@ useSeoMeta({
         No published work yet — check back soon.
       </p>
 
-      <div v-else class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:auto-rows-[16rem] lg:grid-cols-3">
-        <ProjectCard
+      <motion.div
+        v-else
+        class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:auto-rows-[16rem] lg:grid-cols-3"
+        :variants="staggerContainer"
+        initial="hidden"
+        :whileInView="'show'"
+        :viewport="{ once: true, margin: '-80px' }"
+      >
+        <motion.div
           v-for="(project, index) in projects"
           :key="project.id"
-          :project="project"
-          :priority="index < 3"
-          :aspect-class="bentoAspect(index)"
+          :variants="staggerItem"
           :class="bentoSpan(index)"
-        />
-      </div>
+        >
+          <ProjectCard
+            :project="project"
+            :priority="index < 3"
+            :aspect-class="bentoAspect(index)"
+          />
+        </motion.div>
+      </motion.div>
     </section>
 
     <!-- Process -->
     <section class="border-t border-ink-100 bg-surface-muted">
       <div class="mx-auto max-w-content px-6 py-20 sm:px-10 sm:py-28">
-        <p v-reveal class="text-sm font-medium uppercase tracking-widest text-brand-600">How I work</p>
-        <h2 v-reveal="60" class="mt-2 max-w-lg font-display text-3xl text-ink-900 sm:text-4xl">
+        <motion.p
+          class="text-sm font-medium uppercase tracking-widest text-brand-600"
+          :initial="{ opacity: 0, y: 16 }"
+          :whileInView="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-80px' }"
+        >
+          How I work
+        </motion.p>
+        <motion.h2
+          class="mt-2 max-w-lg font-display text-3xl text-ink-900 sm:text-4xl"
+          :initial="{ opacity: 0, y: 16 }"
+          :whileInView="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-80px' }"
+          :transition="{ delay: 0.1 }"
+        >
           A simple process built for great outcomes.
-        </h2>
+        </motion.h2>
 
-        <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          <div
+        <motion.div
+          class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3"
+          :variants="staggerContainer"
+          initial="hidden"
+          :whileInView="'show'"
+          :viewport="{ once: true, margin: '-80px' }"
+        >
+          <motion.div
             v-for="(step, index) in process"
             :key="step.title"
-            v-reveal="index * 100"
-            class="relative rounded-2xl border border-ink-100 bg-surface p-8 transition-all hover:-translate-y-1 hover:shadow-glow"
+            :variants="staggerItem"
+            class="relative rounded-2xl border border-ink-100 bg-surface p-8"
+            :whileHover="{ y: -6, boxShadow: '0 0 0 1px rgba(37,99,235,0.35), 0 24px 48px -16px rgba(37,99,235,0.45)' }"
+            :transition="{ type: 'spring', stiffness: 300, damping: 22 }"
           >
             <span class="font-display text-4xl text-brand-200">0{{ index + 1 }}</span>
             <h3 class="mt-4 font-display text-xl text-ink-900">{{ step.title }}</h3>
             <p class="mt-2 text-ink-600">{{ step.body }}</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   </div>

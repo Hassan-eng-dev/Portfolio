@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { motion, stagger } from 'motion-v'
+
 const skills = [
   'Brand Identity',
   'Illustration',
@@ -14,6 +16,15 @@ const timeline = [
   { year: '2019 — 2022', title: 'Graphic Designer', body: 'Built a foundation across print, digital and illustration work.' },
 ]
 
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { delayChildren: stagger(0.08) } },
+}
+const staggerItem = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+}
+
 useSeoMeta({
   title: 'About',
   description: 'Hassan Adel — graphic designer. Background, process and the kind of work I take on.',
@@ -28,7 +39,11 @@ useSeoMeta({
       </div>
 
       <div class="relative mx-auto grid max-w-content gap-12 px-6 py-20 sm:px-10 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div v-reveal>
+        <motion.div
+          :initial="{ opacity: 0, y: 24 }"
+          :animate="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
+        >
           <p class="text-sm font-medium uppercase tracking-widest text-brand-600">About</p>
           <h1 class="mt-3 font-display text-4xl leading-tight text-ink-900 sm:text-5xl">
             Hi, I'm Hassan Adel — a designer obsessed with clarity.
@@ -43,49 +58,92 @@ useSeoMeta({
             wanted work that felt considered, distinctive and built to last.
           </p>
 
-          <NuxtLink
-            to="/contact"
-            class="magnetic mt-8 inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-700"
-          >
-            Get in touch
+          <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+            <motion.a
+              :href="href"
+              class="mt-8 inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white"
+              :whileHover="{ scale: 1.05, y: -2 }"
+              :whilePress="{ scale: 0.96 }"
+              :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
+              @click="navigate"
+            >
+              Get in touch
+            </motion.a>
           </NuxtLink>
-        </div>
+        </motion.div>
 
-        <div v-reveal="120" class="relative mx-auto aspect-square w-full max-w-sm">
+        <motion.div
+          class="relative mx-auto aspect-square w-full max-w-sm"
+          :initial="{ opacity: 0, scale: 0.9 }"
+          :animate="{ opacity: 1, scale: 1 }"
+          :transition="{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }"
+        >
           <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-brand-500 to-brand-800 shadow-glow-lg" />
           <div class="absolute inset-3 flex items-center justify-center rounded-[1.5rem] bg-surface">
             <span class="font-display text-6xl text-brand-600">HA</span>
           </div>
-          <div class="absolute -bottom-4 -right-4 flex h-20 w-20 animate-float items-center justify-center rounded-2xl bg-surface shadow-card ring-1 ring-ink-100">
+          <motion.div
+            class="absolute -bottom-4 -right-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-surface shadow-card ring-1 ring-ink-100"
+            :animate="{ y: [0, -10, 0] }"
+            :transition="{ duration: 4, repeat: Infinity, ease: 'easeInOut' }"
+          >
             <span class="font-display text-lg text-ink-900">6+ yrs</span>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
 
     <section class="mx-auto max-w-content px-6 py-20 sm:px-10">
-      <h2 v-reveal class="font-display text-2xl text-ink-900 sm:text-3xl">What I do</h2>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <span
-          v-for="(skill, index) in skills"
+      <motion.h2
+        class="font-display text-2xl text-ink-900 sm:text-3xl"
+        :initial="{ opacity: 0, y: 16 }"
+        :whileInView="{ opacity: 1, y: 0 }"
+        :viewport="{ once: true, margin: '-80px' }"
+      >
+        What I do
+      </motion.h2>
+      <motion.div
+        class="mt-8 flex flex-wrap gap-3"
+        :variants="staggerContainer"
+        initial="hidden"
+        :whileInView="'show'"
+        :viewport="{ once: true, margin: '-80px' }"
+      >
+        <motion.span
+          v-for="skill in skills"
           :key="skill"
-          v-reveal="index * 60"
-          class="rounded-full border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
+          :variants="staggerItem"
+          class="rounded-full border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700"
+          :whileHover="{ scale: 1.05, backgroundColor: '#eff6ff', borderColor: '#93c5fd', color: '#1d4ed8' }"
+          :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
         >
           {{ skill }}
-        </span>
-      </div>
+        </motion.span>
+      </motion.div>
     </section>
 
     <section class="border-t border-ink-100 bg-surface-muted">
       <div class="mx-auto max-w-content px-6 py-20 sm:px-10">
-        <h2 v-reveal class="font-display text-2xl text-ink-900 sm:text-3xl">Experience</h2>
+        <motion.h2
+          class="font-display text-2xl text-ink-900 sm:text-3xl"
+          :initial="{ opacity: 0, y: 16 }"
+          :whileInView="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-80px' }"
+        >
+          Experience
+        </motion.h2>
 
-        <div class="mt-10 space-y-8">
-          <div
-            v-for="(item, index) in timeline"
+        <motion.div
+          class="mt-10 space-y-8"
+          :variants="staggerContainer"
+          initial="hidden"
+          :whileInView="'show'"
+          :viewport="{ once: true, margin: '-80px' }"
+        >
+          <motion.div
+            v-for="item in timeline"
             :key="item.title"
-            v-reveal="index * 100"
+            :variants="staggerItem"
             class="grid gap-2 border-l-2 border-brand-200 pl-6 sm:grid-cols-[10rem_1fr] sm:gap-8"
           >
             <p class="text-sm font-medium text-brand-600">{{ item.year }}</p>
@@ -93,8 +151,8 @@ useSeoMeta({
               <h3 class="font-display text-lg text-ink-900">{{ item.title }}</h3>
               <p class="mt-1 text-ink-600">{{ item.body }}</p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   </div>

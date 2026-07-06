@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@pinia/nuxt',
     '@vueuse/nuxt',
+    'motion-v/nuxt',
   ],
 
   css: ['~/assets/scss/main.scss'],
