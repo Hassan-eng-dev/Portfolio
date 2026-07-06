@@ -4,6 +4,19 @@ import { PROJECT_CATEGORIES } from '~~/shared/types/database.types'
 
 const client = useSupabaseClient()
 
+// The WebGL scene's camera framing is tuned for wide viewports; on narrow
+// screens it collides with the text column, and it's wasted GPU/battery
+// cost on mobile anyway — so it only mounts at sm and above, and only if
+// the browser can actually create a WebGL context (disabled hardware
+// acceleration, sandboxed/VM environments, etc. fall back to the plain
+// gradient hero instead of a broken canvas).
+const isWideViewport = useMediaQuery('(min-width: 640px)')
+const webglAvailable = ref(false)
+onMounted(() => {
+  webglAvailable.value = isWebglAvailable()
+})
+const showHeroScene = computed(() => isWideViewport.value && webglAvailable.value)
+
 const { data: projects, status, error } = await useAsyncData('featured-projects', () =>
   fetchFeaturedProjects(client, 6),
 )
@@ -60,14 +73,11 @@ useSeoMeta({
 <template>
   <div>
     <!-- Hero -->
-    <section class="relative overflow-hidden">
-      <div class="aurora-field">
-        <div class="aurora-blob left-[-8%] top-[-15%] h-[28rem] w-[28rem] animate-aurora bg-brand-500" />
-        <div
-          class="aurora-blob right-[-10%] top-[10%] h-[24rem] w-[24rem] animate-aurora bg-brand-300"
-          style="animation-delay: -8s"
-        />
-      </div>
+    <section class="relative min-h-[38rem] overflow-hidden">
+      <ClientOnly>
+        <HeroScene v-if="showHeroScene" class="z-0" />
+      </ClientOnly>
+      <div class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-surface via-surface/55 to-transparent" />
       <div class="grain-overlay" />
 
       <motion.div

@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
     'motion-v/nuxt',
+    '@tresjs/nuxt',
   ],
 
   css: ['~/assets/scss/main.scss'],
@@ -16,6 +17,12 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
     typeCheck: false,
+  },
+
+  vite: {
+    optimizeDeps: {
+      include: ['@tresjs/core', 'three', '@vue/devtools-core', '@vue/devtools-kit'],
+    },
   },
 
   supabase: {
