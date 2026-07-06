@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion } from 'motion-v'
 import type { ProjectImage } from '~~/shared/types/database.types'
 
 const props = defineProps<{
@@ -54,12 +55,15 @@ const activeImage = computed(() =>
 <template>
   <div>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <button
+      <motion.button
         v-for="(image, index) in images"
         :key="image.id"
         type="button"
-        class="group relative overflow-hidden rounded-lg bg-ink-50"
+        class="group relative overflow-hidden rounded-2xl bg-ink-50"
         :aria-label="`Open image ${index + 1} of ${images.length}`"
+        :whileHover="{ scale: 1.02 }"
+        :whilePress="{ scale: 0.98 }"
+        :transition="{ type: 'spring', stiffness: 300, damping: 22 }"
         @click="open(index)"
       >
         <img
@@ -68,17 +72,22 @@ const activeImage = computed(() =>
           loading="lazy"
           class="w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         >
-      </button>
+      </motion.button>
     </div>
 
     <Teleport to="body">
-      <Transition name="fade">
-        <div
+      <AnimatePresence>
+        <motion.div
           v-if="isOpen && activeImage"
-          class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 sm:p-8"
+          key="lightbox"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-8"
           role="dialog"
           aria-modal="true"
           aria-label="Image viewer"
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :exit="{ opacity: 0 }"
+          :transition="{ duration: 0.25 }"
           @click.self="close"
         >
           <button
@@ -104,11 +113,18 @@ const activeImage = computed(() =>
             </svg>
           </button>
 
-          <img
-            :src="activeImage.image_url"
-            :alt="activeImage.alt_text ?? ''"
-            class="max-h-full max-w-full rounded-lg object-contain"
-          >
+          <AnimatePresence mode="wait">
+            <motion.img
+              :key="activeIndex"
+              :src="activeImage.image_url"
+              :alt="activeImage.alt_text ?? ''"
+              class="max-h-full max-w-full rounded-lg object-contain"
+              :initial="{ opacity: 0, scale: 0.96 }"
+              :animate="{ opacity: 1, scale: 1 }"
+              :exit="{ opacity: 0, scale: 0.96 }"
+              :transition="{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }"
+            />
+          </AnimatePresence>
 
           <button
             v-if="images.length > 1"
@@ -121,20 +137,8 @@ const activeImage = computed(() =>
               <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
-        </div>
-      </Transition>
+        </motion.div>
+      </AnimatePresence>
     </Teleport>
   </div>
 </template>
-
-<style scoped lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

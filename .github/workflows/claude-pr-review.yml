@@ -1,0 +1,69 @@
+name: Claude PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  ci:
+    name: Build & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+        env:
+          # Supabase env vars are needed for build — add these as GitHub secrets
+          SUPABASE_URL: https://telxzzwcaqxhvcvhefau.supabase.co
+          SUPABASE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlbHh6endjYXF4aHZjdmhlZmF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0Mzk2ODUsImV4cCI6MjA5NzAxNTY4NX0.EX9GTR6_HbYt2ImpHEDPfWo5G4jEg3ZDdLa6wahfz0c
+
+  claude-review:
+    name: Claude Code Review
+    runs-on: ubuntu-latest
+    # Run on PRs or when someone comments "@claude" on a PR
+    if: >
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       contains(github.event.comment.body, '@claude'))
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Automatically review every PR; also responds to "@claude <question>" comments
+          direct_prompt: |
+            You are a strict, zero-tolerance reviewer for a Nuxt 3 gym management app (Vue 3, TypeScript, Tailwind CSS, Pinia, Supabase).
+            Go through every changed file line by line. Do not skim, do not summarize away small issues, do not give the benefit of the doubt.
+            Flag EVERY bug you find, no matter how trivial it looks — typos, off-by-one errors, unused/duplicate variables, dead code, leftover debug statements (`console.log`, `debugger`), wrong operators (`=` vs `==`, `<` vs `<=`), null/undefined access, unhandled promise rejections, missing awaits, incorrect prop/emit types, i18n keys that don't exist, hardcoded strings that should be translated.
+            Check for:
+            - Correctness bugs and logic errors, including ones that look "too simple to matter"
+            - TypeScript type safety issues (implicit any, unsafe casts, missing null checks)
+            - Vue 3 / Nuxt 3 best practices and reactivity pitfalls (missing `.value`, losing reactivity via destructuring, wrong lifecycle hook usage)
+            - Structural errors in .vue Single File Components: any script code (e.g. `const x = useSomething()`) placed outside the `<script>`/`<script setup>` block, code appearing before the block opens or after it closes, duplicate variable declarations, or stray debug statements
+            - Accessibility and responsiveness concerns in components
+            - Security issues (especially around Supabase queries, RLS assumptions, and auth)
+            - Performance issues (unnecessary re-renders, N+1 queries, missing memoization)
+            - Localization: every `t('...')` key used in changed files must exist in ALL locale files under `locales/` (ar, de, en, es, fr, ru, tr) — flag missing keys per locale, not just en; flag hardcoded user-facing strings that bypass `t()`; flag keys added to one locale but not mirrored in the others; flag RTL/`dir` handling issues for `ar`
+            If a file has zero issues, say so explicitly rather than omitting it. Do not soften findings or round up to "looks good" when issues exist.
+            Post a review comment with every finding listed individually, grouped by severity (Critical / Major / Minor / Nit), each with file, line, and a one-line fix suggestion.

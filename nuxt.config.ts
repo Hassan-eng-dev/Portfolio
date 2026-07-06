@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@pinia/nuxt',
     '@vueuse/nuxt',
+    'motion-v/nuxt',
   ],
 
   css: ['~/assets/scss/main.scss'],
@@ -31,7 +32,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      titleTemplate: '%s · Studio Portfolio',
+      titleTemplate: '%s · Hassan Adel',
       htmlAttrs: { lang: 'en' },
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
       link: [
