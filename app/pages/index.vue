@@ -12,7 +12,7 @@ const {
   fetchFeaturedProjects(client, 6),
 );
 
-const stats = [
+const statsasdasdas = [
   { value: "40+", label: "Projects delivered" },
   { value: "6", label: "Years of craft" },
   { value: "5", label: "Disciplines covered" },
