@@ -3,11 +3,19 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    // Server-only — set RESEND_API_KEY / CONTACT_TO_EMAIL in .env, never committed.
+    resendApiKey: '',
+    contactToEmail: '',
+  },
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/supabase',
     '@pinia/nuxt',
     '@vueuse/nuxt',
+    'motion-v/nuxt',
+    '@tresjs/nuxt',
   ],
 
   css: ['~/assets/scss/main.scss'],
@@ -15,6 +23,12 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
     typeCheck: false,
+  },
+
+  vite: {
+    optimizeDeps: {
+      include: ['@tresjs/core', 'three', '@vue/devtools-core', '@vue/devtools-kit'],
+    },
   },
 
   supabase: {
@@ -31,7 +45,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      titleTemplate: '%s · Studio Portfolio',
+      titleTemplate: '%s · Hassan Adel',
       htmlAttrs: { lang: 'en' },
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
       link: [

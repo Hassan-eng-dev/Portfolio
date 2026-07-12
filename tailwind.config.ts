@@ -12,6 +12,8 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
+        // Original studio palette — kept as-is so the untouched admin
+        // dashboard renders identically to before this redesign.
         primary: {
           DEFAULT: '#6d9fd5',
           50: '#f0f7ff',
@@ -38,6 +40,22 @@ export default <Partial<Config>>{
           700: '#3a3e48',
           800: '#26282f',
           900: '#16181d',
+          950: '#0b0d12',
+        },
+        // Vivid blue system for the public-site creative redesign only.
+        brand: {
+          DEFAULT: '#2563eb',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+          950: '#172554',
         },
       },
       fontFamily: {
@@ -55,6 +73,7 @@ export default <Partial<Config>>{
         '4xl': ['2.5rem', { lineHeight: '1.2' }],
         '5xl': ['3.5rem', { lineHeight: '1.1' }],
         '6xl': ['4.5rem', { lineHeight: '1.05' }],
+        '7xl': ['5.5rem', { lineHeight: '1.02' }],
       },
       spacing: {
         18: '4.5rem',
@@ -66,9 +85,17 @@ export default <Partial<Config>>{
       transitionDuration: {
         DEFAULT: '200ms',
       },
+      boxShadow: {
+        glow: '0 0 0 1px rgba(37,99,235,0.35), 0 24px 48px -16px rgba(37,99,235,0.45)',
+        'glow-lg': '0 0 0 1px rgba(37,99,235,0.3), 0 40px 80px -24px rgba(37,99,235,0.5)',
+        card: '0 1px 2px rgba(11,13,18,0.04), 0 16px 32px -20px rgba(11,13,18,0.18)',
+      },
       animation: {
         'fade-in': 'fade-in 400ms ease-out both',
         'fade-in-up': 'fade-in-up 500ms ease-out both',
+        marquee: 'marquee 26s linear infinite',
+        aurora: 'aurora 18s ease-in-out infinite alternate',
+        float: 'float 6s ease-in-out infinite',
       },
       keyframes: {
         'fade-in': {
@@ -78,6 +105,19 @@ export default <Partial<Config>>{
         'fade-in-up': {
           from: { opacity: '0', transform: 'translateY(12px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
+        },
+        aurora: {
+          '0%': { transform: 'translate(-5%, -5%) scale(1)' },
+          '50%': { transform: 'translate(5%, 8%) scale(1.15)' },
+          '100%': { transform: 'translate(-8%, 4%) scale(1.05)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
       },
     },
