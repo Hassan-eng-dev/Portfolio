@@ -40,6 +40,7 @@ export default <Partial<Config>>{
           700: '#3a3e48',
           800: '#26282f',
           900: '#16181d',
+          950: '#0b0d12',
         },
         // Vivid blue system for the public-site creative redesign only.
         brand: {
