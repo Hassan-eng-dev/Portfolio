@@ -3,6 +3,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    // Server-only — set RESEND_API_KEY / CONTACT_TO_EMAIL in .env, never committed.
+    resendApiKey: '',
+    contactToEmail: '',
+  },
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/supabase',

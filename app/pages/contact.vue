@@ -14,6 +14,7 @@ const form = reactive({
 
 const submitted = ref(false);
 const submitting = ref(false);
+const submitError = ref("");
 
 const details = [
   {
@@ -25,14 +26,21 @@ const details = [
   { label: "Availability", value: "Booking projects from next month" },
 ];
 
-function onSubmit() {
-  // Placeholder only — no backend wiring yet. Swap for a real submit
-  // handler (API route / email service) when one is available.
+async function onSubmit() {
   submitting.value = true;
-  setTimeout(() => {
-    submitting.value = false;
+  submitError.value = "";
+  try {
+    await $fetch("/api/contact", {
+      method: "POST",
+      body: { ...form },
+    });
     submitted.value = true;
-  }, 600);
+  } catch {
+    submitError.value =
+      "Couldn't send your message right now. Please try again or email me directly.";
+  } finally {
+    submitting.value = false;
+  }
 }
 </script>
 
@@ -131,8 +139,8 @@ function onSubmit() {
             </motion.span>
             <h2 class="font-display text-2xl text-ink-900">Message sent</h2>
             <p class="max-w-sm text-ink-600">
-              Thanks for reaching out — this is a placeholder confirmation;
-              message sending isn't wired up yet.
+              Thanks for reaching out — I'll get back to you within one
+              business day.
             </p>
           </motion.div>
 
@@ -190,6 +198,10 @@ function onSubmit() {
                 A few sentences about your project and timeline.
               </p>
             </div>
+
+            <p v-if="submitError" role="alert" class="text-sm text-red-600">
+              {{ submitError }}
+            </p>
 
             <motion.button
               type="submit"
