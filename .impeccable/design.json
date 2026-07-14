@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-14T00:00:00Z",
+  "title": "Design System: Hassan Adel Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "brand-signal-blue": { "role": "primary", "displayName": "Signal Blue", "canonical": "oklch(56% 0.23 260)", "tonalRamp": ["#172554", "#1e3a8a", "#1e40af", "#1d4ed8", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd", "#dbeafe", "#eff6ff"] },
+      "ink-charcoal": { "role": "neutral", "displayName": "Charcoal Ink", "canonical": "oklch(22% 0.01 260)", "tonalRamp": ["#0b0d12", "#16181d", "#26282f", "#3a3e48", "#474c58", "#5b616e", "#787e8a", "#a6aab3", "#cfd1d6", "#e8e9eb", "#f6f6f7"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only, one per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "body": { "displayName": "Body", "purpose": "Supporting paragraphs." },
+      "label": { "displayName": "Label", "purpose": "Buttons, nav, badges." }
+    },
+    "shadows": [
+      { "name": "glow", "value": "0 0 0 1px rgba(37,99,235,0.35), 0 24px 48px -16px rgba(37,99,235,0.45)", "purpose": "Primary CTA hover/press." },
+      { "name": "glow-lg", "value": "0 0 0 1px rgba(37,99,235,0.3), 0 40px 80px -24px rgba(37,99,235,0.5)", "purpose": "Hero-level media spotlight." },
+      { "name": "card", "value": "0 1px 2px rgba(11,13,18,0.04), 0 16px 32px -20px rgba(11,13,18,0.18)", "purpose": "Ink-tinted lift, never combined with a border on the same edge." }
+    ],
+    "motion": [
+      { "name": "ease-out-standard", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default entrance/hover easing across the public site." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Full-pill CTA, charcoal fill, lifts and glows on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">View my work</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #16181d; color: #fff; padding: 14px 24px; border-radius: 9999px; font-size: 14px; font-weight: 500; text-decoration: none; transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s; } .ds-btn-primary:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 0 0 1px rgba(37,99,235,0.35), 0 24px 48px -16px rgba(37,99,235,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ghost pill button, hairline border, tints blue on hover.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Let's talk</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; padding: 14px 24px; border-radius: 9999px; border: 1px solid #cfd1d6; color: #26282f; font-size: 14px; font-weight: 500; text-decoration: none; transition: transform 0.2s, border-color 0.2s; } .ds-btn-secondary:hover { transform: translateY(-2px) scale(1.05); border-color: #93c5fd; } .ds-btn-secondary:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card-project",
+      "description": "Flat, hairline-bordered card for portfolio grid items.",
+      "html": "<div class=\"ds-card-project\"><div class=\"ds-card-project-media\"></div><p class=\"ds-card-project-title\">Project title</p><p class=\"ds-card-project-meta\">Category</p></div>",
+      "css": ".ds-card-project { background: #fff; border-radius: 24px; border: 1px solid #e8e9eb; overflow: hidden; transition: border-color 0.2s; } .ds-card-project:hover { border-color: #93c5fd; } .ds-card-project-media { aspect-ratio: 4/5; background: #f6f6f7; } .ds-card-project-title { margin: 12px 16px 0; font-size: 16px; font-weight: 500; color: #16181d; } .ds-card-project-meta { margin: 4px 16px 16px; font-size: 13px; color: #5b616e; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Bold Blueprint",
+    "overview": "The public site is a structural, confident document, not a decorative one. A near-black ink (#16181d) carries almost all the type and hairline structure; one vivid signal blue (#2563eb) is the single deliberate accent. Fraunces, a warm high-contrast serif, does the emotional heavy lifting in display type; Inter carries everything functional so the pairing reads as considered contrast, not two similar sans faces competing.",
+    "keyCharacteristics": [
+      "One accent, used rarely and with intent — never sprinkled evenly.",
+      "Flat surfaces at rest; the blue glow shadow marks only the primary CTA and hero-level moments.",
+      "Serif display headlines carry personality; everything else is quiet Inter.",
+      "Motion choreographs entrances per-section rather than applying one uniform reveal everywhere."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Signal Blue appears on at most one element per viewport at a time — a badge, a CTA glow, or one gradient headline, never more.", "section": "colors" },
+      { "name": "The Serif-Only-At-Scale Rule", "body": "Fraunces never appears below headline size; body and UI text is always Inter.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat and bordered at rest. A shadow only appears as a deliberate spotlight, never as ambient card decoration layered on top of a border.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do ration Signal Blue (#2563eb) to one element per viewport — badge, CTA glow, or one gradient headline, never more.",
+      "Do keep Fraunces exclusively at display/headline sizes; Inter for everything else.",
+      "Do keep cards flat with a hairline border at rest; add the glow shadow only to hero media and primary CTAs.",
+      "Do give every section entrance its own motion shape rather than one repeated reveal.",
+      "Do cap card/container radius at 24px."
+    ],
+    "donts": [
+      "Don't use gradient text as decoration outside the one sanctioned .text-gradient headline use.",
+      "Don't stack a tiny uppercase eyebrow label above every section.",
+      "Don't use numbered 01/02/03 scaffolding purely for visual rhythm.",
+      "Don't stack a visible 1px border together with a wide soft drop-shadow on the same card.",
+      "Don't round cards or media past 24px.",
+      "Don't touch the primary/ink admin token system — it is frozen."
+    ]
+  }
+}
