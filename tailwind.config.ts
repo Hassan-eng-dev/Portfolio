@@ -93,7 +93,7 @@ export default <Partial<Config>>{
       animation: {
         'fade-in': 'fade-in 400ms ease-out both',
         'fade-in-up': 'fade-in-up 500ms ease-out both',
-        marquee: 'marquee 26s linear infinite',
+        marquee: 'marquee 32s linear infinite',
         aurora: 'aurora 18s ease-in-out infinite alternate',
         float: 'float 6s ease-in-out infinite',
       },

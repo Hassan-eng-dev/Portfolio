@@ -176,10 +176,29 @@ body {
 }
 
 // Infinite ticker track — pair with two duplicated children for a seamless loop.
+// Edge fade replaces the hard overflow clip so items dissolve rather than crop.
+.marquee-row {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 26s linear infinite;
+  will-change: transform;
+  animation: marquee 32s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
