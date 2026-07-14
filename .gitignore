@@ -26,3 +26,9 @@ logs
 # Supabase CLI local cache
 supabase/.temp
 supabase/.branches
+
+# Claude Code
+CLAUDE.md
+.claude
+.claude/
+CLAUDE.local.md
