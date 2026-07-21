@@ -162,6 +162,11 @@
     "backToHome": "Volver al inicio"
   },
   "admin": {
+    "common": {
+      "backToDashboard": "Volver al panel",
+      "genericError": "Algo salió mal.",
+      "confirmDeleteProject": "¿Eliminar \"{title}\"? Esta acción no se puede deshacer."
+    },
     "sidebar": {
       "brand": "Admin del estudio",
       "dashboard": "Panel",
@@ -186,8 +191,7 @@
       "published": "Publicado",
       "draft": "Borrador",
       "edit": "Editar",
-      "delete": "Eliminar",
-      "confirmDelete": "¿Eliminar \"{title}\"? Esta acción no se puede deshacer."
+      "delete": "Eliminar"
     },
     "login": {
       "seoTitle": "Inicio de sesión de admin",
@@ -207,22 +211,17 @@
     },
     "newProject": {
       "seoTitle": "Nuevo proyecto",
-      "backToDashboard": "Volver al panel",
       "heading": "Nuevo proyecto",
-      "submitLabel": "Crear proyecto",
-      "genericError": "Algo salió mal."
+      "submitLabel": "Crear proyecto"
     },
     "editProject": {
       "seoFallbackTitle": "Editar proyecto",
-      "backToDashboard": "Volver al panel",
       "heading": "Editar proyecto",
       "loadError": "No se pudo cargar este proyecto.",
       "submitLabel": "Guardar cambios",
-      "genericError": "Algo salió mal.",
       "deleteError": "No se pudo eliminar el proyecto.",
       "deleteProject": "Eliminar proyecto",
-      "deleting": "Eliminando…",
-      "confirmDelete": "¿Eliminar \"{title}\"? Esta acción no se puede deshacer."
+      "deleting": "Eliminando…"
     },
     "form": {
       "title": "Título",

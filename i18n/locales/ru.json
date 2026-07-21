@@ -162,6 +162,11 @@
     "backToHome": "На главную"
   },
   "admin": {
+    "common": {
+      "backToDashboard": "Назад в панель управления",
+      "genericError": "Что-то пошло не так.",
+      "confirmDeleteProject": "Удалить «{title}»? Это действие необратимо."
+    },
     "sidebar": {
       "brand": "Админ студии",
       "dashboard": "Панель управления",
@@ -186,8 +191,7 @@
       "published": "Опубликован",
       "draft": "Черновик",
       "edit": "Изменить",
-      "delete": "Удалить",
-      "confirmDelete": "Удалить «{title}»? Это действие необратимо."
+      "delete": "Удалить"
     },
     "login": {
       "seoTitle": "Вход в админку",
@@ -207,22 +211,17 @@
     },
     "newProject": {
       "seoTitle": "Новый проект",
-      "backToDashboard": "Назад в панель управления",
       "heading": "Новый проект",
-      "submitLabel": "Создать проект",
-      "genericError": "Что-то пошло не так."
+      "submitLabel": "Создать проект"
     },
     "editProject": {
       "seoFallbackTitle": "Редактирование проекта",
-      "backToDashboard": "Назад в панель управления",
       "heading": "Редактирование проекта",
       "loadError": "Не удалось загрузить этот проект.",
       "submitLabel": "Сохранить изменения",
-      "genericError": "Что-то пошло не так.",
       "deleteError": "Не удалось удалить проект.",
       "deleteProject": "Удалить проект",
-      "deleting": "Удаление…",
-      "confirmDelete": "Удалить «{title}»? Это действие необратимо."
+      "deleting": "Удаление…"
     },
     "form": {
       "title": "Заголовок",

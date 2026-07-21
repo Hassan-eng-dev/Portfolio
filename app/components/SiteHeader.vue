@@ -3,7 +3,7 @@ import { motion } from 'motion-v'
 
 const isMenuOpen = ref(false)
 const route = useRoute()
-const { t, locales } = useI18n()
+const { t, locales, defaultLocale } = useI18n()
 
 const links = computed(() => [
   { label: t('nav.work'), to: '/portfolio' },
@@ -14,13 +14,9 @@ const links = computed(() => [
 // route.path carries a locale prefix for non-default locales (e.g.
 // `/ar/portfolio`) — strip it before matching against the plain `to` paths
 // above so the active nav pill still highlights correctly.
-const unprefixedPath = computed(() => {
-  const codes = locales.value
-    .map((l) => (typeof l === 'object' ? l.code : l))
-    .filter((code) => code !== 'en')
-  const pattern = new RegExp(`^/(${codes.join('|')})(?=/|$)`)
-  return route.path.replace(pattern, '') || '/'
-})
+const unprefixedPath = computed(() =>
+  stripLocalePrefix(route.path, locales.value, defaultLocale),
+)
 
 const { y } = useWindowScroll()
 const isScrolled = computed(() => y.value > 8)

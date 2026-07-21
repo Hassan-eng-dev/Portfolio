@@ -45,7 +45,7 @@ async function onSubmit(payload: {
     await router.push(localePath("/admin"));
   } catch (err) {
     errorMessage.value =
-      err instanceof Error ? err.message : t('admin.newProject.genericError');
+      err instanceof Error ? err.message : t('admin.common.genericError');
   } finally {
     submitting.value = false;
   }
@@ -60,7 +60,7 @@ useSeoMeta({ title: () => t('admin.newProject.seoTitle') });
       to="/admin"
       class="text-sm font-medium text-ink-500 hover:text-ink-900"
     >
-      <span class="inline-block rtl:scale-x-[-1]">&larr;</span> {{ t('admin.newProject.backToDashboard') }}
+      <span class="inline-block rtl:scale-x-[-1]">&larr;</span> {{ t('admin.common.backToDashboard') }}
     </NuxtLinkLocale>
     <h1 class="mt-3 font-display text-2xl text-ink-900">{{ t('admin.newProject.heading') }}</h1>
 

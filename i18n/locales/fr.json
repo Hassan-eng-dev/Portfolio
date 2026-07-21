@@ -162,6 +162,11 @@
     "backToHome": "Retour à l'accueil"
   },
   "admin": {
+    "common": {
+      "backToDashboard": "Retour au tableau de bord",
+      "genericError": "Une erreur est survenue.",
+      "confirmDeleteProject": "Supprimer « {title} » ? Cette action est irréversible."
+    },
     "sidebar": {
       "brand": "Admin du studio",
       "dashboard": "Tableau de bord",
@@ -186,8 +191,7 @@
       "published": "Publié",
       "draft": "Brouillon",
       "edit": "Modifier",
-      "delete": "Supprimer",
-      "confirmDelete": "Supprimer « {title} » ? Cette action est irréversible."
+      "delete": "Supprimer"
     },
     "login": {
       "seoTitle": "Connexion admin",
@@ -207,22 +211,17 @@
     },
     "newProject": {
       "seoTitle": "Nouveau projet",
-      "backToDashboard": "Retour au tableau de bord",
       "heading": "Nouveau projet",
-      "submitLabel": "Créer le projet",
-      "genericError": "Une erreur est survenue."
+      "submitLabel": "Créer le projet"
     },
     "editProject": {
       "seoFallbackTitle": "Modifier le projet",
-      "backToDashboard": "Retour au tableau de bord",
       "heading": "Modifier le projet",
       "loadError": "Impossible de charger ce projet.",
       "submitLabel": "Enregistrer les modifications",
-      "genericError": "Une erreur est survenue.",
       "deleteError": "Échec de la suppression du projet.",
       "deleteProject": "Supprimer le projet",
-      "deleting": "Suppression…",
-      "confirmDelete": "Supprimer « {title} » ? Cette action est irréversible."
+      "deleting": "Suppression…"
     },
     "form": {
       "title": "Titre",

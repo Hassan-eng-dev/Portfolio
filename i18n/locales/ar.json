@@ -162,6 +162,11 @@
     "backToHome": "العودة إلى الرئيسية"
   },
   "admin": {
+    "common": {
+      "backToDashboard": "العودة إلى لوحة التحكم",
+      "genericError": "حدث خطأ ما.",
+      "confirmDeleteProject": "حذف \"{title}\"؟ لا يمكن التراجع عن هذا الإجراء."
+    },
     "sidebar": {
       "brand": "إدارة الاستوديو",
       "dashboard": "لوحة التحكم",
@@ -186,8 +191,7 @@
       "published": "منشور",
       "draft": "مسودة",
       "edit": "تعديل",
-      "delete": "حذف",
-      "confirmDelete": "حذف \"{title}\"؟ لا يمكن التراجع عن هذا الإجراء."
+      "delete": "حذف"
     },
     "login": {
       "seoTitle": "تسجيل دخول الإدارة",
@@ -207,22 +211,17 @@
     },
     "newProject": {
       "seoTitle": "مشروع جديد",
-      "backToDashboard": "العودة إلى لوحة التحكم",
       "heading": "مشروع جديد",
-      "submitLabel": "إنشاء المشروع",
-      "genericError": "حدث خطأ ما."
+      "submitLabel": "إنشاء المشروع"
     },
     "editProject": {
       "seoFallbackTitle": "تعديل المشروع",
-      "backToDashboard": "العودة إلى لوحة التحكم",
       "heading": "تعديل المشروع",
       "loadError": "تعذّر تحميل هذا المشروع.",
       "submitLabel": "حفظ التغييرات",
-      "genericError": "حدث خطأ ما.",
       "deleteError": "فشل حذف المشروع.",
       "deleteProject": "حذف المشروع",
-      "deleting": "جارٍ الحذف…",
-      "confirmDelete": "حذف \"{title}\"؟ لا يمكن التراجع عن هذا الإجراء."
+      "deleting": "جارٍ الحذف…"
     },
     "form": {
       "title": "العنوان",

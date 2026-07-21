@@ -12,7 +12,8 @@ const props = withDefaults(
 )
 
 const { t } = useI18n()
-const categoryLabel = computed(() => t(`categories.${props.project.category}`))
+const getCategoryLabel = useCategoryLabel()
+const categoryLabel = computed(() => getCategoryLabel(props.project.category))
 </script>
 
 <template>

@@ -3,12 +3,16 @@ import { motion, stagger } from 'motion-v'
 import { PROJECT_CATEGORIES } from '~~/shared/types/database.types'
 
 const { t } = useI18n()
+const categoryLabel = useCategoryLabel()
 const client = useSupabaseClient()
 const route = useRoute()
 const router = useRouter()
 
 const activeCategory = ref<string | null>(
-  typeof route.query.category === 'string' ? route.query.category : null,
+  typeof route.query.category === 'string' &&
+    (PROJECT_CATEGORIES as readonly string[]).includes(route.query.category)
+    ? route.query.category
+    : null,
 )
 
 watch(activeCategory, (value) => {
@@ -76,7 +80,7 @@ useSeoMeta({
         </div>
 
         <p v-else-if="!projects?.length" class="rounded-2xl border border-ink-100 bg-ink-50 p-8 text-center text-ink-500">
-          {{ activeCategory ? t('portfolio.emptyInCategory', { category: t(`categories.${activeCategory}`) }) : t('portfolio.emptyDefault') }}
+          {{ activeCategory ? t('portfolio.emptyInCategory', { category: categoryLabel(activeCategory) }) : t('portfolio.emptyDefault') }}
         </p>
 
         <motion.div

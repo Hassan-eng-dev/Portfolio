@@ -52,7 +52,7 @@ async function onSubmit(payload: {
 
     await router.push(localePath('/admin'))
   } catch (err) {
-    errorMessage.value = err instanceof Error ? err.message : t('admin.editProject.genericError')
+    errorMessage.value = err instanceof Error ? err.message : t('admin.common.genericError')
   } finally {
     submitting.value = false
   }
@@ -60,7 +60,7 @@ async function onSubmit(payload: {
 
 async function onDelete() {
   if (!project.value) return
-  if (!confirm(t('admin.editProject.confirmDelete', { title: project.value.title }))) return
+  if (!confirm(t('admin.common.confirmDeleteProject', { title: project.value.title }))) return
 
   deleting.value = true
   try {
@@ -79,7 +79,7 @@ useSeoMeta({ title: () => project.value?.title ?? t('admin.editProject.seoFallba
 <template>
   <div>
     <NuxtLinkLocale to="/admin" class="text-sm font-medium text-ink-500 hover:text-ink-900">
-      <span class="inline-block rtl:scale-x-[-1]">&larr;</span> {{ t('admin.editProject.backToDashboard') }}
+      <span class="inline-block rtl:scale-x-[-1]">&larr;</span> {{ t('admin.common.backToDashboard') }}
     </NuxtLinkLocale>
 
     <div v-if="status === 'pending'" class="mt-6 animate-pulse space-y-4">

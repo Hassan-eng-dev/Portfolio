@@ -25,6 +25,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
+const categoryLabel = useCategoryLabel()
 
 const title = ref(props.initial?.title ?? '')
 const description = ref(props.initial?.description ?? '')
@@ -106,7 +107,7 @@ function onSubmit() {
           v-model="category"
           class="mt-2 block w-full rounded-lg border border-ink-200 px-4 py-3 text-ink-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
         >
-          <option v-for="c in PROJECT_CATEGORIES" :key="c" :value="c">{{ t(`categories.${c}`) }}</option>
+          <option v-for="c in PROJECT_CATEGORIES" :key="c" :value="c">{{ categoryLabel(c) }}</option>
         </select>
       </div>
 

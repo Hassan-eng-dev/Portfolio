@@ -3,6 +3,7 @@ const client = useSupabaseClient()
 const router = useRouter()
 const user = useSupabaseUser()
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const links = computed(() => [
   { label: t('admin.sidebar.dashboard'), to: '/admin', icon: 'grid' },
@@ -14,7 +15,7 @@ const signingOut = ref(false)
 async function signOut() {
   signingOut.value = true
   await client.auth.signOut()
-  await router.push('/admin/login')
+  await router.push(localePath('/admin/login'))
   signingOut.value = false
 }
 </script>

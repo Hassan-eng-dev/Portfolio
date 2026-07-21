@@ -27,8 +27,9 @@ const process = computed(() => [
   { title: t('home.process.deliver.title'), body: t('home.process.deliver.body') },
 ]);
 
+const getCategoryLabel = useCategoryLabel();
 const categoryLabels = computed(() =>
-  [...PROJECT_CATEGORIES].map((c) => t(`categories.${c}`)),
+  [...PROJECT_CATEGORIES].map(getCategoryLabel),
 );
 
 const bentoAspect = (index: number) =>

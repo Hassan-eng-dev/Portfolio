@@ -11,10 +11,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
-
-function categoryLabel(category: string) {
-  return t(`categories.${category}`)
-}
+const categoryLabel = useCategoryLabel()
 
 function select(value: string | null) {
   emit('update:modelValue', value === props.modelValue ? null : value)

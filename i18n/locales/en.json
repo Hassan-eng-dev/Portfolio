@@ -162,6 +162,11 @@
     "backToHome": "Back to home"
   },
   "admin": {
+    "common": {
+      "backToDashboard": "Back to dashboard",
+      "genericError": "Something went wrong.",
+      "confirmDeleteProject": "Delete \"{title}\"? This can't be undone."
+    },
     "sidebar": {
       "brand": "Studio Admin",
       "dashboard": "Dashboard",
@@ -186,8 +191,7 @@
       "published": "Published",
       "draft": "Draft",
       "edit": "Edit",
-      "delete": "Delete",
-      "confirmDelete": "Delete \"{title}\"? This can't be undone."
+      "delete": "Delete"
     },
     "login": {
       "seoTitle": "Admin login",
@@ -207,22 +211,17 @@
     },
     "newProject": {
       "seoTitle": "New project",
-      "backToDashboard": "Back to dashboard",
       "heading": "New project",
-      "submitLabel": "Create project",
-      "genericError": "Something went wrong."
+      "submitLabel": "Create project"
     },
     "editProject": {
       "seoFallbackTitle": "Edit project",
-      "backToDashboard": "Back to dashboard",
       "heading": "Edit project",
       "loadError": "Couldn't load this project.",
       "submitLabel": "Save changes",
-      "genericError": "Something went wrong.",
       "deleteError": "Failed to delete project.",
       "deleteProject": "Delete project",
-      "deleting": "Deleting…",
-      "confirmDelete": "Delete \"{title}\"? This can't be undone."
+      "deleting": "Deleting…"
     },
     "form": {
       "title": "Title",

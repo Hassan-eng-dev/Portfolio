@@ -8,10 +8,7 @@ const { data: projects, status, error, refresh } = await useAsyncData('admin-pro
 
 const togglingId = ref<string | null>(null)
 const deletingId = ref<string | null>(null)
-
-function categoryLabel(category: string) {
-  return t(`categories.${category}`)
-}
+const categoryLabel = useCategoryLabel()
 
 async function onTogglePublish(id: string, current: boolean) {
   togglingId.value = id
@@ -24,7 +21,7 @@ async function onTogglePublish(id: string, current: boolean) {
 }
 
 async function onDelete(id: string, title: string) {
-  if (!confirm(t('admin.dashboard.confirmDelete', { title }))) return
+  if (!confirm(t('admin.common.confirmDeleteProject', { title }))) return
   deletingId.value = id
   try {
     await deleteProject(client, id)

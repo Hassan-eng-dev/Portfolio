@@ -21,8 +21,9 @@ useSeoMeta({
   description: () => project.value?.description?.slice(0, 160),
 })
 
+const getCategoryLabel = useCategoryLabel()
 const categoryLabel = computed(() =>
-  project.value ? t(`categories.${project.value.category}`) : '',
+  project.value ? getCategoryLabel(project.value.category) : '',
 )
 </script>
 
