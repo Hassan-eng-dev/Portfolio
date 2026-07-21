@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  // GitHub Pages is static hosting with no Node server, so render as a pure
+  // SPA (client-side routing/auth/data-fetching only, no server-rendered HTML).
+  ssr: false,
 
   runtimeConfig: {
     // Server-only — set RESEND_API_KEY / CONTACT_TO_EMAIL in .env, never committed.
@@ -64,6 +67,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
       titleTemplate: '%s · Hassan Adel',
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
