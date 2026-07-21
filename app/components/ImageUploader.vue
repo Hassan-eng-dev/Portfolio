@@ -18,6 +18,7 @@ const emit = defineEmits<{
 
 const client = useSupabaseClient()
 const uploadStore = useUploadStore()
+const { t } = useI18n()
 
 const isDragOver = ref(false)
 const dragFromIndex = ref<number | null>(null)
@@ -49,7 +50,7 @@ async function handleFiles(fileList: FileList | File[]) {
     } catch (err) {
       uploadStore.updateItem(item.id, {
         status: 'error',
-        error: err instanceof Error ? err.message : 'Upload failed',
+        error: err instanceof Error ? err.message : t('admin.imageUploader.uploadFailed'),
       })
     }
   }
@@ -121,7 +122,7 @@ function onDropReorder(index: number) {
       :class="isDragOver ? 'border-primary-500 bg-primary-50' : 'border-ink-200 hover:border-ink-300'"
       role="button"
       tabindex="0"
-      aria-label="Upload images"
+      :aria-label="t('admin.imageUploader.ariaLabel')"
       @click="openFilePicker"
       @keydown.enter="openFilePicker"
       @keydown.space.prevent="openFilePicker"
@@ -133,9 +134,9 @@ function onDropReorder(index: number) {
         <path d="M12 16V4m0 0 4 4m-4-4-4 4M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
       <p class="mt-3 text-sm font-medium text-ink-700">
-        Drag and drop images here, or click to browse
+        {{ t('admin.imageUploader.dropHint') }}
       </p>
-      <p class="mt-1 text-xs text-ink-400">PNG, JPG, WebP up to a few MB each</p>
+      <p class="mt-1 text-xs text-ink-400">{{ t('admin.imageUploader.fileHint') }}</p>
       <input
         ref="fileInput"
         type="file"
@@ -170,9 +171,9 @@ function onDropReorder(index: number) {
           class="shrink-0 text-xs font-medium text-primary-700 hover:underline"
           @click="retryUpload(item.id)"
         >
-          Retry
+          {{ t('admin.imageUploader.retry') }}
         </button>
-        <span v-else class="shrink-0 text-xs text-ink-400">Uploading…</span>
+        <span v-else class="shrink-0 text-xs text-ink-400">{{ t('admin.imageUploader.uploading') }}</span>
       </li>
     </ul>
 
@@ -193,15 +194,15 @@ function onDropReorder(index: number) {
           <img :src="item.url" :alt="item.altText" class="h-full w-full object-cover">
           <span
             v-if="item.url === coverUrl"
-            class="absolute left-1.5 top-1.5 rounded-full bg-primary-600 px-2 py-0.5 text-[10px] font-medium text-white"
+            class="absolute start-1.5 top-1.5 rounded-full bg-primary-600 px-2 py-0.5 text-[10px] font-medium text-white"
           >
-            Cover
+            {{ t('admin.imageUploader.cover') }}
           </span>
         </div>
         <input
           :value="item.altText"
           type="text"
-          placeholder="Alt text"
+          :placeholder="t('admin.imageUploader.altTextPlaceholder')"
           class="mt-2 w-full rounded border border-ink-200 px-2 py-1 text-xs focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500/30"
           @input="updateAltText(item, ($event.target as HTMLInputElement).value)"
         >
@@ -212,12 +213,12 @@ function onDropReorder(index: number) {
             :disabled="item.url === coverUrl"
             @click="setCover(item)"
           >
-            Set as cover
+            {{ t('admin.imageUploader.setAsCover') }}
           </button>
           <button
             type="button"
             class="inline-flex h-7 w-7 items-center justify-center rounded-full text-ink-400 hover:bg-red-50 hover:text-red-600"
-            aria-label="Remove image"
+            :aria-label="t('admin.imageUploader.removeImage')"
             @click="removeItem(item)"
           >
             <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
@@ -226,9 +227,9 @@ function onDropReorder(index: number) {
           </button>
         </div>
         <span
-          class="pointer-events-none absolute right-1.5 top-1.5 rounded bg-black/40 px-1.5 py-0.5 text-[10px] text-white opacity-0 transition-opacity group-hover:opacity-100"
+          class="pointer-events-none absolute end-1.5 top-1.5 rounded bg-black/40 px-1.5 py-0.5 text-[10px] text-white opacity-0 transition-opacity group-hover:opacity-100"
         >
-          Drag to reorder
+          {{ t('admin.imageUploader.dragToReorder') }}
         </span>
       </div>
     </div>

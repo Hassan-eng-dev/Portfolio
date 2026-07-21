@@ -1,20 +1,22 @@
 <script setup lang="ts">
 import { motion } from "motion-v";
 
+const { t } = useI18n();
+
 const year = new Date().getFullYear();
 
-const navLinks = [
-  { label: "Work", to: "/portfolio" },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
-];
+const navLinks = computed(() => [
+  { label: t('nav.work'), to: "/portfolio" },
+  { label: t('nav.about'), to: "/about" },
+  { label: t('nav.contact'), to: "/contact" },
+]);
 
-const socials = [
-  { label: "Email", href: "mailto:Hassan.adel3886@gmail.com" },
-  { label: "Instagram", href: "#" },
-  { label: "Behance", href: "#" },
-  { label: "LinkedIn", href: "#" },
-];
+const socials = computed(() => [
+  { label: t('footer.social.email'), href: "mailto:Hassan.adel3886@gmail.com" },
+  { label: t('footer.social.instagram'), href: "#" },
+  { label: t('footer.social.behance'), href: "#" },
+  { label: t('footer.social.linkedin'), href: "#" },
+]);
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -47,12 +49,12 @@ function scrollToTop() {
           <p
             class="text-sm font-medium uppercase tracking-widest text-brand-300"
           >
-            Let's talk
+            {{ t('footer.eyebrow') }}
           </p>
           <h2
             class="mt-3 max-w-lg font-display text-3xl leading-tight sm:text-5xl"
           >
-            Got an idea worth designing?
+            {{ t('footer.heading') }}
           </h2>
         </div>
         <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
@@ -64,7 +66,7 @@ function scrollToTop() {
             :transition="{ type: 'spring', stiffness: 400, damping: 25 }"
             @click="navigate"
           >
-            Say hello
+            {{ t('footer.sayHello') }}
             <svg
               viewBox="0 0 24 24"
               class="h-4 w-4"
@@ -93,17 +95,16 @@ function scrollToTop() {
               class="inline-flex h-2.5 w-2.5 rounded-full bg-brand-400 shadow-[0_0_0_4px_rgba(96,165,250,0.15)] transition-transform duration-300 group-hover:scale-125"
               aria-hidden="true"
             />
-            Hassan Adel
+            {{ t('nav.brand') }}
           </NuxtLink>
           <p class="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
-            Product designer &amp; front-end developer crafting bold,
-            considered digital experiences.
+            {{ t('footer.tagline') }}
           </p>
         </div>
 
         <div>
           <p class="text-xs font-medium uppercase tracking-widest text-white/40">
-            Sitemap
+            {{ t('footer.sitemap') }}
           </p>
           <ul class="mt-4 space-y-3 text-sm text-white/60">
             <li v-for="link in navLinks" :key="link.to">
@@ -113,7 +114,7 @@ function scrollToTop() {
             </li>
             <li>
               <NuxtLink to="/admin/login" class="transition-colors hover:text-white">
-                Admin
+                {{ t('footer.admin') }}
               </NuxtLink>
             </li>
           </ul>
@@ -121,7 +122,7 @@ function scrollToTop() {
 
         <div>
           <p class="text-xs font-medium uppercase tracking-widest text-white/40">
-            Connect
+            {{ t('footer.connect') }}
           </p>
           <ul class="mt-4 space-y-3 text-sm text-white/60">
             <li v-for="social in socials" :key="social.label">
@@ -136,13 +137,13 @@ function scrollToTop() {
       <div
         class="mt-14 flex flex-col-reverse items-center gap-4 border-t border-white/10 pt-6 text-sm text-white/40 sm:flex-row sm:justify-between"
       >
-        <p>&copy; {{ year }} Hassan Adel. All rights reserved.</p>
+        <p>{{ t('footer.copyright', { year }) }}</p>
         <button
           type="button"
           class="group inline-flex items-center gap-1.5 transition-colors hover:text-white"
           @click="scrollToTop"
         >
-          Back to top
+          {{ t('footer.backToTop') }}
           <svg
             viewBox="0 0 24 24"
             class="h-3.5 w-3.5 -translate-y-px transition-transform duration-200 group-hover:-translate-y-1"

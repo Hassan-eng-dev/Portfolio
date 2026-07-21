@@ -74,6 +74,23 @@ body {
   color: var(--color-ink);
 }
 
+// Fraunces/Inter don't cover Arabic script — swap in an Arabic-friendly
+// display/body face for RTL locales while keeping the same font tokens
+// (font-display/font-sans) for everything else.
+:root[dir="rtl"] {
+  --font-display-rtl: "Noto Kufi Arabic", "Fraunces", serif;
+  --font-sans-rtl: "Noto Kufi Arabic", "Inter", sans-serif;
+}
+
+[dir="rtl"] .font-display {
+  font-family: var(--font-display-rtl);
+}
+
+[dir="rtl"] body,
+[dir="rtl"] .font-sans {
+  font-family: var(--font-sans-rtl);
+}
+
 // Shared page-transition utility. Kept in SCSS (rather than Tailwind)
 // since it defines behaviour, not one-off utility values.
 .page-enter-active,

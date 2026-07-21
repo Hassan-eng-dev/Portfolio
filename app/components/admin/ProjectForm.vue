@@ -24,6 +24,8 @@ const emit = defineEmits<{
   ]
 }>()
 
+const { t } = useI18n()
+
 const title = ref(props.initial?.title ?? '')
 const description = ref(props.initial?.description ?? '')
 const category = ref(props.initial?.category ?? PROJECT_CATEGORIES[0])
@@ -61,8 +63,8 @@ function removeTag(tag: string) {
   tags.value = tags.value.filter((t) => t !== tag)
 }
 
-const titleError = computed(() => (!title.value.trim() ? 'Title is required.' : null))
-const categoryError = computed(() => (!category.value ? 'Category is required.' : null))
+const titleError = computed(() => (!title.value.trim() ? t('admin.form.titleRequired') : null))
+const categoryError = computed(() => (!category.value ? t('admin.form.categoryRequired') : null))
 const touched = ref(false)
 
 function onSubmit() {
@@ -86,7 +88,7 @@ function onSubmit() {
   <form class="space-y-8" @submit.prevent="onSubmit">
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       <div class="sm:col-span-2">
-        <label for="title" class="block text-sm font-medium text-ink-800">Title</label>
+        <label for="title" class="block text-sm font-medium text-ink-800">{{ t('admin.form.title') }}</label>
         <input
           id="title"
           v-model="title"
@@ -98,29 +100,29 @@ function onSubmit() {
       </div>
 
       <div>
-        <label for="category" class="block text-sm font-medium text-ink-800">Category</label>
+        <label for="category" class="block text-sm font-medium text-ink-800">{{ t('admin.form.category') }}</label>
         <select
           id="category"
           v-model="category"
           class="mt-2 block w-full rounded-lg border border-ink-200 px-4 py-3 text-ink-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
         >
-          <option v-for="c in PROJECT_CATEGORIES" :key="c" :value="c">{{ c }}</option>
+          <option v-for="c in PROJECT_CATEGORIES" :key="c" :value="c">{{ t(`categories.${c}`) }}</option>
         </select>
       </div>
 
       <div>
-        <label for="sort-order" class="block text-sm font-medium text-ink-800">Sort order</label>
+        <label for="sort-order" class="block text-sm font-medium text-ink-800">{{ t('admin.form.sortOrder') }}</label>
         <input
           id="sort-order"
           v-model="sortOrder"
           type="number"
           class="mt-2 block w-full rounded-lg border border-ink-200 px-4 py-3 text-ink-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
         >
-        <p class="mt-1 text-sm text-ink-400">Lower numbers appear first.</p>
+        <p class="mt-1 text-sm text-ink-400">{{ t('admin.form.sortOrderHelper') }}</p>
       </div>
 
       <div class="sm:col-span-2">
-        <label for="description" class="block text-sm font-medium text-ink-800">Description</label>
+        <label for="description" class="block text-sm font-medium text-ink-800">{{ t('admin.form.description') }}</label>
         <textarea
           id="description"
           v-model="description"
@@ -130,7 +132,7 @@ function onSubmit() {
       </div>
 
       <div class="sm:col-span-2">
-        <label for="tags" class="block text-sm font-medium text-ink-800">Tags</label>
+        <label for="tags" class="block text-sm font-medium text-ink-800">{{ t('admin.form.tags') }}</label>
         <div class="mt-2 flex flex-wrap gap-2 rounded-lg border border-ink-200 p-2 focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-500/30">
           <span
             v-for="tag in tags"
@@ -138,7 +140,7 @@ function onSubmit() {
             class="flex items-center gap-1 rounded-full bg-ink-100 px-3 py-1 text-xs font-medium text-ink-700"
           >
             {{ tag }}
-            <button type="button" aria-label="Remove tag" @click="removeTag(tag)">
+            <button type="button" :aria-label="t('admin.form.removeTag')" @click="removeTag(tag)">
               <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" aria-hidden="true">
                 <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg>
@@ -148,7 +150,7 @@ function onSubmit() {
             id="tags"
             v-model="tagInput"
             type="text"
-            placeholder="Add a tag and press Enter"
+            :placeholder="t('admin.form.tagsPlaceholder')"
             class="min-w-[10rem] flex-1 border-none px-1 py-1 text-sm text-ink-900 focus:outline-none focus:ring-0"
             @keydown="onTagKeydown"
             @blur="addTag"
@@ -163,13 +165,13 @@ function onSubmit() {
           type="checkbox"
           class="h-5 w-5 rounded border-ink-300 text-primary-600 focus:ring-primary-500/30"
         >
-        <label for="published" class="text-sm font-medium text-ink-800">Published (visible on the public site)</label>
+        <label for="published" class="text-sm font-medium text-ink-800">{{ t('admin.form.published') }}</label>
       </div>
     </div>
 
     <div>
-      <span class="block text-sm font-medium text-ink-800">Images</span>
-      <p class="mt-1 text-sm text-ink-400">The first uploaded image becomes the cover unless you choose another.</p>
+      <span class="block text-sm font-medium text-ink-800">{{ t('admin.form.images') }}</span>
+      <p class="mt-1 text-sm text-ink-400">{{ t('admin.form.imagesHelper') }}</p>
       <div class="mt-3">
         <ImageUploader v-model="images" v-model:cover-url="coverUrl" />
       </div>
@@ -191,7 +193,7 @@ function onSubmit() {
           <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" opacity="0.25" />
           <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
-        {{ submitting ? 'Saving…' : (submitLabel ?? 'Save project') }}
+        {{ submitting ? t('admin.form.saving') : (submitLabel ?? t('admin.form.save')) }}
       </button>
       <slot name="extra-actions" />
     </div>

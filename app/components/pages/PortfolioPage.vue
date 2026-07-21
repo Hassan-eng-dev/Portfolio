@@ -2,6 +2,7 @@
 import { motion, stagger } from 'motion-v'
 import { PROJECT_CATEGORIES } from '~~/shared/types/database.types'
 
+const { t } = useI18n()
 const client = useSupabaseClient()
 const route = useRoute()
 const router = useRouter()
@@ -32,8 +33,8 @@ const staggerItem = {
 }
 
 useSeoMeta({
-  title: 'Portfolio',
-  description: 'Browse Hassan Adel\'s full collection of published design projects.',
+  title: () => t('portfolio.seoTitle'),
+  description: () => t('portfolio.seoDescription'),
 })
 </script>
 
@@ -49,11 +50,10 @@ useSeoMeta({
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
       >
-        <p class="text-sm font-medium uppercase tracking-widest text-brand-600">Portfolio</p>
-        <h1 class="mt-3 font-display text-4xl text-ink-900 sm:text-5xl">Selected work</h1>
+        <p class="text-sm font-medium uppercase tracking-widest text-brand-600">{{ t('portfolio.eyebrow') }}</p>
+        <h1 class="mt-3 font-display text-4xl text-ink-900 sm:text-5xl">{{ t('portfolio.heading') }}</h1>
         <p class="mt-3 max-w-xl text-lg text-ink-600">
-          Every published project, filterable by category — branding, illustration, print,
-          digital and packaging.
+          {{ t('portfolio.intro') }}
         </p>
       </motion.div>
     </section>
@@ -71,12 +71,12 @@ useSeoMeta({
         </div>
 
         <div v-else-if="error" class="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-          <p>Couldn't load the portfolio right now.</p>
-          <button type="button" class="mt-2 font-medium underline" @click="refresh()">Try again</button>
+          <p>{{ t('portfolio.error') }}</p>
+          <button type="button" class="mt-2 font-medium underline" @click="refresh()">{{ t('portfolio.tryAgain') }}</button>
         </div>
 
         <p v-else-if="!projects?.length" class="rounded-2xl border border-ink-100 bg-ink-50 p-8 text-center text-ink-500">
-          No projects found{{ activeCategory ? ` in "${activeCategory}"` : '' }}.
+          {{ activeCategory ? t('portfolio.emptyInCategory', { category: t(`categories.${activeCategory}`) }) : t('portfolio.emptyDefault') }}
         </p>
 
         <motion.div

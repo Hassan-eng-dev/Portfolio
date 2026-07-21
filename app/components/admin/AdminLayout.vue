@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const isSidebarOpen = ref(false)
 const route = useRoute()
+const { t, dir } = useI18n()
 
 watch(
   () => route.fullPath,
@@ -24,7 +25,7 @@ watch(
       />
     </Transition>
     <Transition name="slide">
-      <div v-if="isSidebarOpen" class="fixed inset-y-0 left-0 z-50 w-72 sm:hidden">
+      <div v-if="isSidebarOpen" class="fixed inset-y-0 start-0 z-50 w-72 sm:hidden">
         <AdminSidebar />
       </div>
     </Transition>
@@ -34,7 +35,7 @@ watch(
         <button
           type="button"
           class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-ink-900 hover:bg-ink-50"
-          aria-label="Open admin menu"
+          :aria-label="t('admin.layout.openMenu')"
           :aria-expanded="isSidebarOpen"
           @click="isSidebarOpen = true"
         >
@@ -42,7 +43,7 @@ watch(
             <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
           </svg>
         </button>
-        <span class="font-display text-base text-ink-900">Studio Admin</span>
+        <span class="font-display text-base text-ink-900">{{ t('admin.layout.brand') }}</span>
       </header>
 
       <main class="admin-scroll flex-1 overflow-y-auto px-4 py-8 sm:px-10 sm:py-12">
@@ -71,5 +72,9 @@ watch(
 .slide-enter-from,
 .slide-leave-to {
   transform: translateX(-100%);
+}
+[dir='rtl'] .slide-enter-from,
+[dir='rtl'] .slide-leave-to {
+  transform: translateX(100%);
 }
 </style>

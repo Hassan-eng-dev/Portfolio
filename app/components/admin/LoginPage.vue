@@ -2,6 +2,8 @@
 const client = useSupabaseClient()
 const router = useRouter()
 const route = useRoute()
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 const email = ref('')
 const password = ref('')
@@ -20,26 +22,29 @@ async function onSubmit() {
   loading.value = false
 
   if (error) {
-    errorMessage.value = error.message
+    errorMessage.value =
+      error.message === 'Invalid login credentials'
+        ? t('admin.login.errors.invalidCredentials')
+        : t('admin.login.errors.generic')
     return
   }
 
-  const redirect = typeof route.query.redirect === 'string' ? route.query.redirect : '/admin'
+  const redirect = typeof route.query.redirect === 'string' ? route.query.redirect : localePath('/admin')
   await router.push(redirect)
 }
 
-useSeoMeta({ title: 'Admin login' })
+useSeoMeta({ title: () => t('admin.login.seoTitle') })
 </script>
 
 <template>
   <div class="flex min-h-dvh items-center justify-center bg-ink-50 px-6">
     <div class="w-full max-w-sm rounded-xl border border-ink-100 bg-surface p-8 shadow-sm">
-      <h1 class="font-display text-2xl text-ink-900">Admin sign in</h1>
-      <p class="mt-2 text-sm text-ink-500">Sign in to manage portfolio projects.</p>
+      <h1 class="font-display text-2xl text-ink-900">{{ t('admin.login.heading') }}</h1>
+      <p class="mt-2 text-sm text-ink-500">{{ t('admin.login.subtitle') }}</p>
 
       <form class="mt-8 space-y-5" @submit.prevent="onSubmit">
         <div>
-          <label for="email" class="block text-sm font-medium text-ink-800">Email</label>
+          <label for="email" class="block text-sm font-medium text-ink-800">{{ t('admin.login.email') }}</label>
           <input
             id="email"
             v-model="email"
@@ -51,7 +56,7 @@ useSeoMeta({ title: 'Admin login' })
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-ink-800">Password</label>
+          <label for="password" class="block text-sm font-medium text-ink-800">{{ t('admin.login.password') }}</label>
           <input
             id="password"
             v-model="password"
@@ -79,7 +84,7 @@ useSeoMeta({ title: 'Admin login' })
             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" opacity="0.25" />
             <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
-          {{ loading ? 'Signing in…' : 'Sign in' }}
+          {{ loading ? t('admin.login.signingIn') : t('admin.login.signIn') }}
         </button>
       </form>
     </div>

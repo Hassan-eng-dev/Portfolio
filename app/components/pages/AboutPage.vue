@@ -1,20 +1,22 @@
 <script setup lang="ts">
 import { motion, stagger } from 'motion-v'
 
-const skills = [
-  'Brand Identity',
-  'Illustration',
-  'Editorial & Print',
-  'Digital Design',
-  'Packaging',
-  'Art Direction',
-]
+const { t } = useI18n()
 
-const timeline = [
-  { year: '2025 — Now', title: 'Independent Designer', body: 'Partnering directly with founders and studios on branding and visual systems.' },
-  { year: '2022 — 2025', title: 'Senior Graphic Designer', body: 'Led identity and packaging work for a range of consumer brands.' },
-  { year: '2019 — 2022', title: 'Graphic Designer', body: 'Built a foundation across print, digital and illustration work.' },
-]
+const skills = computed(() => [
+  t('about.skills.brandIdentity'),
+  t('about.skills.illustration'),
+  t('about.skills.editorialPrint'),
+  t('about.skills.digitalDesign'),
+  t('about.skills.packaging'),
+  t('about.skills.artDirection'),
+])
+
+const timeline = computed(() => [
+  { year: t('about.timeline.current.year'), title: t('about.timeline.current.title'), body: t('about.timeline.current.body') },
+  { year: t('about.timeline.senior.year'), title: t('about.timeline.senior.title'), body: t('about.timeline.senior.body') },
+  { year: t('about.timeline.early.year'), title: t('about.timeline.early.title'), body: t('about.timeline.early.body') },
+])
 
 const staggerContainer = {
   hidden: {},
@@ -26,8 +28,8 @@ const staggerItem = {
 }
 
 useSeoMeta({
-  title: 'About',
-  description: 'Hassan Adel — graphic designer. Background, process and the kind of work I take on.',
+  title: () => t('about.seoTitle'),
+  description: () => t('about.seoDescription'),
 })
 </script>
 
@@ -44,18 +46,15 @@ useSeoMeta({
           :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
         >
-          <p class="text-sm font-medium uppercase tracking-widest text-brand-600">About</p>
+          <p class="text-sm font-medium uppercase tracking-widest text-brand-600">{{ t('about.eyebrow') }}</p>
           <h1 class="mt-3 font-display text-4xl leading-tight text-ink-900 sm:text-5xl">
-            Hi, I'm Hassan Adel — a designer obsessed with clarity.
+            {{ t('about.heading') }}
           </h1>
           <p class="mt-6 text-lg leading-relaxed text-ink-600">
-            I'm a graphic designer working across branding, illustration, print, digital and
-            packaging. My process blends sharp strategic thinking with a genuine love of
-            craft — every project starts with a question, not a template.
+            {{ t('about.paragraph1') }}
           </p>
           <p class="mt-4 text-lg leading-relaxed text-ink-600">
-            Over the years I've partnered with startups, studios and independent brands who
-            wanted work that felt considered, distinctive and built to last.
+            {{ t('about.paragraph2') }}
           </p>
 
           <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
@@ -67,7 +66,7 @@ useSeoMeta({
               :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
               @click="navigate"
             >
-              Get in touch
+              {{ t('about.getInTouch') }}
             </motion.a>
           </NuxtLink>
         </motion.div>
@@ -83,11 +82,11 @@ useSeoMeta({
             <span class="font-display text-6xl text-brand-600">HA</span>
           </div>
           <motion.div
-            class="absolute -bottom-4 -right-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-surface shadow-card ring-1 ring-ink-100"
+            class="absolute -bottom-4 -end-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-surface shadow-card ring-1 ring-ink-100"
             :animate="{ y: [0, -10, 0] }"
             :transition="{ duration: 4, repeat: Infinity, ease: 'easeInOut' }"
           >
-            <span class="font-display text-lg text-ink-900">6+ yrs</span>
+            <span class="font-display text-lg text-ink-900">{{ t('about.yearsBadge') }}</span>
           </motion.div>
         </motion.div>
       </div>
@@ -100,7 +99,7 @@ useSeoMeta({
         :whileInView="{ opacity: 1, y: 0 }"
         :viewport="{ once: true, margin: '-80px' }"
       >
-        What I do
+        {{ t('about.whatIDo') }}
       </motion.h2>
       <motion.div
         class="mt-8 flex flex-wrap gap-3"
@@ -130,7 +129,7 @@ useSeoMeta({
           :whileInView="{ opacity: 1, y: 0 }"
           :viewport="{ once: true, margin: '-80px' }"
         >
-          Experience
+          {{ t('about.experience') }}
         </motion.h2>
 
         <motion.div
@@ -144,7 +143,7 @@ useSeoMeta({
             v-for="item in timeline"
             :key="item.title"
             :variants="staggerItem"
-            class="grid gap-2 border-l-2 border-brand-200 pl-6 sm:grid-cols-[10rem_1fr] sm:gap-8"
+            class="grid gap-2 border-s-2 border-brand-200 ps-6 sm:grid-cols-[10rem_1fr] sm:gap-8"
           >
             <p class="text-sm font-medium text-brand-600">{{ item.year }}</p>
             <div>

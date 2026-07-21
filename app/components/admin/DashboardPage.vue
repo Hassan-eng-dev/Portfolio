@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const client = useSupabaseClient()
+const { t } = useI18n()
 
 const { data: projects, status, error, refresh } = await useAsyncData('admin-projects', () =>
   fetchAllProjectsAdmin(client),
@@ -7,6 +8,10 @@ const { data: projects, status, error, refresh } = await useAsyncData('admin-pro
 
 const togglingId = ref<string | null>(null)
 const deletingId = ref<string | null>(null)
+
+function categoryLabel(category: string) {
+  return t(`categories.${category}`)
+}
 
 async function onTogglePublish(id: string, current: boolean) {
   togglingId.value = id
@@ -19,7 +24,7 @@ async function onTogglePublish(id: string, current: boolean) {
 }
 
 async function onDelete(id: string, title: string) {
-  if (!confirm(`Delete "${title}"? This can't be undone.`)) return
+  if (!confirm(t('admin.dashboard.confirmDelete', { title }))) return
   deletingId.value = id
   try {
     await deleteProject(client, id)
@@ -29,15 +34,15 @@ async function onDelete(id: string, title: string) {
   }
 }
 
-useSeoMeta({ title: 'Dashboard' })
+useSeoMeta({ title: () => t('admin.dashboard.seoTitle') })
 </script>
 
 <template>
   <div>
     <div class="flex items-center justify-between">
       <div>
-        <h1 class="font-display text-2xl text-ink-900">Projects</h1>
-        <p class="mt-1 text-sm text-ink-500">Manage published and draft work.</p>
+        <h1 class="font-display text-2xl text-ink-900">{{ t('admin.dashboard.heading') }}</h1>
+        <p class="mt-1 text-sm text-ink-500">{{ t('admin.dashboard.subtitle') }}</p>
       </div>
       <NuxtLink
         to="/admin/projects/new"
@@ -46,7 +51,7 @@ useSeoMeta({ title: 'Dashboard' })
         <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
           <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
         </svg>
-        New project
+        {{ t('admin.dashboard.newProject') }}
       </NuxtLink>
     </div>
 
@@ -55,13 +60,13 @@ useSeoMeta({ title: 'Dashboard' })
     </div>
 
     <p v-else-if="error" class="mt-8 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-      Couldn't load projects.
+      {{ t('admin.dashboard.error') }}
     </p>
 
     <div v-else-if="!projects?.length" class="mt-8 rounded-lg border border-ink-100 bg-surface p-10 text-center text-ink-500">
-      No projects yet.
+      {{ t('admin.dashboard.empty') }}
       <NuxtLink to="/admin/projects/new" class="font-medium text-primary-700 hover:underline">
-        Create your first one
+        {{ t('admin.dashboard.createFirst') }}
       </NuxtLink>
     </div>
 
@@ -82,7 +87,7 @@ useSeoMeta({ title: 'Dashboard' })
           </div>
           <div>
             <p class="font-medium text-ink-900">{{ project.title }}</p>
-            <p class="text-sm capitalize text-ink-500">{{ project.category }}</p>
+            <p class="text-sm text-ink-500">{{ categoryLabel(project.category) }}</p>
           </div>
         </div>
 
@@ -97,14 +102,14 @@ useSeoMeta({ title: 'Dashboard' })
             @click="onTogglePublish(project.id, project.published)"
           >
             <span class="h-1.5 w-1.5 rounded-full" :class="project.published ? 'bg-primary-600' : 'bg-ink-400'" />
-            {{ project.published ? 'Published' : 'Draft' }}
+            {{ project.published ? t('admin.dashboard.published') : t('admin.dashboard.draft') }}
           </button>
 
           <NuxtLink
             :to="`/admin/projects/${project.id}/edit`"
             class="text-sm font-medium text-ink-600 hover:text-ink-900"
           >
-            Edit
+            {{ t('admin.dashboard.edit') }}
           </NuxtLink>
 
           <button
@@ -113,7 +118,7 @@ useSeoMeta({ title: 'Dashboard' })
             class="text-sm font-medium text-red-600 hover:text-red-700 disabled:opacity-50"
             @click="onDelete(project.id, project.title)"
           >
-            Delete
+            {{ t('admin.dashboard.delete') }}
           </button>
         </div>
       </li>

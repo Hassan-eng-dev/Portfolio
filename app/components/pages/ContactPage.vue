@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { motion } from "motion-v";
 
+const { t } = useI18n();
+
 useSeoMeta({
-  title: "Contact",
-  description: "Get in touch with Hassan Adel about a project.",
+  title: () => t('contact.seoTitle'),
+  description: () => t('contact.seoDescription'),
 });
 
 const form = reactive({
@@ -16,15 +18,15 @@ const submitted = ref(false);
 const submitting = ref(false);
 const submitError = ref("");
 
-const details = [
+const details = computed(() => [
   {
-    label: "Email",
+    label: t('contact.details.email'),
     value: "Hassan.adel3886@gmail.com",
     href: "mailto:Hassan.adel3886@gmail.com",
   },
-  { label: "Based in", value: "Syria · Remote worldwide" },
-  { label: "Availability", value: "Booking projects from next month" },
-];
+  { label: t('contact.details.basedIn'), value: t('contact.details.basedInValue') },
+  { label: t('contact.details.availability'), value: t('contact.details.availabilityValue') },
+]);
 
 async function onSubmit() {
   submitting.value = true;
@@ -36,8 +38,7 @@ async function onSubmit() {
     });
     submitted.value = true;
   } catch {
-    submitError.value =
-      "Couldn't send your message right now. Please try again or email me directly.";
+    submitError.value = t('contact.submitError');
   } finally {
     submitting.value = false;
   }
@@ -61,16 +62,15 @@ async function onSubmit() {
         :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
       >
         <p class="text-sm font-medium uppercase tracking-widest text-brand-600">
-          Contact
+          {{ t('contact.eyebrow') }}
         </p>
         <h1
           class="mt-3 font-display text-4xl leading-tight text-ink-900 sm:text-5xl"
         >
-          Let's build something bold together.
+          {{ t('contact.heading') }}
         </h1>
         <p class="mt-5 max-w-md text-lg text-ink-600">
-          Tell me a little about your project and timeline — I typically reply
-          within one business day.
+          {{ t('contact.intro') }}
         </p>
 
         <dl class="mt-10 space-y-6">
@@ -137,10 +137,9 @@ async function onSubmit() {
                 />
               </svg>
             </motion.span>
-            <h2 class="font-display text-2xl text-ink-900">Message sent</h2>
+            <h2 class="font-display text-2xl text-ink-900">{{ t('contact.successTitle') }}</h2>
             <p class="max-w-sm text-ink-600">
-              Thanks for reaching out — I'll get back to you within one
-              business day.
+              {{ t('contact.successBody') }}
             </p>
           </motion.div>
 
@@ -155,7 +154,7 @@ async function onSubmit() {
           >
             <div>
               <label for="name" class="block text-sm font-medium text-ink-800"
-                >Name</label
+                >{{ t('contact.form.name') }}</label
               >
               <input
                 id="name"
@@ -169,7 +168,7 @@ async function onSubmit() {
 
             <div>
               <label for="email" class="block text-sm font-medium text-ink-800"
-                >Email</label
+                >{{ t('contact.form.email') }}</label
               >
               <input
                 id="email"
@@ -185,7 +184,7 @@ async function onSubmit() {
               <label
                 for="message"
                 class="block text-sm font-medium text-ink-800"
-                >Message</label
+                >{{ t('contact.form.message') }}</label
               >
               <textarea
                 id="message"
@@ -195,7 +194,7 @@ async function onSubmit() {
                 class="mt-2 block w-full resize-none rounded-xl border border-ink-200 bg-surface px-4 py-3 text-ink-900 placeholder:text-ink-300 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
               />
               <p class="mt-2 text-sm text-ink-400">
-                A few sentences about your project and timeline.
+                {{ t('contact.form.messageHelper') }}
               </p>
             </div>
 
@@ -233,7 +232,7 @@ async function onSubmit() {
                   stroke-linecap="round"
                 />
               </svg>
-              {{ submitting ? "Sending…" : "Send message" }}
+              {{ submitting ? t('contact.form.sending') : t('contact.form.send') }}
             </motion.button>
           </motion.form>
         </AnimatePresence>

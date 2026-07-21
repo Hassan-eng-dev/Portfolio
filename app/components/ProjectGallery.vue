@@ -6,6 +6,8 @@ const props = defineProps<{
   images: ProjectImage[]
 }>()
 
+const { t } = useI18n()
+
 const activeIndex = ref<number | null>(null)
 const isOpen = computed(() => activeIndex.value !== null)
 
@@ -60,7 +62,7 @@ const activeImage = computed(() =>
         :key="image.id"
         type="button"
         class="group relative overflow-hidden rounded-2xl bg-ink-50"
-        :aria-label="`Open image ${index + 1} of ${images.length}`"
+        :aria-label="t('gallery.openImage', { index: index + 1, total: images.length })"
         :whileHover="{ scale: 1.02 }"
         :whilePress="{ scale: 0.98 }"
         :transition="{ type: 'spring', stiffness: 300, damping: 22 }"
@@ -83,7 +85,7 @@ const activeImage = computed(() =>
           class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-8"
           role="dialog"
           aria-modal="true"
-          aria-label="Image viewer"
+          :aria-label="t('gallery.imageViewer')"
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :exit="{ opacity: 0 }"
@@ -92,8 +94,8 @@ const activeImage = computed(() =>
         >
           <button
             type="button"
-            class="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-8 sm:top-8"
-            aria-label="Close image viewer"
+            class="absolute end-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:end-8 sm:top-8"
+            :aria-label="t('gallery.close')"
             @click="close"
           >
             <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" aria-hidden="true">
@@ -104,11 +106,11 @@ const activeImage = computed(() =>
           <button
             v-if="images.length > 1"
             type="button"
-            class="absolute left-2 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:left-6"
-            aria-label="Previous image"
+            class="absolute start-2 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:start-6"
+            :aria-label="t('gallery.previous')"
             @click.stop="prev"
           >
-            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 rtl:scale-x-[-1]" fill="none" aria-hidden="true">
               <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
@@ -129,11 +131,11 @@ const activeImage = computed(() =>
           <button
             v-if="images.length > 1"
             type="button"
-            class="absolute right-2 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-6"
-            aria-label="Next image"
+            class="absolute end-2 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:end-6"
+            :aria-label="t('gallery.next')"
             @click.stop="next"
           >
-            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 rtl:scale-x-[-1]" fill="none" aria-hidden="true">
               <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>

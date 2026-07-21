@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const client = useSupabaseClient();
 const router = useRouter();
+const localePath = useLocalePath();
+const { t } = useI18n();
 
 const submitting = ref(false);
 const errorMessage = ref<string | null>(null);
@@ -40,16 +42,16 @@ async function onSubmit(payload: {
       })),
     );
 
-    await router.push("/admin");
+    await router.push(localePath("/admin"));
   } catch (err) {
     errorMessage.value =
-      err instanceof Error ? err.message : "Something went wrong.";
+      err instanceof Error ? err.message : t('admin.newProject.genericError');
   } finally {
     submitting.value = false;
   }
 }
 
-useSeoMeta({ title: "New project" });
+useSeoMeta({ title: () => t('admin.newProject.seoTitle') });
 </script>
 
 <template>
@@ -58,9 +60,9 @@ useSeoMeta({ title: "New project" });
       to="/admin"
       class="text-sm font-medium text-ink-500 hover:text-ink-900"
     >
-      &larr; Back to dashboard
+      <span class="inline-block rtl:scale-x-[-1]">&larr;</span> {{ t('admin.newProject.backToDashboard') }}
     </NuxtLink>
-    <h1 class="mt-3 font-display text-2xl text-ink-900">New project</h1>
+    <h1 class="mt-3 font-display text-2xl text-ink-900">{{ t('admin.newProject.heading') }}</h1>
 
     <p
       v-if="errorMessage"
@@ -73,7 +75,7 @@ useSeoMeta({ title: "New project" });
     <div class="mt-8">
       <AdminProjectForm
         :submitting="submitting"
-        submit-label="Create project"
+        :submit-label="t('admin.newProject.submitLabel')"
         @submit="onSubmit"
       />
     </div>

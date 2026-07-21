@@ -5,6 +5,8 @@ const props = defineProps<{
 
 const router = useRouter()
 const client = useSupabaseClient()
+const localePath = useLocalePath()
+const { t } = useI18n()
 
 const { data: project, status, error } = await useAsyncData(`admin-project-${props.id}`, () =>
   fetchProjectByIdAdmin(client, props.id),
@@ -48,9 +50,9 @@ async function onSubmit(payload: {
       })),
     )
 
-    await router.push('/admin')
+    await router.push(localePath('/admin'))
   } catch (err) {
-    errorMessage.value = err instanceof Error ? err.message : 'Something went wrong.'
+    errorMessage.value = err instanceof Error ? err.message : t('admin.editProject.genericError')
   } finally {
     submitting.value = false
   }
@@ -58,26 +60,26 @@ async function onSubmit(payload: {
 
 async function onDelete() {
   if (!project.value) return
-  if (!confirm(`Delete "${project.value.title}"? This can't be undone.`)) return
+  if (!confirm(t('admin.editProject.confirmDelete', { title: project.value.title }))) return
 
   deleting.value = true
   try {
     await deleteProject(client, props.id)
-    await router.push('/admin')
+    await router.push(localePath('/admin'))
   } catch (err) {
-    errorMessage.value = err instanceof Error ? err.message : 'Failed to delete project.'
+    errorMessage.value = err instanceof Error ? err.message : t('admin.editProject.deleteError')
   } finally {
     deleting.value = false
   }
 }
 
-useSeoMeta({ title: () => project.value?.title ?? 'Edit project' })
+useSeoMeta({ title: () => project.value?.title ?? t('admin.editProject.seoFallbackTitle') })
 </script>
 
 <template>
   <div>
     <NuxtLink to="/admin" class="text-sm font-medium text-ink-500 hover:text-ink-900">
-      &larr; Back to dashboard
+      <span class="inline-block rtl:scale-x-[-1]">&larr;</span> {{ t('admin.editProject.backToDashboard') }}
     </NuxtLink>
 
     <div v-if="status === 'pending'" class="mt-6 animate-pulse space-y-4">
@@ -86,18 +88,18 @@ useSeoMeta({ title: () => project.value?.title ?? 'Edit project' })
     </div>
 
     <p v-else-if="error || !project" class="mt-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-      Couldn't load this project.
+      {{ t('admin.editProject.loadError') }}
     </p>
 
     <template v-else>
-      <h1 class="mt-3 font-display text-2xl text-ink-900">Edit project</h1>
+      <h1 class="mt-3 font-display text-2xl text-ink-900">{{ t('admin.editProject.heading') }}</h1>
 
       <p v-if="errorMessage" role="alert" class="mt-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
         {{ errorMessage }}
       </p>
 
       <div class="mt-8">
-        <AdminProjectForm :initial="project" :submitting="submitting" submit-label="Save changes" @submit="onSubmit">
+        <AdminProjectForm :initial="project" :submitting="submitting" :submit-label="t('admin.editProject.submitLabel')" @submit="onSubmit">
           <template #extra-actions>
             <button
               type="button"
@@ -105,7 +107,7 @@ useSeoMeta({ title: () => project.value?.title ?? 'Edit project' })
               class="text-sm font-medium text-red-600 hover:text-red-700 disabled:opacity-50"
               @click="onDelete"
             >
-              {{ deleting ? 'Deleting…' : 'Delete project' }}
+              {{ deleting ? t('admin.editProject.deleting') : t('admin.editProject.deleteProject') }}
             </button>
           </template>
         </AdminProjectForm>

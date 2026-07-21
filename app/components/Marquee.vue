@@ -14,7 +14,7 @@ defineProps<{
       <ul
         v-for="copy in 2"
         :key="copy"
-        class="flex shrink-0 items-center gap-12 pr-12 sm:gap-16 sm:pr-16"
+        class="flex shrink-0 items-center gap-12 pe-12 sm:gap-16 sm:pe-16"
       >
         <li
           v-for="item in items"

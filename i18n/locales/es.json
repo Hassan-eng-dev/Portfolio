@@ -1,0 +1,258 @@
+{
+  "nav": {
+    "work": "Trabajos",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "startProject": "Iniciar un proyecto",
+    "toggleMenu": "Alternar menú de navegación",
+    "primary": "Principal",
+    "primaryMobile": "Principal (móvil)",
+    "brand": "Hassan Adel"
+  },
+  "footer": {
+    "eyebrow": "Hablemos",
+    "heading": "¿Tienes una idea que merece ser diseñada?",
+    "sayHello": "Escríbeme",
+    "tagline": "Diseñador de producto y desarrollador front-end creando experiencias digitales audaces y cuidadas.",
+    "sitemap": "Mapa del sitio",
+    "admin": "Admin",
+    "connect": "Conecta",
+    "social": {
+      "email": "Correo",
+      "instagram": "Instagram",
+      "behance": "Behance",
+      "linkedin": "LinkedIn"
+    },
+    "copyright": "© {year} Hassan Adel. Todos los derechos reservados.",
+    "backToTop": "Volver arriba"
+  },
+  "languageSwitcher": {
+    "label": "Idioma"
+  },
+  "categories": {
+    "branding": "Branding",
+    "illustration": "Ilustración",
+    "print": "Impresión",
+    "digital": "Digital",
+    "packaging": "Empaque"
+  },
+  "categoryFilter": {
+    "ariaLabel": "Filtrar por categoría",
+    "allWork": "Todos los trabajos"
+  },
+  "projectCard": {
+    "viewProject": "Ver proyecto: {title}"
+  },
+  "gallery": {
+    "openImage": "Abrir imagen {index} de {total}",
+    "imageViewer": "Visor de imágenes",
+    "close": "Cerrar visor de imágenes",
+    "previous": "Imagen anterior",
+    "next": "Siguiente imagen"
+  },
+  "home": {
+    "seoTitle": "Inicio",
+    "seoDescription": "Hassan Adel — diseñador gráfico creando identidades visuales audaces, ilustración, impresión, diseño digital y empaque.",
+    "badge": "Disponible para nuevos proyectos",
+    "heroTitlePrefix": "Soy Hassan Adel — diseño",
+    "heroTitleHighlight": "identidades visuales",
+    "heroTitleSuffix": "que hacen que las ideas sean inolvidables.",
+    "heroSubtitle": "Diseñador gráfico especializado en branding, ilustración, impresión, diseño digital y empaque, con ojo agudo para el detalle y pasión por el azul intenso.",
+    "viewWork": "Ver mi trabajo",
+    "letsTalk": "Hablemos",
+    "avatarAlt": "Avatar 3D ilustrado de Hassan Adel rodeado de iconos de herramientas de diseño",
+    "videoHeadingPrefix": "Hola, soy Hassan —",
+    "videoHeadingHighlight": "sí, de verdad soy yo",
+    "videoHeadingSuffix": "hablando.",
+    "videoParagraph1": "Durante los últimos seis años he convertido los briefs de mis clientes en identidades que la gente realmente recuerda — dibujando logotipos hasta la medianoche, obsesionándome con un kerning que nadie más notará, y llevando cada proyecto una revisión más allá de \"suficientemente bueno\". No soy un estudio sin rostro; soy un solo diseñador que lee cada brief dos veces, defiende con amabilidad la dirección más audaz y se mantiene cerca hasta el lanzamiento en lugar de desaparecer tras la entrega.",
+    "videoParagraph2": "Si el trabajo de abajo habla por sí mismo, este saludo de treinta segundos es para todo lo que el portafolio no puede mostrar: cómo pienso, cómo trabajo y por qué los clientes siempre vuelven para el próximo proyecto.",
+    "getToKnowMe": "Conóceme más",
+    "stats": {
+      "projects": "Proyectos entregados",
+      "years": "Años de oficio",
+      "disciplines": "Disciplinas cubiertas",
+      "clients": "Clientes satisfechos"
+    },
+    "portfolioEyebrow": "Portafolio",
+    "selectedWork": "Trabajo seleccionado",
+    "seeAll": "Ver todo",
+    "projectsError": "No se pudieron cargar los proyectos. Por favor, actualiza la página.",
+    "projectsEmpty": "Aún no hay trabajo publicado — vuelve pronto.",
+    "howIWork": "Cómo trabajo",
+    "processSubtitle": "Un proceso simple diseñado para grandes resultados.",
+    "process": {
+      "discover": { "title": "Descubrir", "body": "Entender la marca, el público y el problema antes de mover un solo píxel." },
+      "design": { "title": "Diseñar", "body": "Explorar direcciones audaces, refinar la más sólida y construir un sistema a su alrededor." },
+      "deliver": { "title": "Entregar", "body": "Enviar activos pulidos y listos para producción — manteniéndome cerca hasta el lanzamiento." }
+    }
+  },
+  "about": {
+    "seoTitle": "Sobre mí",
+    "seoDescription": "Hassan Adel — diseñador gráfico. Trayectoria, proceso y el tipo de trabajo que realizo.",
+    "eyebrow": "Sobre mí",
+    "heading": "Hola, soy Hassan Adel — un diseñador obsesionado con la claridad.",
+    "paragraph1": "Soy diseñador gráfico y trabajo en branding, ilustración, impresión, diseño digital y empaque. Mi proceso combina un pensamiento estratégico agudo con un amor genuino por el oficio — cada proyecto empieza con una pregunta, no con una plantilla.",
+    "paragraph2": "A lo largo de los años he colaborado con startups, estudios y marcas independientes que buscaban un trabajo cuidado, distintivo y hecho para durar.",
+    "getInTouch": "Ponte en contacto",
+    "yearsBadge": "6+ años",
+    "whatIDo": "Qué hago",
+    "skills": {
+      "brandIdentity": "Identidad de marca",
+      "illustration": "Ilustración",
+      "editorialPrint": "Editorial e impresión",
+      "digitalDesign": "Diseño digital",
+      "packaging": "Empaque",
+      "artDirection": "Dirección de arte"
+    },
+    "experience": "Experiencia",
+    "timeline": {
+      "current": { "year": "2025 — Actualidad", "title": "Diseñador independiente", "body": "Colaboro directamente con fundadores y estudios en branding y sistemas visuales." },
+      "senior": { "year": "2022 — 2025", "title": "Diseñador gráfico senior", "body": "Lideré trabajos de identidad y empaque para varias marcas de consumo." },
+      "early": { "year": "2019 — 2022", "title": "Diseñador gráfico", "body": "Construí una base sólida en impresión, diseño digital e ilustración." }
+    }
+  },
+  "contact": {
+    "seoTitle": "Contacto",
+    "seoDescription": "Ponte en contacto con Hassan Adel sobre un proyecto.",
+    "eyebrow": "Contacto",
+    "heading": "Construyamos algo audaz juntos.",
+    "intro": "Cuéntame un poco sobre tu proyecto y el cronograma — normalmente respondo en un día hábil.",
+    "details": {
+      "email": "Correo",
+      "basedIn": "Ubicación",
+      "basedInValue": "Siria · Remoto en cualquier parte del mundo",
+      "availability": "Disponibilidad",
+      "availabilityValue": "Aceptando proyectos a partir del próximo mes"
+    },
+    "submitError": "No se pudo enviar tu mensaje en este momento. Inténtalo de nuevo o escríbeme directamente.",
+    "successTitle": "Mensaje enviado",
+    "successBody": "Gracias por escribir — te responderé dentro de un día hábil.",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo",
+      "message": "Mensaje",
+      "messageHelper": "Unas líneas sobre tu proyecto y el cronograma.",
+      "send": "Enviar mensaje",
+      "sending": "Enviando…"
+    }
+  },
+  "portfolio": {
+    "seoTitle": "Portafolio",
+    "seoDescription": "Explora la colección completa de proyectos publicados de Hassan Adel.",
+    "eyebrow": "Portafolio",
+    "heading": "Trabajo seleccionado",
+    "intro": "Todos los proyectos publicados, filtrables por categoría — branding, ilustración, impresión, digital y empaque.",
+    "error": "No se pudo cargar el portafolio en este momento.",
+    "tryAgain": "Intentar de nuevo",
+    "emptyDefault": "No se encontraron proyectos.",
+    "emptyInCategory": "No se encontraron proyectos en \"{category}\"."
+  },
+  "projectDetail": {
+    "notFound": "Proyecto no encontrado",
+    "seoFallbackTitle": "Proyecto",
+    "error": "No se pudo cargar este proyecto en este momento.",
+    "backToPortfolio": "Volver al portafolio",
+    "likeWhatYouSee": "¿Te gusta lo que ves?",
+    "nextProject": "Creemos tu próximo proyecto.",
+    "startProject": "Iniciar un proyecto"
+  },
+  "error": {
+    "notFound": "Página no encontrada",
+    "generic": "Algo salió mal",
+    "backToHome": "Volver al inicio"
+  },
+  "admin": {
+    "sidebar": {
+      "brand": "Admin del estudio",
+      "dashboard": "Panel",
+      "newProject": "Nuevo proyecto",
+      "ariaLabel": "Admin",
+      "viewSite": "Ver sitio",
+      "signOut": "Cerrar sesión",
+      "signingOut": "Cerrando sesión…"
+    },
+    "layout": {
+      "openMenu": "Abrir menú de administración",
+      "brand": "Admin del estudio"
+    },
+    "dashboard": {
+      "seoTitle": "Panel",
+      "heading": "Proyectos",
+      "subtitle": "Gestiona trabajos publicados y borradores.",
+      "newProject": "Nuevo proyecto",
+      "error": "No se pudieron cargar los proyectos.",
+      "empty": "Aún no hay proyectos.",
+      "createFirst": "Crea el primero",
+      "published": "Publicado",
+      "draft": "Borrador",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "confirmDelete": "¿Eliminar \"{title}\"? Esta acción no se puede deshacer."
+    },
+    "login": {
+      "seoTitle": "Inicio de sesión de admin",
+      "heading": "Inicio de sesión de administrador",
+      "subtitle": "Inicia sesión para gestionar los proyectos del portafolio.",
+      "email": "Correo",
+      "password": "Contraseña",
+      "signIn": "Iniciar sesión",
+      "signingIn": "Iniciando sesión…",
+      "errors": {
+        "invalidCredentials": "Correo o contraseña incorrectos.",
+        "generic": "Algo salió mal. Inténtalo de nuevo."
+      }
+    },
+    "confirm": {
+      "signingIn": "Iniciando sesión…"
+    },
+    "newProject": {
+      "seoTitle": "Nuevo proyecto",
+      "backToDashboard": "Volver al panel",
+      "heading": "Nuevo proyecto",
+      "submitLabel": "Crear proyecto",
+      "genericError": "Algo salió mal."
+    },
+    "editProject": {
+      "seoFallbackTitle": "Editar proyecto",
+      "backToDashboard": "Volver al panel",
+      "heading": "Editar proyecto",
+      "loadError": "No se pudo cargar este proyecto.",
+      "submitLabel": "Guardar cambios",
+      "genericError": "Algo salió mal.",
+      "deleteError": "No se pudo eliminar el proyecto.",
+      "deleteProject": "Eliminar proyecto",
+      "deleting": "Eliminando…",
+      "confirmDelete": "¿Eliminar \"{title}\"? Esta acción no se puede deshacer."
+    },
+    "form": {
+      "title": "Título",
+      "titleRequired": "El título es obligatorio.",
+      "category": "Categoría",
+      "categoryRequired": "La categoría es obligatoria.",
+      "sortOrder": "Orden",
+      "sortOrderHelper": "Los números más bajos aparecen primero.",
+      "description": "Descripción",
+      "tags": "Etiquetas",
+      "tagsPlaceholder": "Agrega una etiqueta y presiona Enter",
+      "removeTag": "Eliminar etiqueta",
+      "published": "Publicado (visible en el sitio público)",
+      "images": "Imágenes",
+      "imagesHelper": "La primera imagen subida se convierte en la portada a menos que elijas otra.",
+      "save": "Guardar proyecto",
+      "saving": "Guardando…"
+    },
+    "imageUploader": {
+      "dropHint": "Arrastra y suelta imágenes aquí, o haz clic para explorar",
+      "fileHint": "PNG, JPG, WebP de hasta unos pocos MB cada una",
+      "ariaLabel": "Subir imágenes",
+      "uploading": "Subiendo…",
+      "retry": "Reintentar",
+      "uploadFailed": "Error al subir",
+      "cover": "Portada",
+      "altTextPlaceholder": "Texto alternativo",
+      "setAsCover": "Establecer como portada",
+      "removeImage": "Eliminar imagen",
+      "dragToReorder": "Arrastra para reordenar"
+    }
+  }
+}

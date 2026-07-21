@@ -2,11 +2,12 @@
 const client = useSupabaseClient()
 const router = useRouter()
 const user = useSupabaseUser()
+const { t } = useI18n()
 
-const links = [
-  { label: 'Dashboard', to: '/admin', icon: 'grid' },
-  { label: 'New project', to: '/admin/projects/new', icon: 'plus' },
-]
+const links = computed(() => [
+  { label: t('admin.sidebar.dashboard'), to: '/admin', icon: 'grid' },
+  { label: t('admin.sidebar.newProject'), to: '/admin/projects/new', icon: 'plus' },
+])
 
 const signingOut = ref(false)
 
@@ -19,13 +20,13 @@ async function signOut() {
 </script>
 
 <template>
-  <aside class="flex h-full w-full flex-col border-r border-ink-100 bg-surface sm:w-64">
+  <aside class="flex h-full w-full flex-col border-e border-ink-100 bg-surface sm:w-64">
     <div class="px-6 py-6">
-      <NuxtLink to="/admin" class="font-display text-lg text-ink-900">Studio Admin</NuxtLink>
+      <NuxtLink to="/admin" class="font-display text-lg text-ink-900">{{ t('admin.sidebar.brand') }}</NuxtLink>
       <p v-if="user?.email" class="mt-1 truncate text-xs text-ink-400">{{ user.email }}</p>
     </div>
 
-    <nav class="flex-1 space-y-1 px-3" aria-label="Admin">
+    <nav class="flex-1 space-y-1 px-3" :aria-label="t('admin.sidebar.ariaLabel')">
       <NuxtLink
         v-for="link in links"
         :key="link.to"
@@ -47,6 +48,9 @@ async function signOut() {
     </nav>
 
     <div class="border-t border-ink-100 p-3">
+      <div class="px-3 pb-2">
+        <LanguageSwitcher />
+      </div>
       <NuxtLink
         to="/"
         class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-ink-700 transition-colors hover:bg-ink-50"
@@ -54,18 +58,18 @@ async function signOut() {
         <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0" fill="none" aria-hidden="true">
           <path d="M4 10.5 12 4l8 6.5M6 9v9a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1V9" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
         </svg>
-        View site
+        {{ t('admin.sidebar.viewSite') }}
       </NuxtLink>
       <button
         type="button"
         :disabled="signingOut"
-        class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-ink-700 transition-colors hover:bg-red-50 hover:text-red-700 disabled:opacity-50"
+        class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-start text-sm font-medium text-ink-700 transition-colors hover:bg-red-50 hover:text-red-700 disabled:opacity-50"
         @click="signOut"
       >
-        <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0" fill="none" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 rtl:scale-x-[-1]" fill="none" aria-hidden="true">
           <path d="M9 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        {{ signingOut ? 'Signing out…' : 'Sign out' }}
+        {{ signingOut ? t('admin.sidebar.signingOut') : t('admin.sidebar.signOut') }}
       </button>
     </div>
   </aside>

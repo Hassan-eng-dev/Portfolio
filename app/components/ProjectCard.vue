@@ -2,7 +2,7 @@
 import { motion } from 'motion-v'
 import type { Project } from '~~/shared/types/database.types'
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     project: Project
     priority?: boolean
@@ -10,6 +10,9 @@ withDefaults(
   }>(),
   { aspectClass: 'aspect-[4/5]' },
 )
+
+const { t } = useI18n()
+const categoryLabel = computed(() => t(`categories.${props.project.category}`))
 </script>
 
 <template>
@@ -17,7 +20,7 @@ withDefaults(
   <motion.a
     :href="href"
     class="group flex h-full flex-col"
-    :aria-label="`View project: ${project.title}`"
+    :aria-label="t('projectCard.viewProject', { title: project.title })"
     :whileHover="{ y: -6 }"
     :whilePress="{ scale: 0.98 }"
     :transition="{ type: 'spring', stiffness: 300, damping: 22 }"
@@ -49,13 +52,13 @@ withDefaults(
       />
 
       <span
-        class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium capitalize text-ink-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 group-hover:opacity-100"
+        class="absolute start-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-ink-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 group-hover:opacity-100"
       >
-        {{ project.category }}
+        {{ categoryLabel }}
       </span>
 
       <span
-        class="absolute bottom-4 right-4 inline-flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-brand-600 text-white opacity-0 shadow-glow transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+        class="absolute bottom-4 end-4 inline-flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-brand-600 text-white opacity-0 shadow-glow transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
         aria-hidden="true"
       >
         <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
@@ -69,7 +72,7 @@ withDefaults(
         <h3 class="font-display text-lg leading-tight text-ink-900 transition-colors group-hover:text-brand-700">
           {{ project.title }}
         </h3>
-        <p class="mt-0.5 text-sm capitalize text-ink-500">{{ project.category }}</p>
+        <p class="mt-0.5 text-sm text-ink-500">{{ categoryLabel }}</p>
       </div>
       <span
         class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"

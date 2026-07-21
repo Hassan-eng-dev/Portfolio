@@ -3,12 +3,13 @@ import { motion } from 'motion-v'
 
 const isMenuOpen = ref(false)
 const route = useRoute()
+const { t } = useI18n()
 
-const links = [
-  { label: 'Work', to: '/portfolio' },
-  { label: 'About', to: '/about' },
-  { label: 'Contact', to: '/contact' },
-]
+const links = computed(() => [
+  { label: t('nav.work'), to: '/portfolio' },
+  { label: t('nav.about'), to: '/about' },
+  { label: t('nav.contact'), to: '/contact' },
+])
 
 const { y } = useWindowScroll()
 const isScrolled = computed(() => y.value > 8)
@@ -37,10 +38,10 @@ watch(
           class="inline-flex h-2.5 w-2.5 rounded-full bg-brand-600 shadow-[0_0_0_4px_rgba(37,99,235,0.15)] transition-transform duration-300 group-hover:scale-125"
           aria-hidden="true"
         />
-        Hassan Adel
+        {{ t('nav.brand') }}
       </NuxtLink>
 
-      <nav class="hidden items-center gap-1 rounded-full border border-ink-100/80 bg-surface/60 p-1 backdrop-blur sm:flex" aria-label="Primary">
+      <nav class="hidden items-center gap-1 rounded-full border border-ink-100/80 bg-surface/60 p-1 backdrop-blur sm:flex" :aria-label="t('nav.primary')">
         <NuxtLink
           v-for="link in links"
           :key="link.to"
@@ -58,25 +59,28 @@ watch(
         </NuxtLink>
       </nav>
 
-      <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
-        <motion.a
-          :href="href"
-          class="hidden items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-white sm:inline-flex"
-          :whileHover="{ scale: 1.05, backgroundColor: '#1d4ed8' }"
-          :whilePress="{ scale: 0.96 }"
-          :transition="{ type: 'spring', stiffness: 400, damping: 25 }"
-          @click="navigate"
-        >
-          Start a project
-        </motion.a>
-      </NuxtLink>
+      <div class="hidden items-center gap-3 sm:flex">
+        <LanguageSwitcher />
+        <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+          <motion.a
+            :href="href"
+            class="inline-flex items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-white"
+            :whileHover="{ scale: 1.05, backgroundColor: '#1d4ed8' }"
+            :whilePress="{ scale: 0.96 }"
+            :transition="{ type: 'spring', stiffness: 400, damping: 25 }"
+            @click="navigate"
+          >
+            {{ t('nav.startProject') }}
+          </motion.a>
+        </NuxtLink>
+      </div>
 
       <button
         type="button"
         class="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-900 transition-colors hover:bg-ink-50 sm:hidden"
         :aria-expanded="isMenuOpen"
         aria-controls="mobile-nav"
-        aria-label="Toggle navigation menu"
+        :aria-label="t('nav.toggleMenu')"
         @click="isMenuOpen = !isMenuOpen"
       >
         <svg v-if="!isMenuOpen" viewBox="0 0 24 24" class="h-6 w-6" fill="none" aria-hidden="true">
@@ -103,7 +107,7 @@ watch(
         v-if="isMenuOpen"
         key="mobile-nav"
         id="mobile-nav"
-        aria-label="Primary mobile"
+        :aria-label="t('nav.primaryMobile')"
         class="overflow-hidden border-t border-ink-100 bg-surface px-6 sm:hidden"
         :initial="{ opacity: 0, height: 0 }"
         :animate="{ opacity: 1, height: 'auto' }"
@@ -125,8 +129,11 @@ watch(
               to="/contact"
               class="mt-2 block rounded-lg bg-ink-900 px-3 py-3 text-center text-base font-medium text-white"
             >
-              Start a project
+              {{ t('nav.startProject') }}
             </NuxtLink>
+          </li>
+          <li class="mt-2 flex justify-center">
+            <LanguageSwitcher />
           </li>
         </ul>
       </motion.nav>

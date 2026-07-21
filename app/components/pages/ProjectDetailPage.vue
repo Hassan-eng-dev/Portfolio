@@ -5,6 +5,7 @@ const props = defineProps<{
   slug: string
 }>()
 
+const { t } = useI18n()
 const client = useSupabaseClient()
 
 const { data: project, status, error } = await useAsyncData(`project-${props.slug}`, () =>
@@ -12,13 +13,17 @@ const { data: project, status, error } = await useAsyncData(`project-${props.slu
 )
 
 if (status.value !== 'pending' && !project.value && !error.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Project not found' })
+  throw createError({ statusCode: 404, statusMessage: t('projectDetail.notFound') })
 }
 
 useSeoMeta({
-  title: () => project.value?.title ?? 'Project',
+  title: () => project.value?.title ?? t('projectDetail.seoFallbackTitle'),
   description: () => project.value?.description?.slice(0, 160),
 })
+
+const categoryLabel = computed(() =>
+  project.value ? t(`categories.${project.value.category}`) : '',
+)
 </script>
 
 <template>
@@ -29,7 +34,7 @@ useSeoMeta({
     </div>
 
     <p v-else-if="error" class="mx-auto max-w-content rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-      Couldn't load this project right now.
+      {{ t('projectDetail.error') }}
     </p>
 
     <template v-else-if="project">
@@ -45,14 +50,14 @@ useSeoMeta({
           :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
         >
           <NuxtLink to="/portfolio" class="inline-flex items-center gap-1 text-sm font-medium text-ink-500 transition-colors hover:text-brand-700">
-            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-4 w-4 rtl:scale-x-[-1]" fill="none" aria-hidden="true">
               <path d="M11 18l-6-6 6-6M5 12h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            Back to portfolio
+            {{ t('projectDetail.backToPortfolio') }}
           </NuxtLink>
 
           <header class="mt-6 max-w-2xl">
-            <p class="text-sm font-medium uppercase tracking-widest text-brand-600">{{ project.category }}</p>
+            <p class="text-sm font-medium uppercase tracking-widest text-brand-600">{{ categoryLabel }}</p>
             <h1 class="mt-3 font-display text-4xl text-ink-900 sm:text-5xl">{{ project.title }}</h1>
             <p v-if="project.description" class="mt-5 text-lg leading-relaxed text-ink-600">
               {{ project.description }}
@@ -90,15 +95,15 @@ useSeoMeta({
         </div>
 
         <motion.div
-          class="mt-16 flex flex-col items-center gap-4 rounded-3xl border border-ink-100 bg-surface-muted p-10 text-center sm:flex-row sm:justify-between sm:text-left"
+          class="mt-16 flex flex-col items-center gap-4 rounded-3xl border border-ink-100 bg-surface-muted p-10 text-center sm:flex-row sm:justify-between sm:text-start"
           :initial="{ opacity: 0, y: 24 }"
           :whileInView="{ opacity: 1, y: 0 }"
           :viewport="{ once: true, margin: '-80px' }"
           :transition="{ duration: 0.5 }"
         >
           <div>
-            <p class="text-sm font-medium uppercase tracking-widest text-brand-600">Like what you see?</p>
-            <h2 class="mt-2 font-display text-2xl text-ink-900">Let's create your next project.</h2>
+            <p class="text-sm font-medium uppercase tracking-widest text-brand-600">{{ t('projectDetail.likeWhatYouSee') }}</p>
+            <h2 class="mt-2 font-display text-2xl text-ink-900">{{ t('projectDetail.nextProject') }}</h2>
           </div>
           <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
             <motion.a
@@ -109,8 +114,8 @@ useSeoMeta({
               :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
               @click="navigate"
             >
-              Start a project
-              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
+              {{ t('projectDetail.startProject') }}
+              <svg viewBox="0 0 24 24" class="h-4 w-4 rtl:scale-x-[-1]" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </motion.a>

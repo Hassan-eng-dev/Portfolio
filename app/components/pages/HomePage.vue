@@ -2,6 +2,8 @@
 import { motion, stagger } from "motion-v";
 import { PROJECT_CATEGORIES } from "~~/shared/types/database.types";
 
+const { t, localeProperties } = useI18n();
+const isRtl = computed(() => localeProperties.value.dir === 'rtl');
 const client = useSupabaseClient();
 
 const {
@@ -12,27 +14,22 @@ const {
   fetchFeaturedProjects(client, 6),
 );
 
-const stats = [
-  { value: "40+", label: "Projects delivered" },
-  { value: "6", label: "Years of craft" },
-  { value: "5", label: "Disciplines covered" },
-  { value: "18", label: "Happy clients" },
-];
+const stats = computed(() => [
+  { value: "40+", label: t('home.stats.projects') },
+  { value: "6", label: t('home.stats.years') },
+  { value: "5", label: t('home.stats.disciplines') },
+  { value: "18", label: t('home.stats.clients') },
+]);
 
-const process = [
-  {
-    title: "Discover",
-    body: "Understand the brand, the audience and the problem before a single pixel moves.",
-  },
-  {
-    title: "Design",
-    body: "Explore bold directions, refine the strongest one, and build a system around it.",
-  },
-  {
-    title: "Deliver",
-    body: "Ship polished, production-ready assets — and stay close through launch.",
-  },
-];
+const process = computed(() => [
+  { title: t('home.process.discover.title'), body: t('home.process.discover.body') },
+  { title: t('home.process.design.title'), body: t('home.process.design.body') },
+  { title: t('home.process.deliver.title'), body: t('home.process.deliver.body') },
+]);
+
+const categoryLabels = computed(() =>
+  [...PROJECT_CATEGORIES].map((c) => t(`categories.${c}`)),
+);
 
 const bentoAspect = (index: number) =>
   index === 0 ? "flex-1" : "aspect-[4/5]";
@@ -66,9 +63,8 @@ const staggerItem = {
 };
 
 useSeoMeta({
-  title: "Home",
-  description:
-    "Hassan Adel — graphic designer crafting bold visual identities, illustration, print, digital and packaging work.",
+  title: () => t('home.seoTitle'),
+  description: () => t('home.seoDescription'),
 });
 </script>
 
@@ -92,25 +88,23 @@ useSeoMeta({
             class="inline-flex items-center gap-2 rounded-full border border-brand-200 text-green-500 px-4 py-1.5 text-sm font-medium bg-green-100/75"
           >
             <span class="h-1.5 w-1.5 rounded-full bg-green-500" />
-            Available for new projects
+            {{ t('home.badge') }}
           </motion.p>
 
           <motion.h1
             :variants="heroItem"
             class="text-hero mt-6 font-display text-ink-900"
           >
-            I'm Hassan Adel — I design
-            <span class="text-gradient">visual identities</span>
-            that make ideas unforgettable.
+            {{ t('home.heroTitlePrefix') }}
+            <span class="text-gradient">{{ t('home.heroTitleHighlight') }}</span>
+            {{ t('home.heroTitleSuffix') }}
           </motion.h1>
 
           <motion.p
             :variants="heroItem"
             class="mt-6 max-w-xl text-lg text-ink-600"
           >
-            A graphic designer crafting branding, illustration, print, digital
-            and packaging work with a sharp eye for detail and a love for bold
-            blue.
+            {{ t('home.heroSubtitle') }}
           </motion.p>
 
           <motion.div
@@ -126,10 +120,10 @@ useSeoMeta({
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
                 @click="navigate"
               >
-                View my work
+                {{ t('home.viewWork') }}
                 <svg
                   viewBox="0 0 24 24"
-                  class="h-4 w-4"
+                  class="h-4 w-4 rtl:scale-x-[-1]"
                   fill="none"
                   aria-hidden="true"
                 >
@@ -152,7 +146,7 @@ useSeoMeta({
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
                 @click="navigate"
               >
-                Let's talk
+                {{ t('home.letsTalk') }}
               </motion.a>
             </NuxtLink>
           </motion.div>
@@ -161,7 +155,7 @@ useSeoMeta({
         <div class="relative hidden sm:block">
           <motion.img
             src="/avatar-designer.png"
-            alt="Illustrated 3D avatar of Hassan Adel surrounded by design tool icons"
+            :alt="t('home.avatarAlt')"
             class="hidden w-[22rem] max-w-none shrink-0 select-none sm:block lg:w-[28rem]"
             :initial="{ opacity: 0, y: 40, scale: 0.94 }"
             :animate="{ opacity: 1, y: [0, -40, 0], scale: 1 }"
@@ -178,8 +172,8 @@ useSeoMeta({
           />
           <motion.img
             src="/avatar.png"
-            alt="Illustrated 3D avatar of Hassan Adel surrounded by design tool icons"
-            class="hidden absolute top-20 left-40 w-[22rem] max-w-none shrink-0 select-none sm:block lg:w-[10rem]"
+            :alt="t('home.avatarAlt')"
+            class="hidden absolute top-20 start-40 w-[22rem] max-w-none shrink-0 select-none sm:block lg:w-[10rem]"
             :initial="{ opacity: 0, y: 40, scale: 0.94 }"
             :animate="{ opacity: 1, y: [0, -0, 0], scale: 1 }"
             :transition="{
@@ -208,7 +202,7 @@ useSeoMeta({
       >
         <motion.div
           class="w-full max-w-xl lg:max-w-none lg:flex-1"
-          :initial="{ opacity: 0, x: -32, scale: 0.96 }"
+          :initial="{ opacity: 0, x: isRtl ? 32 : -32, scale: 0.96 }"
           :whileInView="{ opacity: 1, x: 0, scale: 1 }"
           :viewport="{ once: true, margin: '-80px' }"
           :transition="{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }"
@@ -232,8 +226,8 @@ useSeoMeta({
             class="font-display text-4xl text-ink-900 sm:text-5xl"
             style="text-wrap: balance"
           >
-            Hi, I'm Hassan —
-            <span class="text-gradient">yes, that's really me</span> talking.
+            {{ t('home.videoHeadingPrefix') }}
+            <span class="text-gradient">{{ t('home.videoHeadingHighlight') }}</span> {{ t('home.videoHeadingSuffix') }}
           </motion.h2>
 
           <motion.p
@@ -241,13 +235,7 @@ useSeoMeta({
             class="mt-6 max-w-xl text-lg text-ink-600"
             style="text-wrap: pretty"
           >
-            For the past six years I've turned client briefs into identities
-            people actually remember — sketching logotypes past midnight,
-            obsessing over kerning nobody else will notice, and pushing every
-            project one revision further than "good enough." I'm not a faceless
-            studio; I'm one designer who reads every brief twice, argues gently
-            for the bolder direction, and stays close through launch instead of
-            disappearing after handoff.
+            {{ t('home.videoParagraph1') }}
           </motion.p>
 
           <motion.p
@@ -255,9 +243,7 @@ useSeoMeta({
             class="mt-4 max-w-xl text-lg text-ink-600"
             style="text-wrap: pretty"
           >
-            If the work below speaks for itself, this thirty-second hello is for
-            everything the portfolio can't show — how I think, how I work, and
-            why clients keep coming back for the next project.
+            {{ t('home.videoParagraph2') }}
           </motion.p>
 
           <motion.div :variants="staggerItem" class="mt-8">
@@ -270,7 +256,7 @@ useSeoMeta({
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
                 @click="navigate"
               >
-                Get to know me
+                {{ t('home.getToKnowMe') }}
                 <svg
                   viewBox="0 0 24 24"
                   class="h-4 w-4"
@@ -294,13 +280,7 @@ useSeoMeta({
 
     <!-- Marquee -->
     <section class="border-y border-ink-100 py-6">
-      <Marquee
-        :items="
-          [...PROJECT_CATEGORIES].map(
-            (c) => c.charAt(0).toUpperCase() + c.slice(1),
-          )
-        "
-      />
+      <Marquee :items="categoryLabels" />
     </section>
 
     <!-- Stats -->
@@ -339,20 +319,20 @@ useSeoMeta({
           <p
             class="text-sm font-medium uppercase tracking-widest text-brand-600"
           >
-            Portfolio
+            {{ t('home.portfolioEyebrow') }}
           </p>
           <h2 class="mt-2 font-display text-3xl text-ink-900 sm:text-4xl">
-            Selected work
+            {{ t('home.selectedWork') }}
           </h2>
         </div>
         <NuxtLink
           to="/portfolio"
           class="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 hover:text-brand-700"
         >
-          See all
+          {{ t('home.seeAll') }}
           <svg
             viewBox="0 0 24 24"
-            class="h-4 w-4 transition-transform group-hover:translate-x-1"
+            class="h-4 w-4 transition-transform rtl:scale-x-[-1] group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
             fill="none"
             aria-hidden="true"
           >
@@ -382,14 +362,14 @@ useSeoMeta({
         v-else-if="error"
         class="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
       >
-        Couldn't load projects right now. Please refresh the page.
+        {{ t('home.projectsError') }}
       </p>
 
       <p
         v-else-if="!projects?.length"
         class="rounded-2xl border border-ink-100 bg-ink-50 p-8 text-center text-ink-500"
       >
-        No published work yet — check back soon.
+        {{ t('home.projectsEmpty') }}
       </p>
 
       <motion.div
@@ -424,7 +404,7 @@ useSeoMeta({
           :whileInView="{ opacity: 1, y: 0 }"
           :viewport="{ once: true, margin: '-80px' }"
         >
-          How I work
+          {{ t('home.howIWork') }}
         </motion.p>
         <motion.h2
           class="mt-2 max-w-lg font-display text-3xl text-ink-900 sm:text-4xl"
@@ -433,7 +413,7 @@ useSeoMeta({
           :viewport="{ once: true, margin: '-80px' }"
           :transition="{ delay: 0.1 }"
         >
-          A simple process built for great outcomes.
+          {{ t('home.processSubtitle') }}
         </motion.h2>
 
         <motion.div

@@ -1,0 +1,258 @@
+{
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "startProject": "Start a project",
+    "toggleMenu": "Toggle navigation menu",
+    "primary": "Primary",
+    "primaryMobile": "Primary mobile",
+    "brand": "Hassan Adel"
+  },
+  "footer": {
+    "eyebrow": "Let's talk",
+    "heading": "Got an idea worth designing?",
+    "sayHello": "Say hello",
+    "tagline": "Product designer & front-end developer crafting bold, considered digital experiences.",
+    "sitemap": "Sitemap",
+    "admin": "Admin",
+    "connect": "Connect",
+    "social": {
+      "email": "Email",
+      "instagram": "Instagram",
+      "behance": "Behance",
+      "linkedin": "LinkedIn"
+    },
+    "copyright": "© {year} Hassan Adel. All rights reserved.",
+    "backToTop": "Back to top"
+  },
+  "languageSwitcher": {
+    "label": "Language"
+  },
+  "categories": {
+    "branding": "Branding",
+    "illustration": "Illustration",
+    "print": "Print",
+    "digital": "Digital",
+    "packaging": "Packaging"
+  },
+  "categoryFilter": {
+    "ariaLabel": "Filter by category",
+    "allWork": "All work"
+  },
+  "projectCard": {
+    "viewProject": "View project: {title}"
+  },
+  "gallery": {
+    "openImage": "Open image {index} of {total}",
+    "imageViewer": "Image viewer",
+    "close": "Close image viewer",
+    "previous": "Previous image",
+    "next": "Next image"
+  },
+  "home": {
+    "seoTitle": "Home",
+    "seoDescription": "Hassan Adel — graphic designer crafting bold visual identities, illustration, print, digital and packaging work.",
+    "badge": "Available for new projects",
+    "heroTitlePrefix": "I'm Hassan Adel — I design",
+    "heroTitleHighlight": "visual identities",
+    "heroTitleSuffix": "that make ideas unforgettable.",
+    "heroSubtitle": "A graphic designer crafting branding, illustration, print, digital and packaging work with a sharp eye for detail and a love for bold blue.",
+    "viewWork": "View my work",
+    "letsTalk": "Let's talk",
+    "avatarAlt": "Illustrated 3D avatar of Hassan Adel surrounded by design tool icons",
+    "videoHeadingPrefix": "Hi, I'm Hassan —",
+    "videoHeadingHighlight": "yes, that's really me",
+    "videoHeadingSuffix": "talking.",
+    "videoParagraph1": "For the past six years I've turned client briefs into identities people actually remember — sketching logotypes past midnight, obsessing over kerning nobody else will notice, and pushing every project one revision further than \"good enough.\" I'm not a faceless studio; I'm one designer who reads every brief twice, argues gently for the bolder direction, and stays close through launch instead of disappearing after handoff.",
+    "videoParagraph2": "If the work below speaks for itself, this thirty-second hello is for everything the portfolio can't show — how I think, how I work, and why clients keep coming back for the next project.",
+    "getToKnowMe": "Get to know me",
+    "stats": {
+      "projects": "Projects delivered",
+      "years": "Years of craft",
+      "disciplines": "Disciplines covered",
+      "clients": "Happy clients"
+    },
+    "portfolioEyebrow": "Portfolio",
+    "selectedWork": "Selected work",
+    "seeAll": "See all",
+    "projectsError": "Couldn't load projects right now. Please refresh the page.",
+    "projectsEmpty": "No published work yet — check back soon.",
+    "howIWork": "How I work",
+    "processSubtitle": "A simple process built for great outcomes.",
+    "process": {
+      "discover": { "title": "Discover", "body": "Understand the brand, the audience and the problem before a single pixel moves." },
+      "design": { "title": "Design", "body": "Explore bold directions, refine the strongest one, and build a system around it." },
+      "deliver": { "title": "Deliver", "body": "Ship polished, production-ready assets — and stay close through launch." }
+    }
+  },
+  "about": {
+    "seoTitle": "About",
+    "seoDescription": "Hassan Adel — graphic designer. Background, process and the kind of work I take on.",
+    "eyebrow": "About",
+    "heading": "Hi, I'm Hassan Adel — a designer obsessed with clarity.",
+    "paragraph1": "I'm a graphic designer working across branding, illustration, print, digital and packaging. My process blends sharp strategic thinking with a genuine love of craft — every project starts with a question, not a template.",
+    "paragraph2": "Over the years I've partnered with startups, studios and independent brands who wanted work that felt considered, distinctive and built to last.",
+    "getInTouch": "Get in touch",
+    "yearsBadge": "6+ yrs",
+    "whatIDo": "What I do",
+    "skills": {
+      "brandIdentity": "Brand Identity",
+      "illustration": "Illustration",
+      "editorialPrint": "Editorial & Print",
+      "digitalDesign": "Digital Design",
+      "packaging": "Packaging",
+      "artDirection": "Art Direction"
+    },
+    "experience": "Experience",
+    "timeline": {
+      "current": { "year": "2025 — Now", "title": "Independent Designer", "body": "Partnering directly with founders and studios on branding and visual systems." },
+      "senior": { "year": "2022 — 2025", "title": "Senior Graphic Designer", "body": "Led identity and packaging work for a range of consumer brands." },
+      "early": { "year": "2019 — 2022", "title": "Graphic Designer", "body": "Built a foundation across print, digital and illustration work." }
+    }
+  },
+  "contact": {
+    "seoTitle": "Contact",
+    "seoDescription": "Get in touch with Hassan Adel about a project.",
+    "eyebrow": "Contact",
+    "heading": "Let's build something bold together.",
+    "intro": "Tell me a little about your project and timeline — I typically reply within one business day.",
+    "details": {
+      "email": "Email",
+      "basedIn": "Based in",
+      "basedInValue": "Syria · Remote worldwide",
+      "availability": "Availability",
+      "availabilityValue": "Booking projects from next month"
+    },
+    "submitError": "Couldn't send your message right now. Please try again or email me directly.",
+    "successTitle": "Message sent",
+    "successBody": "Thanks for reaching out — I'll get back to you within one business day.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "messageHelper": "A few sentences about your project and timeline.",
+      "send": "Send message",
+      "sending": "Sending…"
+    }
+  },
+  "portfolio": {
+    "seoTitle": "Portfolio",
+    "seoDescription": "Browse Hassan Adel's full collection of published design projects.",
+    "eyebrow": "Portfolio",
+    "heading": "Selected work",
+    "intro": "Every published project, filterable by category — branding, illustration, print, digital and packaging.",
+    "error": "Couldn't load the portfolio right now.",
+    "tryAgain": "Try again",
+    "emptyDefault": "No projects found.",
+    "emptyInCategory": "No projects found in \"{category}\"."
+  },
+  "projectDetail": {
+    "notFound": "Project not found",
+    "seoFallbackTitle": "Project",
+    "error": "Couldn't load this project right now.",
+    "backToPortfolio": "Back to portfolio",
+    "likeWhatYouSee": "Like what you see?",
+    "nextProject": "Let's create your next project.",
+    "startProject": "Start a project"
+  },
+  "error": {
+    "notFound": "Page not found",
+    "generic": "Something went wrong",
+    "backToHome": "Back to home"
+  },
+  "admin": {
+    "sidebar": {
+      "brand": "Studio Admin",
+      "dashboard": "Dashboard",
+      "newProject": "New project",
+      "ariaLabel": "Admin",
+      "viewSite": "View site",
+      "signOut": "Sign out",
+      "signingOut": "Signing out…"
+    },
+    "layout": {
+      "openMenu": "Open admin menu",
+      "brand": "Studio Admin"
+    },
+    "dashboard": {
+      "seoTitle": "Dashboard",
+      "heading": "Projects",
+      "subtitle": "Manage published and draft work.",
+      "newProject": "New project",
+      "error": "Couldn't load projects.",
+      "empty": "No projects yet.",
+      "createFirst": "Create your first one",
+      "published": "Published",
+      "draft": "Draft",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDelete": "Delete \"{title}\"? This can't be undone."
+    },
+    "login": {
+      "seoTitle": "Admin login",
+      "heading": "Admin sign in",
+      "subtitle": "Sign in to manage portfolio projects.",
+      "email": "Email",
+      "password": "Password",
+      "signIn": "Sign in",
+      "signingIn": "Signing in…",
+      "errors": {
+        "invalidCredentials": "Incorrect email or password.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "confirm": {
+      "signingIn": "Signing you in…"
+    },
+    "newProject": {
+      "seoTitle": "New project",
+      "backToDashboard": "Back to dashboard",
+      "heading": "New project",
+      "submitLabel": "Create project",
+      "genericError": "Something went wrong."
+    },
+    "editProject": {
+      "seoFallbackTitle": "Edit project",
+      "backToDashboard": "Back to dashboard",
+      "heading": "Edit project",
+      "loadError": "Couldn't load this project.",
+      "submitLabel": "Save changes",
+      "genericError": "Something went wrong.",
+      "deleteError": "Failed to delete project.",
+      "deleteProject": "Delete project",
+      "deleting": "Deleting…",
+      "confirmDelete": "Delete \"{title}\"? This can't be undone."
+    },
+    "form": {
+      "title": "Title",
+      "titleRequired": "Title is required.",
+      "category": "Category",
+      "categoryRequired": "Category is required.",
+      "sortOrder": "Sort order",
+      "sortOrderHelper": "Lower numbers appear first.",
+      "description": "Description",
+      "tags": "Tags",
+      "tagsPlaceholder": "Add a tag and press Enter",
+      "removeTag": "Remove tag",
+      "published": "Published (visible on the public site)",
+      "images": "Images",
+      "imagesHelper": "The first uploaded image becomes the cover unless you choose another.",
+      "save": "Save project",
+      "saving": "Saving…"
+    },
+    "imageUploader": {
+      "dropHint": "Drag and drop images here, or click to browse",
+      "fileHint": "PNG, JPG, WebP up to a few MB each",
+      "ariaLabel": "Upload images",
+      "uploading": "Uploading…",
+      "retry": "Retry",
+      "uploadFailed": "Upload failed",
+      "cover": "Cover",
+      "altTextPlaceholder": "Alt text",
+      "setAsCover": "Set as cover",
+      "removeImage": "Remove image",
+      "dragToReorder": "Drag to reorder"
+    }
+  }
+}

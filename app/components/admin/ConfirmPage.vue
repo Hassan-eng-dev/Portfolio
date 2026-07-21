@@ -3,13 +3,15 @@
 // only uses email+password sign-in, so this simply forwards to the
 // dashboard once @nuxtjs/supabase has exchanged the session client-side.
 const router = useRouter()
+const localePath = useLocalePath()
+const { t } = useI18n()
 onMounted(() => {
-  router.replace('/admin')
+  router.replace(localePath('/admin'))
 })
 </script>
 
 <template>
   <div class="flex min-h-dvh items-center justify-center text-sm text-ink-500">
-    Signing you in…
+    {{ t('admin.confirm.signingIn') }}
   </div>
 </template>
