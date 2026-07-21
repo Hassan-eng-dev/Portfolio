@@ -6,6 +6,12 @@ const { t, localeProperties } = useI18n();
 const isRtl = computed(() => localeProperties.value.dir === 'rtl');
 const client = useSupabaseClient();
 
+// Public assets need the deploy base path prepended (e.g. GitHub Pages
+// serves this app from /Portfolio/, not /).
+const runtimeConfig = useRuntimeConfig();
+const withBase = (path: string) =>
+  runtimeConfig.app.baseURL.replace(/\/$/, '') + path;
+
 const {
   data: projects,
   status,
@@ -155,7 +161,7 @@ useSeoMeta({
 
         <div class="relative hidden sm:block">
           <motion.img
-            src="/avatar-designer.png"
+            :src="withBase('/avatar-designer.png')"
             :alt="t('home.avatarAlt')"
             class="hidden w-[22rem] max-w-none shrink-0 select-none sm:block lg:w-[28rem]"
             :initial="{ opacity: 0, y: 40, scale: 0.94 }"
@@ -172,7 +178,7 @@ useSeoMeta({
             }"
           />
           <motion.img
-            src="/avatar.png"
+            :src="withBase('/avatar.png')"
             :alt="t('home.avatarAlt')"
             class="hidden absolute top-20 start-40 w-[22rem] max-w-none shrink-0 select-none sm:block lg:w-[10rem]"
             :initial="{ opacity: 0, y: 40, scale: 0.94 }"
@@ -210,7 +216,7 @@ useSeoMeta({
         >
           <div class="relative">
             <video class="w-3/4 rounded-2xl" autoplay loop muted playsinline>
-              <source src="/Hello.mp4" type="video/mp4" />
+              <source :src="withBase('/Hello.mp4')" type="video/mp4" />
             </video>
           </div>
         </motion.div>
