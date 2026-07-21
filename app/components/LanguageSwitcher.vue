@@ -37,7 +37,7 @@ function close() {
 
     <div
       v-if="isOpen"
-      class="absolute end-0 top-full z-50 mt-2 w-40 overflow-hidden rounded-xl border border-ink-100 bg-surface py-1 shadow-card"
+      class="absolute end-0 top-full z-50 mt-2 w-40 overflow-hidden rounded-xl border border-ink-100 bg-white py-1 shadow-card"
       @click="close"
     >
       <NuxtLink
