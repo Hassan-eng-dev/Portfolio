@@ -57,7 +57,7 @@ useSeoMeta({
             {{ t('about.paragraph2') }}
           </p>
 
-          <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+          <NuxtLinkLocale v-slot="{ navigate, href }" to="/contact" custom>
             <motion.a
               :href="href"
               class="mt-8 inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white"
@@ -68,7 +68,7 @@ useSeoMeta({
             >
               {{ t('about.getInTouch') }}
             </motion.a>
-          </NuxtLink>
+          </NuxtLinkLocale>
         </motion.div>
 
         <motion.div

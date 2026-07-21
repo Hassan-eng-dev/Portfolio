@@ -49,12 +49,12 @@ const categoryLabel = computed(() =>
           :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
         >
-          <NuxtLink to="/portfolio" class="inline-flex items-center gap-1 text-sm font-medium text-ink-500 transition-colors hover:text-brand-700">
+          <NuxtLinkLocale to="/portfolio" class="inline-flex items-center gap-1 text-sm font-medium text-ink-500 transition-colors hover:text-brand-700">
             <svg viewBox="0 0 24 24" class="h-4 w-4 rtl:scale-x-[-1]" fill="none" aria-hidden="true">
               <path d="M11 18l-6-6 6-6M5 12h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             {{ t('projectDetail.backToPortfolio') }}
-          </NuxtLink>
+          </NuxtLinkLocale>
 
           <header class="mt-6 max-w-2xl">
             <p class="text-sm font-medium uppercase tracking-widest text-brand-600">{{ categoryLabel }}</p>
@@ -105,7 +105,7 @@ const categoryLabel = computed(() =>
             <p class="text-sm font-medium uppercase tracking-widest text-brand-600">{{ t('projectDetail.likeWhatYouSee') }}</p>
             <h2 class="mt-2 font-display text-2xl text-ink-900">{{ t('projectDetail.nextProject') }}</h2>
           </div>
-          <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+          <NuxtLinkLocale v-slot="{ navigate, href }" to="/contact" custom>
             <motion.a
               :href="href"
               class="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white shadow-glow"
@@ -119,7 +119,7 @@ const categoryLabel = computed(() =>
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </motion.a>
-          </NuxtLink>
+          </NuxtLinkLocale>
         </motion.div>
       </div>
     </template>

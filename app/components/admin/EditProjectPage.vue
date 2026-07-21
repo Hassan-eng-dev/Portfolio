@@ -78,9 +78,9 @@ useSeoMeta({ title: () => project.value?.title ?? t('admin.editProject.seoFallba
 
 <template>
   <div>
-    <NuxtLink to="/admin" class="text-sm font-medium text-ink-500 hover:text-ink-900">
+    <NuxtLinkLocale to="/admin" class="text-sm font-medium text-ink-500 hover:text-ink-900">
       <span class="inline-block rtl:scale-x-[-1]">&larr;</span> {{ t('admin.editProject.backToDashboard') }}
-    </NuxtLink>
+    </NuxtLinkLocale>
 
     <div v-if="status === 'pending'" class="mt-6 animate-pulse space-y-4">
       <div class="h-8 w-1/3 rounded bg-ink-100" />

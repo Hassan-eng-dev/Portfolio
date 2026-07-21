@@ -111,7 +111,7 @@ useSeoMeta({
             :variants="heroItem"
             class="mt-10 flex flex-wrap items-center gap-4"
           >
-            <NuxtLink v-slot="{ navigate, href }" to="/portfolio" custom>
+            <NuxtLinkLocale v-slot="{ navigate, href }" to="/portfolio" custom>
               <motion.a
                 :href="href"
                 class="inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white shadow-glow-lg"
@@ -136,8 +136,8 @@ useSeoMeta({
                   />
                 </svg>
               </motion.a>
-            </NuxtLink>
-            <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+            </NuxtLinkLocale>
+            <NuxtLinkLocale v-slot="{ navigate, href }" to="/contact" custom>
               <motion.a
                 :href="href"
                 class="inline-flex items-center gap-2 rounded-full border border-ink-200 px-6 py-3.5 text-sm font-medium text-ink-800"
@@ -148,7 +148,7 @@ useSeoMeta({
               >
                 {{ t('home.letsTalk') }}
               </motion.a>
-            </NuxtLink>
+            </NuxtLinkLocale>
           </motion.div>
         </motion.div>
 
@@ -247,7 +247,7 @@ useSeoMeta({
           </motion.p>
 
           <motion.div :variants="staggerItem" class="mt-8">
-            <NuxtLink v-slot="{ navigate, href }" to="/about" custom>
+            <NuxtLinkLocale v-slot="{ navigate, href }" to="/about" custom>
               <motion.a
                 :href="href"
                 class="inline-flex items-center gap-2 rounded-full border border-ink-200 px-6 py-3.5 text-sm font-medium text-ink-800"
@@ -272,7 +272,7 @@ useSeoMeta({
                   />
                 </svg>
               </motion.a>
-            </NuxtLink>
+            </NuxtLinkLocale>
           </motion.div>
         </motion.div>
       </div>
@@ -325,7 +325,7 @@ useSeoMeta({
             {{ t('home.selectedWork') }}
           </h2>
         </div>
-        <NuxtLink
+        <NuxtLinkLocale
           to="/portfolio"
           class="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 hover:text-brand-700"
         >
@@ -344,7 +344,7 @@ useSeoMeta({
               stroke-linejoin="round"
             />
           </svg>
-        </NuxtLink>
+        </NuxtLinkLocale>
       </motion.div>
 
       <div

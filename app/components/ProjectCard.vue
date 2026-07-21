@@ -16,7 +16,7 @@ const categoryLabel = computed(() => t(`categories.${props.project.category}`))
 </script>
 
 <template>
-  <NuxtLink v-slot="{ navigate, href }" :to="`/portfolio/${project.slug}`" custom>
+  <NuxtLinkLocale v-slot="{ navigate, href }" :to="`/portfolio/${project.slug}`" custom>
   <motion.a
     :href="href"
     class="group flex h-full flex-col"
@@ -80,5 +80,5 @@ const categoryLabel = computed(() => t(`categories.${props.project.category}`))
       />
     </div>
   </motion.a>
-  </NuxtLink>
+  </NuxtLinkLocale>
 </template>

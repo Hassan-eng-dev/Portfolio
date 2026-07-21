@@ -57,7 +57,7 @@ function scrollToTop() {
             {{ t('footer.heading') }}
           </h2>
         </div>
-        <NuxtLink v-slot="{ navigate, href }" to="/contact" custom>
+        <NuxtLinkLocale v-slot="{ navigate, href }" to="/contact" custom>
           <motion.a
             :href="href"
             class="inline-flex w-fit items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-medium text-white shadow-glow"
@@ -82,12 +82,12 @@ function scrollToTop() {
               />
             </svg>
           </motion.a>
-        </NuxtLink>
+        </NuxtLinkLocale>
       </motion.div>
 
       <div class="grid grid-cols-2 gap-10 pt-16 sm:grid-cols-4">
         <div class="col-span-2 sm:col-span-2">
-          <NuxtLink
+          <NuxtLinkLocale
             to="/"
             class="group inline-flex items-center gap-2 font-display text-lg font-medium tracking-tight text-white"
           >
@@ -96,7 +96,7 @@ function scrollToTop() {
               aria-hidden="true"
             />
             {{ t('nav.brand') }}
-          </NuxtLink>
+          </NuxtLinkLocale>
           <p class="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
             {{ t('footer.tagline') }}
           </p>
@@ -108,14 +108,14 @@ function scrollToTop() {
           </p>
           <ul class="mt-4 space-y-3 text-sm text-white/60">
             <li v-for="link in navLinks" :key="link.to">
-              <NuxtLink :to="link.to" class="transition-colors hover:text-white">
+              <NuxtLinkLocale :to="link.to" class="transition-colors hover:text-white">
                 {{ link.label }}
-              </NuxtLink>
+              </NuxtLinkLocale>
             </li>
             <li>
-              <NuxtLink to="/admin/login" class="transition-colors hover:text-white">
+              <NuxtLinkLocale to="/admin/login" class="transition-colors hover:text-white">
                 {{ t('footer.admin') }}
-              </NuxtLink>
+              </NuxtLinkLocale>
             </li>
           </ul>
         </div>

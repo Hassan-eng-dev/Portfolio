@@ -22,12 +22,12 @@ async function signOut() {
 <template>
   <aside class="flex h-full w-full flex-col border-e border-ink-100 bg-surface sm:w-64">
     <div class="px-6 py-6">
-      <NuxtLink to="/admin" class="font-display text-lg text-ink-900">{{ t('admin.sidebar.brand') }}</NuxtLink>
+      <NuxtLinkLocale to="/admin" class="font-display text-lg text-ink-900">{{ t('admin.sidebar.brand') }}</NuxtLinkLocale>
       <p v-if="user?.email" class="mt-1 truncate text-xs text-ink-400">{{ user.email }}</p>
     </div>
 
     <nav class="flex-1 space-y-1 px-3" :aria-label="t('admin.sidebar.ariaLabel')">
-      <NuxtLink
+      <NuxtLinkLocale
         v-for="link in links"
         :key="link.to"
         :to="link.to"
@@ -44,14 +44,14 @@ async function signOut() {
           <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
         </svg>
         {{ link.label }}
-      </NuxtLink>
+      </NuxtLinkLocale>
     </nav>
 
     <div class="border-t border-ink-100 p-3">
       <div class="px-3 pb-2">
         <LanguageSwitcher />
       </div>
-      <NuxtLink
+      <NuxtLinkLocale
         to="/"
         class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-ink-700 transition-colors hover:bg-ink-50"
       >
@@ -59,7 +59,7 @@ async function signOut() {
           <path d="M4 10.5 12 4l8 6.5M6 9v9a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1V9" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
         </svg>
         {{ t('admin.sidebar.viewSite') }}
-      </NuxtLink>
+      </NuxtLinkLocale>
       <button
         type="button"
         :disabled="signingOut"

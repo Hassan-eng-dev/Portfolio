@@ -44,7 +44,7 @@ useSeoMeta({ title: () => t('admin.dashboard.seoTitle') })
         <h1 class="font-display text-2xl text-ink-900">{{ t('admin.dashboard.heading') }}</h1>
         <p class="mt-1 text-sm text-ink-500">{{ t('admin.dashboard.subtitle') }}</p>
       </div>
-      <NuxtLink
+      <NuxtLinkLocale
         to="/admin/projects/new"
         class="inline-flex items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-700"
       >
@@ -52,7 +52,7 @@ useSeoMeta({ title: () => t('admin.dashboard.seoTitle') })
           <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
         </svg>
         {{ t('admin.dashboard.newProject') }}
-      </NuxtLink>
+      </NuxtLinkLocale>
     </div>
 
     <div v-if="status === 'pending'" class="mt-8 space-y-3">
@@ -65,9 +65,9 @@ useSeoMeta({ title: () => t('admin.dashboard.seoTitle') })
 
     <div v-else-if="!projects?.length" class="mt-8 rounded-lg border border-ink-100 bg-surface p-10 text-center text-ink-500">
       {{ t('admin.dashboard.empty') }}
-      <NuxtLink to="/admin/projects/new" class="font-medium text-primary-700 hover:underline">
+      <NuxtLinkLocale to="/admin/projects/new" class="font-medium text-primary-700 hover:underline">
         {{ t('admin.dashboard.createFirst') }}
-      </NuxtLink>
+      </NuxtLinkLocale>
     </div>
 
     <ul v-else class="mt-8 divide-y divide-ink-100 rounded-lg border border-ink-100 bg-surface">
@@ -105,12 +105,12 @@ useSeoMeta({ title: () => t('admin.dashboard.seoTitle') })
             {{ project.published ? t('admin.dashboard.published') : t('admin.dashboard.draft') }}
           </button>
 
-          <NuxtLink
+          <NuxtLinkLocale
             :to="`/admin/projects/${project.id}/edit`"
             class="text-sm font-medium text-ink-600 hover:text-ink-900"
           >
             {{ t('admin.dashboard.edit') }}
-          </NuxtLink>
+          </NuxtLinkLocale>
 
           <button
             type="button"
