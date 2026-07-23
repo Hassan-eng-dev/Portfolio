@@ -95,7 +95,7 @@ useSeoMeta({
         >
           <motion.p
             :variants="heroItem"
-            class="inline-flex items-center gap-2 rounded-full border border-brand-200 text-green-500 px-4 py-1.5 text-sm font-medium bg-green-100/75"
+            class="inline-flex items-center gap-2 rounded-full border border-brand-200 text-green-500 px-4 py-1.5 text-sm font-medium bg-green-100/75 dark:border-brand-800 dark:bg-green-500/10 dark:text-green-400"
           >
             <span class="h-1.5 w-1.5 rounded-full bg-green-500" />
             {{ t("home.badge") }}
@@ -103,7 +103,7 @@ useSeoMeta({
 
           <motion.h1
             :variants="heroItem"
-            class="text-hero mt-6 font-display text-ink-900"
+            class="text-hero mt-6 font-display text-ink-900 dark:text-white"
           >
             {{ t("home.heroTitlePrefix") }}
             <span class="text-gradient">{{
@@ -114,7 +114,7 @@ useSeoMeta({
 
           <motion.p
             :variants="heroItem"
-            class="mx-auto mt-6 max-w-xl text-lg text-ink-600 sm:mx-0"
+            class="mx-auto mt-6 max-w-xl text-lg text-ink-600 sm:mx-0 dark:text-ink-300"
           >
             {{ t("home.heroSubtitle") }}
           </motion.p>
@@ -126,7 +126,7 @@ useSeoMeta({
             <NuxtLinkLocale v-slot="{ navigate, href }" to="/portfolio" custom>
               <motion.a
                 :href="href"
-                class="inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white shadow-glow-lg"
+                class="inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white shadow-glow-lg dark:bg-white dark:text-ink-900"
                 :whileHover="{ scale: 1.05, y: -2 }"
                 :whilePress="{ scale: 0.96 }"
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
@@ -152,7 +152,7 @@ useSeoMeta({
             <NuxtLinkLocale v-slot="{ navigate, href }" to="/contact" custom>
               <motion.a
                 :href="href"
-                class="inline-flex items-center gap-2 rounded-full border border-ink-200 px-6 py-3.5 text-sm font-medium text-ink-800"
+                class="inline-flex items-center gap-2 rounded-full border border-ink-200 px-6 py-3.5 text-sm font-medium text-ink-800 dark:border-ink-700 dark:text-ink-100"
                 :whileHover="{ scale: 1.05, y: -2, borderColor: '#93c5fd' }"
                 :whilePress="{ scale: 0.96 }"
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
@@ -207,7 +207,7 @@ useSeoMeta({
 
     <!-- Video intro -->
     <section
-      class="relative overflow-hidden border-t border-ink-100 bg-surface-muted"
+      class="relative overflow-hidden border-t border-ink-100 bg-ink-50 dark:border-ink-800 dark:bg-ink-900/60"
     >
       <div class="grain-overlay" />
 
@@ -237,7 +237,7 @@ useSeoMeta({
         >
           <motion.h2
             :variants="staggerItem"
-            class="font-display text-4xl text-ink-900 sm:text-5xl"
+            class="font-display text-4xl text-ink-900 sm:text-5xl dark:text-white"
             style="text-wrap: balance"
           >
             {{ t("home.videoHeadingPrefix") }}
@@ -249,7 +249,7 @@ useSeoMeta({
 
           <motion.p
             :variants="staggerItem"
-            class="mt-6 max-w-xl text-lg text-ink-600"
+            class="mt-6 max-w-xl text-lg text-ink-600 dark:text-ink-300"
             style="text-wrap: pretty"
           >
             {{ t("home.videoParagraph1") }}
@@ -257,7 +257,7 @@ useSeoMeta({
 
           <motion.p
             :variants="staggerItem"
-            class="mt-4 max-w-xl text-lg text-ink-600"
+            class="mt-4 max-w-xl text-lg text-ink-600 dark:text-ink-300"
             style="text-wrap: pretty"
           >
             {{ t("home.videoParagraph2") }}
@@ -267,7 +267,7 @@ useSeoMeta({
             <NuxtLinkLocale v-slot="{ navigate, href }" to="/about" custom>
               <motion.a
                 :href="href"
-                class="inline-flex items-center gap-2 rounded-full border border-ink-200 px-6 py-3.5 text-sm font-medium text-ink-800"
+                class="inline-flex items-center gap-2 rounded-full border border-ink-200 px-6 py-3.5 text-sm font-medium text-ink-800 dark:border-ink-700 dark:text-ink-100"
                 :whileHover="{ scale: 1.05, y: -2, borderColor: '#93c5fd' }"
                 :whilePress="{ scale: 0.96 }"
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
@@ -296,7 +296,7 @@ useSeoMeta({
     </section>
 
     <!-- Marquee -->
-    <section class="border-y border-ink-100 py-6">
+    <section class="border-y border-ink-100 py-6 dark:border-ink-800">
       <Marquee :items="categoryLabels" />
     </section>
 
@@ -313,12 +313,12 @@ useSeoMeta({
           v-for="stat in stats"
           :key="stat.label"
           :variants="staggerItem"
-          class="rounded-2xl border border-ink-100 bg-surface-muted p-6 text-center transition-colors hover:border-brand-200"
+          class="rounded-2xl border border-ink-100 bg-ink-50 p-6 text-center transition-colors hover:border-brand-200 dark:border-ink-800 dark:bg-ink-900/60 dark:hover:border-brand-700"
         >
-          <p class="font-display text-3xl text-brand-600 sm:text-4xl">
+          <p class="font-display text-3xl text-brand-600 sm:text-4xl dark:text-brand-400">
             {{ stat.value }}
           </p>
-          <p class="mt-1 text-sm text-ink-500">{{ stat.label }}</p>
+          <p class="mt-1 text-sm text-ink-500 dark:text-ink-400">{{ stat.label }}</p>
         </motion.div>
       </div>
     </motion.section>
@@ -338,13 +338,13 @@ useSeoMeta({
           >
             {{ t("home.portfolioEyebrow") }}
           </p>
-          <h2 class="mt-2 font-display text-3xl text-ink-900 sm:text-4xl">
+          <h2 class="mt-2 font-display text-3xl text-ink-900 sm:text-4xl dark:text-white">
             {{ t("home.selectedWork") }}
           </h2>
         </div>
         <NuxtLinkLocale
           to="/portfolio"
-          class="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 hover:text-brand-700"
+          class="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 hover:text-brand-700 dark:text-ink-400 dark:hover:text-brand-400"
         >
           {{ t("home.seeAll") }}
           <svg
@@ -369,22 +369,22 @@ useSeoMeta({
         class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
         <div v-for="n in 6" :key="n" class="animate-pulse">
-          <div class="aspect-[4/5] rounded-2xl bg-ink-100" />
-          <div class="mt-3 h-4 w-2/3 rounded bg-ink-100" />
-          <div class="mt-2 h-3 w-1/3 rounded bg-ink-100" />
+          <div class="aspect-[4/5] rounded-2xl bg-ink-100 dark:bg-ink-800" />
+          <div class="mt-3 h-4 w-2/3 rounded bg-ink-100 dark:bg-ink-800" />
+          <div class="mt-2 h-3 w-1/3 rounded bg-ink-100 dark:bg-ink-800" />
         </div>
       </div>
 
       <p
         v-else-if="error"
-        class="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+        class="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300"
       >
         {{ t("home.projectsError") }}
       </p>
 
       <p
         v-else-if="!projects?.length"
-        class="rounded-2xl border border-ink-100 bg-ink-50 p-8 text-center text-ink-500"
+        class="rounded-2xl border border-ink-100 bg-ink-50 p-8 text-center text-ink-500 dark:border-ink-800 dark:bg-ink-900/60 dark:text-ink-400"
       >
         {{ t("home.projectsEmpty") }}
       </p>
@@ -413,10 +413,10 @@ useSeoMeta({
     </section>
 
     <!-- Process -->
-    <section class="border-t border-ink-100 bg-surface-muted">
+    <section class="border-t border-ink-100 bg-ink-50 dark:border-ink-800 dark:bg-ink-900/60">
       <div class="mx-auto max-w-content px-6 py-20 sm:px-10 sm:py-28">
         <motion.p
-          class="text-sm font-medium uppercase tracking-widest text-brand-600"
+          class="text-sm font-medium uppercase tracking-widest text-brand-600 dark:text-brand-400"
           :initial="{ opacity: 0, y: 16 }"
           :whileInView="{ opacity: 1, y: 0 }"
           :viewport="{ once: true, margin: '-80px' }"
@@ -424,7 +424,7 @@ useSeoMeta({
           {{ t("home.howIWork") }}
         </motion.p>
         <motion.h2
-          class="mt-2 max-w-lg font-display text-3xl text-ink-900 sm:text-4xl"
+          class="mt-2 max-w-lg font-display text-3xl text-ink-900 sm:text-4xl dark:text-white"
           :initial="{ opacity: 0, y: 16 }"
           :whileInView="{ opacity: 1, y: 0 }"
           :viewport="{ once: true, margin: '-80px' }"
@@ -444,7 +444,7 @@ useSeoMeta({
             v-for="(step, index) in process"
             :key="step.title"
             :variants="staggerItem"
-            class="relative rounded-2xl border border-ink-100 bg-surface p-8"
+            class="relative rounded-2xl border border-ink-100 bg-white p-8 dark:border-ink-800 dark:bg-ink-950"
             :whileHover="{
               y: -6,
               boxShadow:
@@ -452,13 +452,13 @@ useSeoMeta({
             }"
             :transition="{ type: 'spring', stiffness: 300, damping: 22 }"
           >
-            <span class="font-display text-4xl text-brand-200"
+            <span class="font-display text-4xl text-brand-200 dark:text-brand-900"
               >0{{ index + 1 }}</span
             >
-            <h3 class="mt-4 font-display text-xl text-ink-900">
+            <h3 class="mt-4 font-display text-xl text-ink-900 dark:text-white">
               {{ step.title }}
             </h3>
-            <p class="mt-2 text-ink-600">{{ step.body }}</p>
+            <p class="mt-2 text-ink-600 dark:text-ink-300">{{ step.body }}</p>
           </motion.div>
         </motion.div>
       </div>

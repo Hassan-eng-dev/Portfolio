@@ -61,7 +61,7 @@ const activeImage = computed(() =>
         v-for="(image, index) in images"
         :key="image.id"
         type="button"
-        class="group relative overflow-hidden rounded-2xl bg-ink-50"
+        class="group relative overflow-hidden rounded-2xl bg-ink-50 dark:bg-ink-900"
         :aria-label="t('gallery.openImage', { index: index + 1, total: images.length })"
         :whileHover="{ scale: 1.02 }"
         :whilePress="{ scale: 0.98 }"

@@ -67,6 +67,14 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: '%s · Hassan Adel',
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      script: [
+        {
+          // Applies the saved/system theme before first paint so there's no
+          // flash of the wrong theme while the app boots and hydrates.
+          children:
+            "try{var t=localStorage.getItem('theme');var d=t==='light'||t==='dark'?t:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',d);}catch(e){}",
+        },
+      ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },

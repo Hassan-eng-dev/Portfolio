@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
+  darkMode: ['selector', '[data-theme="dark"]'],
   content: [
     './app/components/**/*.{vue,js,ts}',
     './app/layouts/**/*.vue',

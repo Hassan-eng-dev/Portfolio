@@ -28,7 +28,7 @@ const categoryLabel = computed(() => getCategoryLabel(props.project.category))
     @click="navigate"
   >
     <div
-      class="relative min-h-0 overflow-hidden rounded-2xl bg-ink-50 shadow-card ring-1 ring-inset ring-ink-900/5 transition-shadow duration-500 ease-out group-hover:shadow-glow-lg"
+      class="relative min-h-0 overflow-hidden rounded-2xl bg-ink-50 shadow-card ring-1 ring-inset ring-ink-900/5 transition-shadow duration-500 ease-out group-hover:shadow-glow-lg dark:bg-ink-900 dark:ring-white/10"
       :class="aspectClass"
     >
       <img
@@ -38,7 +38,7 @@ const categoryLabel = computed(() => getCategoryLabel(props.project.category))
         :loading="priority ? 'eager' : 'lazy'"
         class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
       >
-      <div v-else class="flex h-full w-full items-center justify-center text-ink-300">
+      <div v-else class="flex h-full w-full items-center justify-center text-ink-300 dark:text-ink-700">
         <svg viewBox="0 0 24 24" class="h-10 w-10" fill="none" aria-hidden="true">
           <path
             d="M4 16l4.5-6 3.5 4.5L15.5 10 20 16M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
@@ -53,7 +53,7 @@ const categoryLabel = computed(() => getCategoryLabel(props.project.category))
       />
 
       <span
-        class="absolute start-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-ink-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 group-hover:opacity-100"
+        class="absolute start-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-ink-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 group-hover:opacity-100 dark:bg-ink-900/90 dark:text-ink-100"
       >
         {{ categoryLabel }}
       </span>
@@ -70,10 +70,10 @@ const categoryLabel = computed(() => getCategoryLabel(props.project.category))
 
     <div class="mt-4 flex shrink-0 items-start justify-between gap-3">
       <div>
-        <h3 class="font-display text-lg leading-tight text-ink-900 transition-colors group-hover:text-brand-700">
+        <h3 class="font-display text-lg leading-tight text-ink-900 transition-colors group-hover:text-brand-700 dark:text-white dark:group-hover:text-brand-400">
           {{ project.title }}
         </h3>
-        <p class="mt-0.5 text-sm text-ink-500">{{ categoryLabel }}</p>
+        <p class="mt-0.5 text-sm text-ink-500 dark:text-ink-400">{{ categoryLabel }}</p>
       </div>
       <span
         class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"

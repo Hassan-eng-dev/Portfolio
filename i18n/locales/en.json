@@ -29,6 +29,10 @@
   "languageSwitcher": {
     "label": "Language"
   },
+  "themeToggle": {
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
   "categories": {
     "branding": "Branding",
     "illustration": "Illustration",

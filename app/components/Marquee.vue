@@ -22,11 +22,11 @@ defineProps<{
           class="flex items-center gap-12 whitespace-nowrap sm:gap-16"
         >
           <span
-            class="text-xl font-medium tracking-tight text-ink-600 transition-colors duration-300 sm:text-2xl group-hover:text-ink-800"
+            class="text-xl font-medium tracking-tight text-ink-600 transition-colors duration-300 sm:text-2xl group-hover:text-ink-800 dark:text-ink-400 dark:group-hover:text-ink-200"
           >
             {{ item }}
           </span>
-          <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-ink-200" />
+          <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-ink-200 dark:bg-ink-700" />
         </li>
       </ul>
     </div>

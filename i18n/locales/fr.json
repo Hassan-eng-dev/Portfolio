@@ -29,6 +29,10 @@
   "languageSwitcher": {
     "label": "Langue"
   },
+  "themeToggle": {
+    "switchToLight": "Passer au thème clair",
+    "switchToDark": "Passer au thème sombre"
+  },
   "categories": {
     "branding": "Identité de marque",
     "illustration": "Illustration",

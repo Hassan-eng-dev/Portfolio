@@ -23,7 +23,7 @@ function select(value: string | null) {
     <button
       type="button"
       class="relative shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200"
-      :class="modelValue === null ? 'border-brand-600 text-white' : 'border-ink-200 text-ink-700 hover:border-brand-300 hover:bg-brand-50'"
+      :class="modelValue === null ? 'border-brand-600 text-white' : 'border-ink-200 text-ink-700 hover:border-brand-300 hover:bg-brand-50 dark:border-ink-700 dark:text-ink-300 dark:hover:border-brand-700 dark:hover:bg-brand-500/10'"
       :aria-pressed="modelValue === null"
       @click="select(null)"
     >

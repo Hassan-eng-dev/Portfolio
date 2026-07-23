@@ -29,6 +29,10 @@
   "languageSwitcher": {
     "label": "Язык"
   },
+  "themeToggle": {
+    "switchToLight": "Переключить на светлую тему",
+    "switchToDark": "Переключить на тёмную тему"
+  },
   "categories": {
     "branding": "Брендинг",
     "illustration": "Иллюстрация",

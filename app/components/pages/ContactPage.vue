@@ -61,15 +61,15 @@ async function onSubmit() {
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
       >
-        <p class="text-sm font-medium uppercase tracking-widest text-brand-600">
+        <p class="text-sm font-medium uppercase tracking-widest text-brand-600 dark:text-brand-400">
           {{ t('contact.eyebrow') }}
         </p>
         <h1
-          class="mt-3 font-display text-4xl leading-tight text-ink-900 sm:text-5xl"
+          class="mt-3 font-display text-4xl leading-tight text-ink-900 sm:text-5xl dark:text-white"
         >
           {{ t('contact.heading') }}
         </h1>
-        <p class="mt-5 max-w-md text-lg text-ink-600">
+        <p class="mt-5 max-w-md text-lg text-ink-600 dark:text-ink-300">
           {{ t('contact.intro') }}
         </p>
 
@@ -77,17 +77,17 @@ async function onSubmit() {
           <div
             v-for="detail in details"
             :key="detail.label"
-            class="border-t border-ink-100 pt-4 first:border-t-0 first:pt-0"
+            class="border-t border-ink-100 pt-4 first:border-t-0 first:pt-0 dark:border-ink-800"
           >
-            <dt class="text-sm text-ink-500">{{ detail.label }}</dt>
+            <dt class="text-sm text-ink-500 dark:text-ink-400">{{ detail.label }}</dt>
             <dd class="mt-1">
               <a
                 v-if="detail.href"
                 :href="detail.href"
-                class="font-display text-lg text-ink-900 transition-colors hover:text-brand-700"
+                class="font-display text-lg text-ink-900 transition-colors hover:text-brand-700 dark:text-white dark:hover:text-brand-400"
                 >{{ detail.value }}</a
               >
-              <span v-else class="font-display text-lg text-ink-900">{{
+              <span v-else class="font-display text-lg text-ink-900 dark:text-white">{{
                 detail.value
               }}</span>
             </dd>
@@ -96,7 +96,7 @@ async function onSubmit() {
       </motion.div>
 
       <motion.div
-        class="overflow-hidden rounded-3xl border border-ink-100 bg-surface/70 p-6 shadow-card backdrop-blur-xl sm:p-10"
+        class="overflow-hidden rounded-3xl border border-ink-100 bg-white/70 p-6 shadow-card backdrop-blur-xl sm:p-10 dark:border-ink-800 dark:bg-ink-900/70"
         :initial="{ opacity: 0, y: 24 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }"
@@ -137,8 +137,8 @@ async function onSubmit() {
                 />
               </svg>
             </motion.span>
-            <h2 class="font-display text-2xl text-ink-900">{{ t('contact.successTitle') }}</h2>
-            <p class="max-w-sm text-ink-600">
+            <h2 class="font-display text-2xl text-ink-900 dark:text-white">{{ t('contact.successTitle') }}</h2>
+            <p class="max-w-sm text-ink-600 dark:text-ink-300">
               {{ t('contact.successBody') }}
             </p>
           </motion.div>
@@ -153,7 +153,7 @@ async function onSubmit() {
             @submit.prevent="onSubmit"
           >
             <div>
-              <label for="name" class="block text-sm font-medium text-ink-800"
+              <label for="name" class="block text-sm font-medium text-ink-800 dark:text-ink-200"
                 >{{ t('contact.form.name') }}</label
               >
               <input
@@ -162,12 +162,12 @@ async function onSubmit() {
                 type="text"
                 required
                 autocomplete="name"
-                class="mt-2 block w-full rounded-xl border border-ink-200 bg-surface px-4 py-3 text-ink-900 placeholder:text-ink-300 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+                class="mt-2 block w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-ink-900 placeholder:text-ink-300 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:placeholder:text-ink-600"
               />
             </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium text-ink-800"
+              <label for="email" class="block text-sm font-medium text-ink-800 dark:text-ink-200"
                 >{{ t('contact.form.email') }}</label
               >
               <input
@@ -176,14 +176,14 @@ async function onSubmit() {
                 type="email"
                 required
                 autocomplete="email"
-                class="mt-2 block w-full rounded-xl border border-ink-200 bg-surface px-4 py-3 text-ink-900 placeholder:text-ink-300 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+                class="mt-2 block w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-ink-900 placeholder:text-ink-300 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:placeholder:text-ink-600"
               />
             </div>
 
             <div>
               <label
                 for="message"
-                class="block text-sm font-medium text-ink-800"
+                class="block text-sm font-medium text-ink-800 dark:text-ink-200"
                 >{{ t('contact.form.message') }}</label
               >
               <textarea
@@ -191,21 +191,21 @@ async function onSubmit() {
                 v-model="form.message"
                 required
                 rows="5"
-                class="mt-2 block w-full resize-none rounded-xl border border-ink-200 bg-surface px-4 py-3 text-ink-900 placeholder:text-ink-300 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+                class="mt-2 block w-full resize-none rounded-xl border border-ink-200 bg-white px-4 py-3 text-ink-900 placeholder:text-ink-300 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:placeholder:text-ink-600"
               />
-              <p class="mt-2 text-sm text-ink-400">
+              <p class="mt-2 text-sm text-ink-400 dark:text-ink-500">
                 {{ t('contact.form.messageHelper') }}
               </p>
             </div>
 
-            <p v-if="submitError" role="alert" class="text-sm text-red-600">
+            <p v-if="submitError" role="alert" class="text-sm text-red-600 dark:text-red-400">
               {{ submitError }}
             </p>
 
             <motion.button
               type="submit"
               :disabled="submitting"
-              class="inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
+              class="inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-ink-900"
               :whileHover="submitting ? {} : { scale: 1.05, y: -2 }"
               :whilePress="submitting ? {} : { scale: 0.96 }"
               :transition="{ type: 'spring', stiffness: 350, damping: 22 }"

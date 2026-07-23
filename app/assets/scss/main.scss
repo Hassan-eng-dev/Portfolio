@@ -29,6 +29,8 @@
   --duration-fast: 150ms;
   --duration-base: 250ms;
   --duration-slow: 400ms;
+
+  color-scheme: light;
 }
 
 :root[data-theme="dark"] {
@@ -36,6 +38,7 @@
   --color-surface: #16181d;
   --color-surface-muted: #1c1f26;
   --color-border: #2a2d35;
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,6 +47,7 @@
     --color-surface: #16181d;
     --color-surface-muted: #1c1f26;
     --color-border: #2a2d35;
+    color-scheme: dark;
   }
 }
 
@@ -72,6 +76,9 @@ html {
 body {
   background-color: var(--color-surface);
   color: var(--color-ink);
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
 }
 
 // Fraunces/Inter don't cover Arabic script — swap in an Arabic-friendly

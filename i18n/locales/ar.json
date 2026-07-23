@@ -29,6 +29,10 @@
   "languageSwitcher": {
     "label": "اللغة"
   },
+  "themeToggle": {
+    "switchToLight": "التبديل إلى الوضع الفاتح",
+    "switchToDark": "التبديل إلى الوضع الداكن"
+  },
   "categories": {
     "branding": "الهوية البصرية",
     "illustration": "الرسم التوضيحي",

@@ -23,7 +23,7 @@ function close() {
   <div class="relative" @keydown.escape="close">
     <button
       type="button"
-      class="inline-flex h-9 items-center gap-1.5 rounded-full border border-ink-200 px-3 text-xs font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50"
+      class="inline-flex h-9 items-center gap-1.5 rounded-full border border-ink-200 px-3 text-xs font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 dark:border-ink-700 dark:text-ink-300 dark:hover:border-brand-700 dark:hover:bg-brand-500/10"
       :aria-expanded="isOpen"
       :aria-label="t('languageSwitcher.label')"
       @click="isOpen = !isOpen"
@@ -37,15 +37,15 @@ function close() {
 
     <div
       v-if="isOpen"
-      class="absolute end-0 top-full z-50 mt-2 w-40 overflow-hidden rounded-xl border border-ink-100 bg-white py-1 shadow-card"
+      class="absolute end-0 top-full z-50 mt-2 w-40 overflow-hidden rounded-xl border border-ink-100 bg-white py-1 shadow-card dark:border-ink-800 dark:bg-ink-900"
       @click="close"
     >
       <NuxtLink
         v-for="loc in availableLocales"
         :key="loc.code"
         :to="switchLocalePath(loc.code)"
-        class="block px-4 py-2 text-sm transition-colors hover:bg-ink-50"
-        :class="loc.code === locale ? 'font-medium text-brand-700' : 'text-ink-700'"
+        class="block px-4 py-2 text-sm transition-colors hover:bg-ink-50 dark:hover:bg-ink-800"
+        :class="loc.code === locale ? 'font-medium text-brand-700 dark:text-brand-300' : 'text-ink-700 dark:text-ink-300'"
       >
         {{ loc.name }}
       </NuxtLink>
