@@ -17,7 +17,6 @@ const emit = defineEmits<{
       category: string
       tags: string[]
       published: boolean
-      sortOrder: number
       coverUrl: string | null
       images: { url: string; altText: string }[]
     },
@@ -31,7 +30,6 @@ const title = ref(props.initial?.title ?? '')
 const description = ref(props.initial?.description ?? '')
 const category = ref(props.initial?.category ?? PROJECT_CATEGORIES[0])
 const published = ref(props.initial?.published ?? false)
-const sortOrder = ref(props.initial?.sort_order ?? 0)
 const coverUrl = ref<string | null>(props.initial?.cover_image_url ?? null)
 const tagInput = ref('')
 const tags = ref<string[]>(props.initial?.tags ?? [])
@@ -78,7 +76,6 @@ function onSubmit() {
     category: category.value,
     tags: tags.value,
     published: published.value,
-    sortOrder: Number(sortOrder.value) || 0,
     coverUrl: coverUrl.value,
     images: images.value.map((image) => ({ url: image.url, altText: image.altText })),
   })
@@ -100,7 +97,7 @@ function onSubmit() {
         <p v-if="touched && titleError" class="mt-1 text-sm text-red-600">{{ titleError }}</p>
       </div>
 
-      <div>
+      <div class="sm:col-span-2">
         <label for="category" class="block text-sm font-medium text-ink-800">{{ t('admin.form.category') }}</label>
         <select
           id="category"
@@ -109,17 +106,6 @@ function onSubmit() {
         >
           <option v-for="c in PROJECT_CATEGORIES" :key="c" :value="c">{{ categoryLabel(c) }}</option>
         </select>
-      </div>
-
-      <div>
-        <label for="sort-order" class="block text-sm font-medium text-ink-800">{{ t('admin.form.sortOrder') }}</label>
-        <input
-          id="sort-order"
-          v-model="sortOrder"
-          type="number"
-          class="mt-2 block w-full rounded-lg border border-ink-200 px-4 py-3 text-ink-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
-        >
-        <p class="mt-1 text-sm text-ink-400">{{ t('admin.form.sortOrderHelper') }}</p>
       </div>
 
       <div class="sm:col-span-2">

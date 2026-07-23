@@ -191,7 +191,10 @@
       "published": "Published",
       "draft": "Draft",
       "edit": "Edit",
-      "delete": "Delete"
+      "delete": "Delete",
+      "reorderHint": "Drag a project by its handle to reorder — the first one shown here appears first on the public site.",
+      "reorderError": "Couldn't save the new order. Please try again.",
+      "dragToReorder": "Drag to reorder"
     },
     "login": {
       "seoTitle": "Admin login",
@@ -228,8 +231,6 @@
       "titleRequired": "Title is required.",
       "category": "Category",
       "categoryRequired": "Category is required.",
-      "sortOrder": "Sort order",
-      "sortOrderHelper": "Lower numbers appear first.",
       "description": "Description",
       "tags": "Tags",
       "tagsPlaceholder": "Add a tag and press Enter",

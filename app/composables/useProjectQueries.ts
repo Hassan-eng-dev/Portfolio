@@ -131,6 +131,14 @@ export async function replaceProjectImages(
   return data as ProjectImage[]
 }
 
+export async function reorderProjects(client: Client, orderedIds: string[]) {
+  const results = await Promise.all(
+    orderedIds.map((id, index) => client.from('projects').update({ sort_order: index }).eq('id', id)),
+  )
+  const failed = results.find((result) => result.error)
+  if (failed?.error) throw failed.error
+}
+
 export function slugify(input: string) {
   return input
     .toLowerCase()

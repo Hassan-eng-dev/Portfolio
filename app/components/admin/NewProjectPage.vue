@@ -13,7 +13,6 @@ async function onSubmit(payload: {
   category: string;
   tags: string[];
   published: boolean;
-  sortOrder: number;
   coverUrl: string | null;
   images: { url: string; altText: string }[];
 }) {
@@ -21,6 +20,8 @@ async function onSubmit(payload: {
   errorMessage.value = null;
 
   try {
+    const existingProjects = await fetchAllProjectsAdmin(client);
+
     const project = await createProject(client, {
       title: payload.title,
       slug: slugify(payload.title),
@@ -28,7 +29,7 @@ async function onSubmit(payload: {
       category: payload.category,
       tags: payload.tags,
       published: payload.published,
-      sort_order: payload.sortOrder,
+      sort_order: existingProjects.length,
       cover_image_url: payload.coverUrl,
     });
 

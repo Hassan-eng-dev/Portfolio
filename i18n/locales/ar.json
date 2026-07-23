@@ -191,7 +191,10 @@
       "published": "منشور",
       "draft": "مسودة",
       "edit": "تعديل",
-      "delete": "حذف"
+      "delete": "حذف",
+      "reorderHint": "اسحب المشروع من المقبض لإعادة الترتيب — أول مشروع هنا يظهر أولًا في الموقع العام.",
+      "reorderError": "تعذّر حفظ الترتيب الجديد. حاول مرة أخرى.",
+      "dragToReorder": "اسحب لإعادة الترتيب"
     },
     "login": {
       "seoTitle": "تسجيل دخول الإدارة",
@@ -228,8 +231,6 @@
       "titleRequired": "العنوان مطلوب.",
       "category": "الفئة",
       "categoryRequired": "الفئة مطلوبة.",
-      "sortOrder": "ترتيب الفرز",
-      "sortOrderHelper": "الأرقام الأصغر تظهر أولًا.",
       "description": "الوصف",
       "tags": "الوسوم",
       "tagsPlaceholder": "أضف وسمًا واضغط Enter",
