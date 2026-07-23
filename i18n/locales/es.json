@@ -191,7 +191,10 @@
       "published": "Publicado",
       "draft": "Borrador",
       "edit": "Editar",
-      "delete": "Eliminar"
+      "delete": "Eliminar",
+      "reorderHint": "Arrastra un proyecto desde su asa para reordenar — el primero que aparece aquí se muestra primero en el sitio público.",
+      "reorderError": "No se pudo guardar el nuevo orden. Inténtalo de nuevo.",
+      "dragToReorder": "Arrastrar para reordenar"
     },
     "login": {
       "seoTitle": "Inicio de sesión de admin",
@@ -228,8 +231,6 @@
       "titleRequired": "El título es obligatorio.",
       "category": "Categoría",
       "categoryRequired": "La categoría es obligatoria.",
-      "sortOrder": "Orden",
-      "sortOrderHelper": "Los números más bajos aparecen primero.",
       "description": "Descripción",
       "tags": "Etiquetas",
       "tagsPlaceholder": "Agrega una etiqueta y presiona Enter",

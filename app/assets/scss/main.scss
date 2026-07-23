@@ -128,8 +128,8 @@ body {
 // ---------------------------------------------------------------------
 
 .text-hero {
-  font-size: 5rem;
-  line-height: 1.02;
+  font-size: clamp(2.25rem, 4.8vw + 1.175rem, 5rem);
+  line-height: 1.05;
   letter-spacing: -0.02em;
 }
 

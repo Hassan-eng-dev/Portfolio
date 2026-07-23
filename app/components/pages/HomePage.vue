@@ -3,7 +3,7 @@ import { motion, stagger } from "motion-v";
 import { PROJECT_CATEGORIES } from "~~/shared/types/database.types";
 
 const { t, localeProperties } = useI18n();
-const isRtl = computed(() => localeProperties.value.dir === 'rtl');
+const isRtl = computed(() => localeProperties.value.dir === "rtl");
 const client = useSupabaseClient();
 
 // Public assets need the deploy base path prepended (e.g. GitHub Pages
@@ -17,29 +17,38 @@ const {
   status,
   error,
 } = await useAsyncData("featured-projects", () =>
-  fetchFeaturedProjects(client, 6),
+  fetchFeaturedProjects(client, 6)
 );
 
 const stats = computed(() => [
-  { value: "40+", label: t('home.stats.projects') },
-  { value: "6", label: t('home.stats.years') },
-  { value: "5", label: t('home.stats.disciplines') },
-  { value: "18", label: t('home.stats.clients') },
+  { value: "40+", label: t("home.stats.projects") },
+  { value: "6", label: t("home.stats.years") },
+  { value: "5", label: t("home.stats.disciplines") },
+  { value: "18", label: t("home.stats.clients") },
 ]);
 
 const process = computed(() => [
-  { title: t('home.process.discover.title'), body: t('home.process.discover.body') },
-  { title: t('home.process.design.title'), body: t('home.process.design.body') },
-  { title: t('home.process.deliver.title'), body: t('home.process.deliver.body') },
+  {
+    title: t("home.process.discover.title"),
+    body: t("home.process.discover.body"),
+  },
+  {
+    title: t("home.process.design.title"),
+    body: t("home.process.design.body"),
+  },
+  {
+    title: t("home.process.deliver.title"),
+    body: t("home.process.deliver.body"),
+  },
 ]);
 
 const getCategoryLabel = useCategoryLabel();
 const categoryLabels = computed(() =>
-  [...PROJECT_CATEGORIES].map(getCategoryLabel),
+  [...PROJECT_CATEGORIES].map(getCategoryLabel)
 );
 
 const bentoAspect = (index: number) =>
-  index === 0 ? "flex-1" : "aspect-[4/5]";
+  index === 0 ? "aspect-[4/5] sm:aspect-auto sm:flex-1" : "aspect-[4/5]";
 const bentoSpan = (index: number) =>
   index === 0 ? "sm:col-span-2 sm:row-span-2" : "";
 
@@ -70,8 +79,8 @@ const staggerItem = {
 };
 
 useSeoMeta({
-  title: () => t('home.seoTitle'),
-  description: () => t('home.seoDescription'),
+  title: () => t("home.seoTitle"),
+  description: () => t("home.seoDescription"),
 });
 </script>
 
@@ -82,7 +91,7 @@ useSeoMeta({
       <div class="grain-overlay" />
 
       <div
-        class="relative mx-auto flex max-w-content items-center justify-between gap-12 px-6 pb-20 pt-24 sm:px-10 sm:pb-28 sm:pt-32"
+        class="relative mx-auto flex max-w-content flex-col-reverse items-center gap-10 px-6 pb-16 pt-20 text-center sm:flex-row sm:justify-between sm:gap-12 sm:px-10 sm:pb-28 sm:pt-32 sm:text-start"
       >
         <motion.div
           class="max-w-2xl"
@@ -95,28 +104,30 @@ useSeoMeta({
             class="inline-flex items-center gap-2 rounded-full border border-brand-200 text-green-500 px-4 py-1.5 text-sm font-medium bg-green-100/75"
           >
             <span class="h-1.5 w-1.5 rounded-full bg-green-500" />
-            {{ t('home.badge') }}
+            {{ t("home.badge") }}
           </motion.p>
 
           <motion.h1
             :variants="heroItem"
             class="text-hero mt-6 font-display text-ink-900"
           >
-            {{ t('home.heroTitlePrefix') }}
-            <span class="text-gradient">{{ t('home.heroTitleHighlight') }}</span>
-            {{ t('home.heroTitleSuffix') }}
+            {{ t("home.heroTitlePrefix") }}
+            <span class="text-gradient">{{
+              t("home.heroTitleHighlight")
+            }}</span>
+            {{ t("home.heroTitleSuffix") }}
           </motion.h1>
 
           <motion.p
             :variants="heroItem"
-            class="mt-6 max-w-xl text-lg text-ink-600"
+            class="mx-auto mt-6 max-w-xl text-lg text-ink-600 sm:mx-0"
           >
-            {{ t('home.heroSubtitle') }}
+            {{ t("home.heroSubtitle") }}
           </motion.p>
 
           <motion.div
             :variants="heroItem"
-            class="mt-10 flex flex-wrap items-center gap-4"
+            class="mt-10 flex flex-wrap items-center justify-center gap-4 sm:justify-start"
           >
             <NuxtLinkLocale v-slot="{ navigate, href }" to="/portfolio" custom>
               <motion.a
@@ -127,7 +138,7 @@ useSeoMeta({
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
                 @click="navigate"
               >
-                {{ t('home.viewWork') }}
+                {{ t("home.viewWork") }}
                 <svg
                   viewBox="0 0 24 24"
                   class="h-4 w-4 rtl:scale-x-[-1]"
@@ -153,17 +164,19 @@ useSeoMeta({
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
                 @click="navigate"
               >
-                {{ t('home.letsTalk') }}
+                {{ t("home.letsTalk") }}
               </motion.a>
             </NuxtLinkLocale>
           </motion.div>
         </motion.div>
 
-        <div class="relative hidden sm:block">
+        <div
+          class="relative mx-auto w-80 shrink-0 sm:mx-0 sm:w-72 md:w-80 lg:w-[28rem]"
+        >
           <motion.img
             :src="withBase('/avatar-designer.png')"
             :alt="t('home.avatarAlt')"
-            class="hidden w-[22rem] max-w-none shrink-0 select-none sm:block lg:w-[28rem]"
+            class="w-full max-w-none select-none"
             :initial="{ opacity: 0, y: 40, scale: 0.94 }"
             :animate="{ opacity: 1, y: [0, -40, 0], scale: 1 }"
             :transition="{
@@ -180,7 +193,7 @@ useSeoMeta({
           <motion.img
             :src="withBase('/avatar.png')"
             :alt="t('home.avatarAlt')"
-            class="hidden absolute top-20 start-40 w-[22rem] max-w-none shrink-0 select-none sm:block lg:w-[10rem]"
+            class="absolute top-[13%] start-[36%] w-[36%] max-w-none select-none drop-shadow-xl"
             :initial="{ opacity: 0, y: 40, scale: 0.94 }"
             :animate="{ opacity: 1, y: [0, -0, 0], scale: 1 }"
             :transition="{
@@ -215,7 +228,7 @@ useSeoMeta({
           :transition="{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }"
         >
           <div class="relative">
-            <video class="w-3/4 rounded-2xl" autoplay loop muted playsinline>
+            <video class="md:w-3/4 rounded-2xl" autoplay loop muted playsinline>
               <source :src="withBase('/Hello.mp4')" type="video/mp4" />
             </video>
           </div>
@@ -233,8 +246,11 @@ useSeoMeta({
             class="font-display text-4xl text-ink-900 sm:text-5xl"
             style="text-wrap: balance"
           >
-            {{ t('home.videoHeadingPrefix') }}
-            <span class="text-gradient">{{ t('home.videoHeadingHighlight') }}</span> {{ t('home.videoHeadingSuffix') }}
+            {{ t("home.videoHeadingPrefix") }}
+            <span class="text-gradient">{{
+              t("home.videoHeadingHighlight")
+            }}</span>
+            {{ t("home.videoHeadingSuffix") }}
           </motion.h2>
 
           <motion.p
@@ -242,7 +258,7 @@ useSeoMeta({
             class="mt-6 max-w-xl text-lg text-ink-600"
             style="text-wrap: pretty"
           >
-            {{ t('home.videoParagraph1') }}
+            {{ t("home.videoParagraph1") }}
           </motion.p>
 
           <motion.p
@@ -250,7 +266,7 @@ useSeoMeta({
             class="mt-4 max-w-xl text-lg text-ink-600"
             style="text-wrap: pretty"
           >
-            {{ t('home.videoParagraph2') }}
+            {{ t("home.videoParagraph2") }}
           </motion.p>
 
           <motion.div :variants="staggerItem" class="mt-8">
@@ -263,7 +279,7 @@ useSeoMeta({
                 :transition="{ type: 'spring', stiffness: 350, damping: 22 }"
                 @click="navigate"
               >
-                {{ t('home.getToKnowMe') }}
+                {{ t("home.getToKnowMe") }}
                 <svg
                   viewBox="0 0 24 24"
                   class="h-4 w-4"
@@ -326,17 +342,17 @@ useSeoMeta({
           <p
             class="text-sm font-medium uppercase tracking-widest text-brand-600"
           >
-            {{ t('home.portfolioEyebrow') }}
+            {{ t("home.portfolioEyebrow") }}
           </p>
           <h2 class="mt-2 font-display text-3xl text-ink-900 sm:text-4xl">
-            {{ t('home.selectedWork') }}
+            {{ t("home.selectedWork") }}
           </h2>
         </div>
         <NuxtLinkLocale
           to="/portfolio"
           class="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 hover:text-brand-700"
         >
-          {{ t('home.seeAll') }}
+          {{ t("home.seeAll") }}
           <svg
             viewBox="0 0 24 24"
             class="h-4 w-4 transition-transform rtl:scale-x-[-1] group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
@@ -369,14 +385,14 @@ useSeoMeta({
         v-else-if="error"
         class="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
       >
-        {{ t('home.projectsError') }}
+        {{ t("home.projectsError") }}
       </p>
 
       <p
         v-else-if="!projects?.length"
         class="rounded-2xl border border-ink-100 bg-ink-50 p-8 text-center text-ink-500"
       >
-        {{ t('home.projectsEmpty') }}
+        {{ t("home.projectsEmpty") }}
       </p>
 
       <motion.div
@@ -411,7 +427,7 @@ useSeoMeta({
           :whileInView="{ opacity: 1, y: 0 }"
           :viewport="{ once: true, margin: '-80px' }"
         >
-          {{ t('home.howIWork') }}
+          {{ t("home.howIWork") }}
         </motion.p>
         <motion.h2
           class="mt-2 max-w-lg font-display text-3xl text-ink-900 sm:text-4xl"
@@ -420,7 +436,7 @@ useSeoMeta({
           :viewport="{ once: true, margin: '-80px' }"
           :transition="{ delay: 0.1 }"
         >
-          {{ t('home.processSubtitle') }}
+          {{ t("home.processSubtitle") }}
         </motion.h2>
 
         <motion.div

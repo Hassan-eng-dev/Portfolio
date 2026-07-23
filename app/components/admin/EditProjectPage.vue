@@ -22,7 +22,6 @@ async function onSubmit(payload: {
   category: string
   tags: string[]
   published: boolean
-  sortOrder: number
   coverUrl: string | null
   images: { url: string; altText: string }[]
 }) {
@@ -36,7 +35,6 @@ async function onSubmit(payload: {
       category: payload.category,
       tags: payload.tags,
       published: payload.published,
-      sort_order: payload.sortOrder,
       cover_image_url: payload.coverUrl,
     })
 
