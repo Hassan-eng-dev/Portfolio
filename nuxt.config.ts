@@ -17,7 +17,22 @@ export default defineNuxtConfig({
     'motion-v/nuxt',
     '@tresjs/nuxt',
     '@nuxtjs/i18n',
+    '@nuxt/image',
   ],
+
+  image: {
+    // Supabase Storage serves the source project photos; IPX fetches and
+    // resizes/re-encodes them on request so cards/thumbnails don't ship
+    // full-resolution originals.
+    domains: [new URL(process.env.SUPABASE_URL ?? 'https://placeholder.supabase.co').hostname],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+    },
+  },
 
   i18n: {
     locales: [

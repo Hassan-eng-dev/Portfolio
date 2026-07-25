@@ -11,7 +11,7 @@ const {
   status,
   error,
 } = await useAsyncData("featured-projects", () =>
-  fetchFeaturedProjects(client, 6)
+  fetchFeaturedProjects(client, 6),
 );
 
 const stats = computed(() => [
@@ -38,7 +38,7 @@ const process = computed(() => [
 
 const getCategoryLabel = useCategoryLabel();
 const categoryLabels = computed(() =>
-  [...PROJECT_CATEGORIES].map(getCategoryLabel)
+  [...PROJECT_CATEGORIES].map(getCategoryLabel),
 );
 
 const bentoAspect = (index: number) =>
@@ -164,44 +164,15 @@ useSeoMeta({
           </motion.div>
         </motion.div>
 
-        <div
-          class="relative mx-auto w-80 shrink-0 sm:mx-0 sm:w-72 md:w-80 lg:w-[28rem]"
+        <video
+          class="md:w-5/12 rounded-2xl mix-blend-multiply dark:mix-blend-normal"
+          autoplay
+          loop
+          muted
+          playsinline
         >
-          <motion.img
-            src="/avatar-designer.png"
-            :alt="t('home.avatarAlt')"
-            class="w-full max-w-none select-none"
-            :initial="{ opacity: 0, y: 40, scale: 0.94 }"
-            :animate="{ opacity: 1, y: [0, -40, 0], scale: 1 }"
-            :transition="{
-              opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-              scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-              y: {
-                duration: 5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 0.8,
-              },
-            }"
-          />
-          <motion.img
-            src="/avatar.png"
-            :alt="t('home.avatarAlt')"
-            class="absolute top-[13%] start-[36%] w-[36%] max-w-none select-none drop-shadow-xl"
-            :initial="{ opacity: 0, y: 40, scale: 0.94 }"
-            :animate="{ opacity: 1, y: [0, -0, 0], scale: 1 }"
-            :transition="{
-              opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-              scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-              y: {
-                duration: 5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 0.8,
-              },
-            }"
-          />
-        </div>
+          <source src="/Hello.mp4" type="video/mp4" />
+        </video>
       </div>
     </section>
 
@@ -222,9 +193,44 @@ useSeoMeta({
           :transition="{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }"
         >
           <div class="relative">
-            <video class="md:w-3/4 rounded-2xl" autoplay loop muted playsinline>
-              <source src="/Hello.mp4" type="video/mp4" />
-            </video>
+            <div
+              class="relative mx-auto w-80 shrink-0 sm:mx-0 sm:w-72 md:w-80 lg:w-[28rem]"
+            >
+              <motion.img
+                src="/avatar-designer.png"
+                :alt="t('home.avatarAlt')"
+                class="w-full max-w-none select-none"
+                :initial="{ opacity: 0, y: 40, scale: 0.94 }"
+                :animate="{ opacity: 1, y: [0, -40, 0], scale: 1 }"
+                :transition="{
+                  opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                  scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                  y: {
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 0.8,
+                  },
+                }"
+              />
+              <motion.img
+                src="/avatar.png"
+                :alt="t('home.avatarAlt')"
+                class="absolute top-[13%] start-[36%] w-[36%] max-w-none select-none drop-shadow-xl"
+                :initial="{ opacity: 0, y: 40, scale: 0.94 }"
+                :animate="{ opacity: 1, y: [0, -0, 0], scale: 1 }"
+                :transition="{
+                  opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                  scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                  y: {
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 0.8,
+                  },
+                }"
+              />
+            </div>
           </div>
         </motion.div>
 
@@ -315,10 +321,14 @@ useSeoMeta({
           :variants="staggerItem"
           class="rounded-2xl border border-ink-100 bg-ink-50 p-6 text-center transition-colors hover:border-brand-200 dark:border-ink-800 dark:bg-ink-900/60 dark:hover:border-brand-700"
         >
-          <p class="font-display text-3xl text-brand-600 sm:text-4xl dark:text-brand-400">
+          <p
+            class="font-display text-3xl text-brand-600 sm:text-4xl dark:text-brand-400"
+          >
             {{ stat.value }}
           </p>
-          <p class="mt-1 text-sm text-ink-500 dark:text-ink-400">{{ stat.label }}</p>
+          <p class="mt-1 text-sm text-ink-500 dark:text-ink-400">
+            {{ stat.label }}
+          </p>
         </motion.div>
       </div>
     </motion.section>
@@ -338,7 +348,9 @@ useSeoMeta({
           >
             {{ t("home.portfolioEyebrow") }}
           </p>
-          <h2 class="mt-2 font-display text-3xl text-ink-900 sm:text-4xl dark:text-white">
+          <h2
+            class="mt-2 font-display text-3xl text-ink-900 sm:text-4xl dark:text-white"
+          >
             {{ t("home.selectedWork") }}
           </h2>
         </div>
@@ -413,7 +425,9 @@ useSeoMeta({
     </section>
 
     <!-- Process -->
-    <section class="border-t border-ink-100 bg-ink-50 dark:border-ink-800 dark:bg-ink-900/60">
+    <section
+      class="border-t border-ink-100 bg-ink-50 dark:border-ink-800 dark:bg-ink-900/60"
+    >
       <div class="mx-auto max-w-content px-6 py-20 sm:px-10 sm:py-28">
         <motion.p
           class="text-sm font-medium uppercase tracking-widest text-brand-600 dark:text-brand-400"
@@ -452,7 +466,8 @@ useSeoMeta({
             }"
             :transition="{ type: 'spring', stiffness: 300, damping: 22 }"
           >
-            <span class="font-display text-4xl text-brand-200 dark:text-brand-900"
+            <span
+              class="font-display text-4xl text-brand-200 dark:text-brand-900"
               >0{{ index + 1 }}</span
             >
             <h3 class="mt-4 font-display text-xl text-ink-900 dark:text-white">

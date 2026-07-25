@@ -83,12 +83,18 @@ const categoryLabel = computed(() =>
           :animate="{ opacity: 1, scale: 1 }"
           :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
         >
-          <img
+          <NuxtImg
             v-if="project.cover_image_url"
             :src="project.cover_image_url"
             :alt="project.title"
+            loading="eager"
+            fetch-priority="high"
+            format="webp"
+            width="1600"
+            height="900"
+            sizes="xs:100vw lg:1200px"
             class="w-full object-cover"
-          >
+          />
         </motion.div>
 
         <div v-if="project.project_images?.length" class="mt-10">

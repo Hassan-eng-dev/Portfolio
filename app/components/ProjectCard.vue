@@ -31,13 +31,19 @@ const categoryLabel = computed(() => getCategoryLabel(props.project.category))
       class="relative min-h-0 overflow-hidden rounded-2xl bg-ink-50 shadow-card ring-1 ring-inset ring-ink-900/5 transition-shadow duration-500 ease-out group-hover:shadow-glow-lg dark:bg-ink-900 dark:ring-white/10"
       :class="aspectClass"
     >
-      <img
+      <NuxtImg
         v-if="project.cover_image_url"
         :src="project.cover_image_url"
         :alt="project.title"
         :loading="priority ? 'eager' : 'lazy'"
+        :fetch-priority="priority ? 'high' : undefined"
+        placeholder
+        format="webp"
+        width="640"
+        height="800"
+        sizes="xs:100vw sm:50vw lg:33vw"
         class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-      >
+      />
       <div v-else class="flex h-full w-full items-center justify-center text-ink-300 dark:text-ink-700">
         <svg viewBox="0 0 24 24" class="h-10 w-10" fill="none" aria-hidden="true">
           <path

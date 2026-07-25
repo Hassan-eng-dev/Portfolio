@@ -68,12 +68,17 @@ const activeImage = computed(() =>
         :transition="{ type: 'spring', stiffness: 300, damping: 22 }"
         @click="open(index)"
       >
-        <img
+        <NuxtImg
           :src="image.image_url"
           :alt="image.alt_text ?? ''"
           loading="lazy"
+          placeholder
+          format="webp"
+          width="640"
+          height="640"
+          sizes="xs:100vw sm:50vw"
           class="w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-        >
+        />
       </motion.button>
     </div>
 
