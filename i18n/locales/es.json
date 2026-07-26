@@ -1,4 +1,7 @@
 {
+  "preloader": {
+    "loading": "Cargando"
+  },
   "nav": {
     "work": "Trabajos",
     "about": "Sobre mí",

@@ -1,4 +1,7 @@
 {
+  "preloader": {
+    "loading": "Загрузка"
+  },
   "nav": {
     "work": "Работы",
     "about": "Обо мне",

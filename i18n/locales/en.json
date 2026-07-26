@@ -1,4 +1,7 @@
 {
+  "preloader": {
+    "loading": "Loading"
+  },
   "nav": {
     "work": "Work",
     "about": "About",

@@ -1,4 +1,7 @@
 {
+  "preloader": {
+    "loading": "Chargement"
+  },
   "nav": {
     "work": "Travaux",
     "about": "À propos",

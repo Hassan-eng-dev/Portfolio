@@ -19,6 +19,7 @@ useHead({
 
 <template>
   <div>
+    <AppPreloader />
     <NuxtRouteAnnouncer />
     <NuxtLoadingIndicator color="#6d9fd5" />
     <NuxtLayout>

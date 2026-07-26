@@ -97,6 +97,7 @@ export default <Partial<Config>>{
         marquee: 'marquee 32s linear infinite',
         aurora: 'aurora 18s ease-in-out infinite alternate',
         float: 'float 6s ease-in-out infinite',
+        shimmer: 'shimmer 1.8s ease-in-out infinite',
       },
       keyframes: {
         'fade-in': {
@@ -119,6 +120,10 @@ export default <Partial<Config>>{
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        shimmer: {
+          from: { backgroundPosition: '200% 0' },
+          to: { backgroundPosition: '-200% 0' },
         },
       },
     },
