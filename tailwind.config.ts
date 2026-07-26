@@ -98,6 +98,8 @@ export default <Partial<Config>>{
         aurora: 'aurora 18s ease-in-out infinite alternate',
         float: 'float 6s ease-in-out infinite',
         shimmer: 'shimmer 1.8s ease-in-out infinite',
+        'skeleton-drift': 'skeleton-drift 3.2s ease-in-out infinite alternate',
+        'skeleton-glyph': 'skeleton-glyph 2.4s ease-in-out infinite',
       },
       keyframes: {
         'fade-in': {
@@ -124,6 +126,14 @@ export default <Partial<Config>>{
         shimmer: {
           from: { backgroundPosition: '200% 0' },
           to: { backgroundPosition: '-200% 0' },
+        },
+        'skeleton-drift': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '100%': { backgroundPosition: '100% 50%' },
+        },
+        'skeleton-glyph': {
+          '0%, 100%': { opacity: '0.35', transform: 'scale(0.94)' },
+          '50%': { opacity: '0.6', transform: 'scale(1)' },
         },
       },
     },
