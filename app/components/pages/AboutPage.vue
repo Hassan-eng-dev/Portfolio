@@ -9,7 +9,7 @@ useSeoMeta({
 
 <template>
   <div>
-    <PagesAboutAboutHero />
+    <PagesAboutHero />
     <PagesAboutSkillsSection />
     <PagesAboutTimelineSection />
   </div>

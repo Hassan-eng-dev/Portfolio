@@ -33,7 +33,7 @@ useSeoMeta({
 
 <template>
   <div>
-    <PagesPortfolioPortfolioHero />
+    <PagesPortfolioHero />
 
     <div class="mx-auto max-w-content px-6 py-10 sm:px-10">
       <CategoryFilter v-model="activeCategory" :categories="[...PROJECT_CATEGORIES]" />

@@ -25,7 +25,7 @@ useSeoMeta({
 
 <template>
   <div>
-    <PagesPricingPricingHero />
+    <PagesPricingHero />
     <PagesPricingTiersSection />
     <PagesPricingAddOnsSection />
     <PagesPricingProcessSection />
