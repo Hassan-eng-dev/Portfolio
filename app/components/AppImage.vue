@@ -28,30 +28,20 @@ const errored = ref(false)
       :class="loaded || errored ? 'pointer-events-none opacity-0' : 'opacity-100'"
       aria-hidden="true"
     >
-      <!-- Slow drifting base gradient: gives the block life before the sheen sweeps through -->
-      <div
-        class="absolute inset-0 animate-skeleton-drift bg-gradient-to-br from-ink-100 via-ink-200/70 to-ink-100 bg-[length:200%_200%] motion-reduce:animate-none dark:from-ink-800 dark:via-ink-700/60 dark:to-ink-800"
-      />
-
-      <!-- Diagonal glass sheen sweep -->
-      <div
-        class="absolute inset-0 animate-shimmer bg-gradient-to-tr from-transparent via-white/70 via-50% to-transparent bg-[length:200%_100%] motion-reduce:animate-none dark:via-white/10"
-      />
-
-      <!-- Soft placeholder glyph so the block reads as "image incoming", not just a gray tile -->
+      <!-- Two satellites orbit a still core at different speeds and directions, one in signal blue -->
       <div class="absolute inset-0 flex items-center justify-center">
-        <svg
-          viewBox="0 0 24 24"
-          class="h-9 w-9 animate-skeleton-glyph text-ink-300 motion-reduce:animate-none motion-reduce:opacity-40 dark:text-ink-600"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M4 16l4.5-6 3.5 4.5L15.5 10 20 16M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
-            stroke="currentColor"
-            stroke-width="1.5"
+        <div class="relative h-16 w-16 motion-reduce:animate-none">
+          <span
+            class="absolute inset-0 rounded-full border border-dashed border-ink-200 motion-reduce:hidden dark:border-ink-700"
           />
-        </svg>
+          <span class="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink-700 dark:bg-ink-200" />
+          <div class="absolute inset-0 animate-orbit-spin motion-reduce:animate-none">
+            <span class="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-600" />
+          </div>
+          <div class="absolute inset-0 animate-orbit-spin-reverse motion-reduce:animate-none">
+            <span class="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink-300 dark:bg-ink-600" />
+          </div>
+        </div>
       </div>
 
       <!-- Inner highlight ring for a touch of depth -->

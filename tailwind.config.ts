@@ -97,9 +97,11 @@ export default <Partial<Config>>{
         marquee: 'marquee 32s linear infinite',
         aurora: 'aurora 18s ease-in-out infinite alternate',
         float: 'float 6s ease-in-out infinite',
-        shimmer: 'shimmer 1.8s ease-in-out infinite',
-        'skeleton-drift': 'skeleton-drift 3.2s ease-in-out infinite alternate',
-        'skeleton-glyph': 'skeleton-glyph 2.4s ease-in-out infinite',
+        'pen-orbit': 'pen-orbit 6s linear infinite',
+        'trace-combo': 'trace-draw 6s linear infinite, trace-fade 6s linear infinite, trace-color 2.4s linear infinite',
+        'swatch-pick': 'swatch-pick 2.4s ease-in-out infinite',
+        'orbit-spin': 'orbit-spin 3.2s linear infinite',
+        'orbit-spin-reverse': 'orbit-spin 4.6s linear infinite reverse',
       },
       keyframes: {
         'fade-in': {
@@ -123,17 +125,32 @@ export default <Partial<Config>>{
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
-        shimmer: {
-          from: { backgroundPosition: '200% 0' },
-          to: { backgroundPosition: '-200% 0' },
+        'pen-orbit': {
+          '0%, 100%': { transform: 'translate(-25%, -25%)' },
+          '25%': { transform: 'translate(25%, -25%)' },
+          '50%': { transform: 'translate(25%, 25%)' },
+          '75%': { transform: 'translate(-25%, 25%)' },
         },
-        'skeleton-drift': {
-          '0%': { backgroundPosition: '0% 50%' },
-          '100%': { backgroundPosition: '100% 50%' },
+        'trace-draw': {
+          from: { strokeDashoffset: '1' },
+          to: { strokeDashoffset: '0' },
         },
-        'skeleton-glyph': {
-          '0%, 100%': { opacity: '0.35', transform: 'scale(0.94)' },
-          '50%': { opacity: '0.6', transform: 'scale(1)' },
+        'trace-fade': {
+          '0%, 88%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+        'trace-color': {
+          '0%, 8%': { stroke: '#a6aab3' },
+          '22%, 30%': { stroke: '#93c5fd' },
+          '40%, 100%': { stroke: '#2563eb' },
+        },
+        'swatch-pick': {
+          '0%, 20%, 100%': { transform: 'scale(1)' },
+          '10%': { transform: 'scale(1.35)' },
+        },
+        'orbit-spin': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
         },
       },
     },
