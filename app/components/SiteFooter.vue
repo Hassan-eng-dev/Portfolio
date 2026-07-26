@@ -8,6 +8,7 @@ const year = new Date().getFullYear();
 const navLinks = computed(() => [
   { label: t('nav.work'), to: "/portfolio" },
   { label: t('nav.about'), to: "/about" },
+  { label: t('nav.pricing'), to: "/pricing" },
   { label: t('nav.contact'), to: "/contact" },
 ]);
 

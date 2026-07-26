@@ -8,6 +8,7 @@ const { t, locales, defaultLocale } = useI18n()
 const links = computed(() => [
   { label: t('nav.work'), to: '/portfolio' },
   { label: t('nav.about'), to: '/about' },
+  { label: t('nav.pricing'), to: '/pricing' },
   { label: t('nav.contact'), to: '/contact' },
 ])
 

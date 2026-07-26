@@ -5,6 +5,7 @@
   "nav": {
     "work": "Trabajos",
     "about": "Sobre mí",
+    "pricing": "Precios",
     "contact": "Contacto",
     "startProject": "Iniciar un proyecto",
     "toggleMenu": "Alternar menú de navegación",
@@ -117,6 +118,80 @@
       "senior": { "year": "2022 — 2025", "title": "Diseñador gráfico senior", "body": "Lideré trabajos de identidad y empaque para varias marcas de consumo." },
       "early": { "year": "2019 — 2022", "title": "Diseñador gráfico", "body": "Construí una base sólida en impresión, diseño digital e ilustración." }
     }
+  },
+  "pricing": {
+    "seoTitle": "Precios",
+    "seoDescription": "Paquetes y tarifas claras para branding, ilustración, impresión y diseño digital con Hassan Adel.",
+    "eyebrow": "Precios",
+    "heading": "Precios claros para un diseño bien pensado.",
+    "subheading": "Tres formas de trabajar juntos, y un menú de extras para todo lo demás.",
+    "tiersHeading": "Cómo podemos trabajar juntos",
+    "tiers": {
+      "starter": {
+        "name": "Identidad Inicial",
+        "tagline": "Una identidad enfocada para un lanzamiento o una renovación.",
+        "period": "pago único",
+        "cta": "Empezar con Inicial",
+        "includes": {
+          "item1": "Logo y marca principal",
+          "item2": "Sistema de tipografía y color",
+          "item3": "Mini guía de marca (PDF)",
+          "item4": "2 rondas de revisión"
+        }
+      },
+      "system": {
+        "name": "Sistema de Marca",
+        "tagline": "Una identidad completa más el material para ponerla en marcha.",
+        "period": "pago único",
+        "cta": "Empezar con Sistema de Marca",
+        "featuredLabel": "El más solicitado",
+        "includes": {
+          "item1": "Todo lo de Inicial",
+          "item2": "Guía de marca extendida",
+          "item3": "Papelería y plantillas para redes",
+          "item4": "Paquete de archivos listos para imprenta",
+          "item5": "4 rondas de revisión"
+        }
+      },
+      "partner": {
+        "name": "Socio de Estudio",
+        "tagline": "Soporte de diseño continuo, reservado por mes.",
+        "period": "por mes",
+        "cta": "Empezar con Socio de Estudio",
+        "includes": {
+          "item1": "Horas mensuales dedicadas",
+          "item2": "Entrega prioritaria",
+          "item3": "Empaque, impresión e ilustración según se necesite",
+          "item4": "Línea directa para pedidos rápidos"
+        }
+      }
+    },
+    "priceNote": "Todo proyecto comienza con una llamada de descubrimiento — esto son puntos de partida, no cotizaciones finales.",
+    "addOnsHeading": "A la carta",
+    "addOnsSubtitle": "Combínalos con cualquier paquete, o resérvalos por separado.",
+    "addOns": {
+      "item1": { "label": "Ronda de revisión extra" },
+      "item2": { "label": "Entrega urgente" },
+      "item3": { "label": "Set de mockups de empaque" },
+      "item4": { "label": "Kit para redes sociales (10 plantillas)" }
+    },
+    "processHeading": "Cómo funciona un proyecto",
+    "process": {
+      "discovery": { "title": "Llamada de descubrimiento", "body": "Hablamos sobre objetivos, alcance y plazos." },
+      "proposal": { "title": "Propuesta y cotización", "body": "Una cotización fija y clara, sin sorpresas después." },
+      "feedback": { "title": "Diseño y retroalimentación", "body": "Rondas estructuradas, flexibles en el tiempo, con avances reales cada semana." },
+      "delivery": { "title": "Entrega", "body": "Archivos finales, guías y material fuente, organizados y listos para usar." }
+    },
+    "faqHeading": "Preguntas frecuentes",
+    "faq": {
+      "q1": { "q": "¿Requieren un depósito?", "a": "Sí — 50% por adelantado para reservar el proyecto, y el resto al momento de la entrega." },
+      "q2": { "q": "¿Cuántas revisiones están incluidas?", "a": "Depende del paquete elegido; siempre se pueden agregar rondas extra a la carta." },
+      "q3": { "q": "¿Y si mi proyecto no encaja en un paquete?", "a": "La mayoría de los proyectos no encajan perfectamente en una caja — escríbeme y armamos juntos una cotización a medida." },
+      "q4": { "q": "¿Cuál es el tiempo de entrega típico?", "a": "Depende del alcance; acordaremos un plazo realista durante la llamada de descubrimiento." }
+    },
+    "closingHeading": "¿No sabes cuál elegir?",
+    "closingBody": "Cuéntame sobre el proyecto y te recomendaré el mejor punto de partida.",
+    "closingCta": "Hablemos"
   },
   "contact": {
     "seoTitle": "Contacto",

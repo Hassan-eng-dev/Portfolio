@@ -5,6 +5,7 @@
   "nav": {
     "work": "Work",
     "about": "About",
+    "pricing": "Pricing",
     "contact": "Contact",
     "startProject": "Start a project",
     "toggleMenu": "Toggle navigation menu",
@@ -117,6 +118,80 @@
       "senior": { "year": "2022 — 2025", "title": "Senior Graphic Designer", "body": "Led identity and packaging work for a range of consumer brands." },
       "early": { "year": "2019 — 2022", "title": "Graphic Designer", "body": "Built a foundation across print, digital and illustration work." }
     }
+  },
+  "pricing": {
+    "seoTitle": "Pricing",
+    "seoDescription": "Straightforward packages and rates for branding, illustration, print and digital design work with Hassan Adel.",
+    "eyebrow": "Pricing",
+    "heading": "Clear pricing for considered design.",
+    "subheading": "Three ways to work together, and a menu of extras for everything in between.",
+    "tiersHeading": "How we can work together",
+    "tiers": {
+      "starter": {
+        "name": "Brand Starter",
+        "tagline": "A focused identity for a launch or a refresh.",
+        "period": "one-time",
+        "cta": "Start with Starter",
+        "includes": {
+          "item1": "Logo & core mark",
+          "item2": "Type and color system",
+          "item3": "Mini brand guide (PDF)",
+          "item4": "2 revision rounds"
+        }
+      },
+      "system": {
+        "name": "Brand System",
+        "tagline": "A full identity plus the collateral to run with it.",
+        "period": "one-time",
+        "cta": "Start with Brand System",
+        "featuredLabel": "Most requested",
+        "includes": {
+          "item1": "Everything in Starter",
+          "item2": "Extended brand guidelines",
+          "item3": "Stationery & social templates",
+          "item4": "Print-ready asset pack",
+          "item5": "4 revision rounds"
+        }
+      },
+      "partner": {
+        "name": "Studio Partner",
+        "tagline": "Ongoing design support, booked by the month.",
+        "period": "per month",
+        "cta": "Start with Studio Partner",
+        "includes": {
+          "item1": "Dedicated monthly hours",
+          "item2": "Priority turnaround",
+          "item3": "Packaging, print & illustration as needed",
+          "item4": "A direct line for quick asks"
+        }
+      }
+    },
+    "priceNote": "Every project starts with a discovery call — these are starting points, not final quotes.",
+    "addOnsHeading": "A la carte",
+    "addOnsSubtitle": "Mix into any package, or book on their own.",
+    "addOns": {
+      "item1": { "label": "Extra revision round" },
+      "item2": { "label": "Rush delivery" },
+      "item3": { "label": "Packaging mockup set" },
+      "item4": { "label": "Social media kit (10 templates)" }
+    },
+    "processHeading": "How a project runs",
+    "process": {
+      "discovery": { "title": "Discovery call", "body": "We talk through goals, scope and timeline." },
+      "proposal": { "title": "Proposal & quote", "body": "A clear fixed quote, no surprises later." },
+      "feedback": { "title": "Design & feedback", "body": "Structured rounds, async-friendly, real progress every week." },
+      "delivery": { "title": "Delivery & handoff", "body": "Final files, guidelines and source assets, organized and ready to use." }
+    },
+    "faqHeading": "Common questions",
+    "faq": {
+      "q1": { "q": "Do you require a deposit?", "a": "Yes — 50% upfront to book the project, with the remainder due at delivery." },
+      "q2": { "q": "How many revisions are included?", "a": "It depends on the package above; extra rounds can always be added a la carte." },
+      "q3": { "q": "What if my project doesn't fit a package?", "a": "Most projects don't fit neatly into a box — reach out and we'll figure out a custom quote together." },
+      "q4": { "q": "What's your typical turnaround?", "a": "It depends on scope; we'll agree on a realistic timeline during the discovery call." }
+    },
+    "closingHeading": "Not sure which fits?",
+    "closingBody": "Tell me about the project and I'll recommend the right starting point.",
+    "closingCta": "Let's talk"
   },
   "contact": {
     "seoTitle": "Contact",

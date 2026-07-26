@@ -1,0 +1,3 @@
+<template>
+  <PagesPricingPage />
+</template>

@@ -5,6 +5,7 @@
   "nav": {
     "work": "Travaux",
     "about": "À propos",
+    "pricing": "Tarifs",
     "contact": "Contact",
     "startProject": "Démarrer un projet",
     "toggleMenu": "Basculer le menu de navigation",
@@ -117,6 +118,80 @@
       "senior": { "year": "2022 — 2025", "title": "Designer graphique senior", "body": "J'ai dirigé des travaux d'identité et de packaging pour diverses marques grand public." },
       "early": { "year": "2019 — 2022", "title": "Designer graphique", "body": "J'ai construit des bases solides en print, design digital et illustration." }
     }
+  },
+  "pricing": {
+    "seoTitle": "Tarifs",
+    "seoDescription": "Des forfaits et des tarifs clairs pour le branding, l'illustration, l'impression et le design numérique avec Hassan Adel.",
+    "eyebrow": "Tarifs",
+    "heading": "Des tarifs clairs pour un design réfléchi.",
+    "subheading": "Trois façons de collaborer, et un menu d'options pour tout le reste.",
+    "tiersHeading": "Comment nous pouvons collaborer",
+    "tiers": {
+      "starter": {
+        "name": "Identité Essentielle",
+        "tagline": "Une identité ciblée pour un lancement ou une refonte.",
+        "period": "paiement unique",
+        "cta": "Commencer avec Essentielle",
+        "includes": {
+          "item1": "Logo et marque principale",
+          "item2": "Système typographique et colorimétrique",
+          "item3": "Mini guide de marque (PDF)",
+          "item4": "2 tours de révision"
+        }
+      },
+      "system": {
+        "name": "Système de Marque",
+        "tagline": "Une identité complète, avec tout le matériel pour la déployer.",
+        "period": "paiement unique",
+        "cta": "Commencer avec Système de Marque",
+        "featuredLabel": "Le plus demandé",
+        "includes": {
+          "item1": "Tout ce qui est inclus dans Essentielle",
+          "item2": "Guide de marque complet",
+          "item3": "Papeterie et modèles pour réseaux sociaux",
+          "item4": "Pack de fichiers prêts à imprimer",
+          "item5": "4 tours de révision"
+        }
+      },
+      "partner": {
+        "name": "Partenaire Studio",
+        "tagline": "Un accompagnement design continu, réservé au mois.",
+        "period": "par mois",
+        "cta": "Commencer avec Partenaire Studio",
+        "includes": {
+          "item1": "Heures mensuelles dédiées",
+          "item2": "Traitement prioritaire",
+          "item3": "Packaging, impression et illustration selon les besoins",
+          "item4": "Une ligne directe pour les demandes rapides"
+        }
+      }
+    },
+    "priceNote": "Chaque projet commence par un appel de découverte — ce sont des points de départ, pas des devis définitifs.",
+    "addOnsHeading": "À la carte",
+    "addOnsSubtitle": "À ajouter à n'importe quel forfait, ou à réserver séparément.",
+    "addOns": {
+      "item1": { "label": "Tour de révision supplémentaire" },
+      "item2": { "label": "Livraison express" },
+      "item3": { "label": "Set de mockups d'emballage" },
+      "item4": { "label": "Kit réseaux sociaux (10 modèles)" }
+    },
+    "processHeading": "Comment se déroule un projet",
+    "process": {
+      "discovery": { "title": "Appel de découverte", "body": "On discute des objectifs, du périmètre et du calendrier." },
+      "proposal": { "title": "Proposition et devis", "body": "Un devis fixe et clair, sans mauvaise surprise ensuite." },
+      "feedback": { "title": "Design et retours", "body": "Des tours structurés, adaptés à votre rythme, avec de vrais progrès chaque semaine." },
+      "delivery": { "title": "Livraison", "body": "Fichiers finaux, guides et sources, organisés et prêts à l'emploi." }
+    },
+    "faqHeading": "Questions fréquentes",
+    "faq": {
+      "q1": { "q": "Demandez-vous un acompte ?", "a": "Oui — 50% à la réservation du projet, le solde étant dû à la livraison." },
+      "q2": { "q": "Combien de révisions sont incluses ?", "a": "Cela dépend du forfait choisi ; des tours supplémentaires peuvent toujours être ajoutés à la carte." },
+      "q3": { "q": "Et si mon projet ne correspond à aucun forfait ?", "a": "La plupart des projets ne rentrent pas parfaitement dans une case — écrivez-moi et nous établirons ensemble un devis sur mesure." },
+      "q4": { "q": "Quel est le délai habituel ?", "a": "Cela dépend du périmètre ; nous conviendrons d'un calendrier réaliste lors de l'appel de découverte." }
+    },
+    "closingHeading": "Vous hésitez encore ?",
+    "closingBody": "Parlez-moi de votre projet et je vous recommanderai le meilleur point de départ.",
+    "closingCta": "Discutons-en"
   },
   "contact": {
     "seoTitle": "Contact",
