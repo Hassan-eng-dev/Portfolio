@@ -23,7 +23,7 @@ const isRtl = computed(() => localeProperties.value.dir === 'rtl')
         :transition="{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }"
       >
         <video
-          class="md:w-5/12 rounded-2xl mix-blend-multiply dark:mix-blend-normal"
+          class="w-full rounded-2xl md:w-5/12"
           autoplay
           loop
           muted
