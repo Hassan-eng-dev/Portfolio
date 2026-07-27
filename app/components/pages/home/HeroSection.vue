@@ -74,42 +74,22 @@ const { t } = useI18n()
         </motion.div>
       </motion.div>
 
-      <div class="relative mx-auto w-80 shrink-0 sm:mx-0 sm:w-72 md:w-80 lg:w-[28rem]">
-        <motion.img
-          src="/avatar-designer.png"
-          :alt="t('home.avatarAlt')"
-          class="w-full max-w-none select-none"
-          :initial="{ opacity: 0, y: 40, scale: 0.94 }"
-          :animate="{ opacity: 1, y: [0, -40, 0], scale: 1 }"
-          :transition="{
-            opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-            scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-            y: {
-              duration: 5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: 0.8,
-            },
-          }"
-        />
-        <motion.img
-          src="/avatar.png"
-          :alt="t('home.avatarAlt')"
-          class="absolute top-[13%] start-[36%] w-[36%] max-w-none select-none drop-shadow-xl"
-          :initial="{ opacity: 0, y: 40, scale: 0.94 }"
-          :animate="{ opacity: 1, y: [0, -0, 0], scale: 1 }"
-          :transition="{
-            opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-            scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-            y: {
-              duration: 5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: 0.8,
-            },
-          }"
-        />
-      </div>
+      <motion.div
+        class="w-80 shrink-0 sm:mx-0 sm:w-72 md:w-80 lg:w-[28rem]"
+        :initial="{ opacity: 0, y: 40, scale: 0.94 }"
+        :animate="{ opacity: 1, y: 0, scale: 1 }"
+        :transition="{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }"
+      >
+        <video
+          class="w-full rounded-2xl"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="/Hello.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
     </div>
   </section>
 </template>

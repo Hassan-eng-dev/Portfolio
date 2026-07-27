@@ -16,21 +16,24 @@ const isRtl = computed(() => localeProperties.value.dir === 'rtl')
       class="relative mx-auto flex max-w-content flex-col items-center gap-12 px-6 py-20 sm:px-10 sm:py-28 lg:flex-row lg:gap-16"
     >
       <motion.div
-        class="w-full max-w-xl lg:max-w-none lg:flex-1"
+        class="relative mx-auto w-80 shrink-0 sm:mx-0 sm:w-72 md:w-80 lg:w-[28rem]"
         :initial="{ opacity: 0, x: isRtl ? 32 : -32, scale: 0.96 }"
         :whileInView="{ opacity: 1, x: 0, scale: 1 }"
         :viewport="{ once: true, margin: '-80px' }"
         :transition="{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }"
       >
-        <video
-          class="w-full rounded-2xl md:w-5/12"
-          autoplay
-          loop
-          muted
-          playsinline
-        >
-          <source src="/Hello.mp4" type="video/mp4" />
-        </video>
+        <motion.img
+          src="/avatar-designer.png"
+          :alt="t('home.avatarAlt')"
+          class="w-full max-w-none select-none"
+          :animate="{ y: [0, -40, 0] }"
+          :transition="{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }"
+        />
+        <motion.img
+          src="/avatar.png"
+          :alt="t('home.avatarAlt')"
+          class="absolute top-[13%] start-[36%] w-[36%] max-w-none select-none drop-shadow-xl"
+        />
       </motion.div>
 
       <motion.div
